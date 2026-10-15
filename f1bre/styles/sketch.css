@@ -837,18 +837,6 @@ body.sketch-theme.home-mode .sidebar {
   padding-right: 0;
 }
 /* Marca amplia y roja junto al texto platform en grafito. */
-body.sketch-theme.home-mode .brand {
-  color: #e10600;
-  font-size: 42px;
-  font-style: italic;
-  flex-shrink: 0;
-}
-body.sketch-theme.home-mode .brand span {
-  color: #373737;
-  font-size: 29px;
-  font-weight: 800;
-  letter-spacing: -1px;
-}
 /* Franja roja con enlaces grandes; se conservan las cuatro rutas funcionales existentes. */
 body.sketch-theme.home-mode .sidebar nav {
   background: #b60000;
@@ -1039,12 +1027,6 @@ body.sketch-theme .home-race-details > summary {
 }
 /* Tablet: navegacion compacta y selector junto a la temporada. */
 @media (max-width: 1000px) {
-  body.sketch-theme.home-mode .brand {
-    font-size: 34px;
-  }
-  body.sketch-theme.home-mode .brand span {
-    font-size: 22px;
-  }
   body.sketch-theme.home-mode .sidebar {
     gap: 16px;
   }
@@ -1075,10 +1057,6 @@ body.sketch-theme .home-race-details > summary {
     display: flex;
     flex-wrap: wrap;
     gap: 14px;
-  }
-  body.sketch-theme.home-mode .brand {
-    width: 100%;
-    font-size: 34px;
   }
   body.sketch-theme.home-mode .sidebar nav {
     width: calc(100% + 32px);
