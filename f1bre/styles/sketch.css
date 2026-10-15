@@ -1,0 +1,1136 @@
+/* DISEÑO ACTUAL — referencia del bosquejo del usuario.
+ * Este archivo se carga al final y sustituye la paleta oscura anterior en TODAS las vistas.
+ * Fondo: --bg. Paneles: --paper. Texto: --ink. Radio de botones: --button-radius.
+ * Los archivos anteriores conservan la estructura; cambia aquí la apariencia clara común. */
+
+/* Paleta del bosquejo: gris claro, blanco y grafito, con acentos deportivos reales. */
+body.sketch-theme {
+  --bg: #ededed;
+  --paper: #ffffff;
+  --panel: #ffffff;
+  --ink: #373737;
+  --muted: #626262;
+  --line: #d2d2d2;
+  --button-radius: 15px;
+  color-scheme: light;
+  background: var(--bg);
+  color: var(--ink);
+  font-size: 15px;
+}
+
+/* Sin relieve decorativo: los controles y paneles se separan por fondo y borde. */
+body.sketch-theme :is(button, input, select, .panel, .home-panel, .team-card, .driver-row) {
+  box-shadow: none;
+  text-shadow: none;
+}
+
+/* Cabecera clara; la línea burdeo mantiene la identidad general de F1BRE. */
+body.sketch-theme .sidebar {
+  background: var(--bg);
+  border-top: 5px solid #641f32;
+  border-bottom: 1px solid #d5d5d5;
+  height: 86px;
+}
+
+/* Marca y textos auxiliares de la cabecera. */
+body.sketch-theme .brand {
+  color: #373737;
+}
+body.sketch-theme .brand span {
+  color: #666666;
+}
+
+/* Enlaces cómodos y redondeados; la sección activa se presenta como una pastilla grafito. */
+body.sketch-theme .sidebar nav a {
+  color: #494949;
+  padding: 9px 15px;
+  margin: auto 0;
+  min-height: 43px;
+  border-radius: var(--button-radius);
+  font-size: 14px;
+}
+
+/* Estado seleccionado y hover sin sombra ni subrayado adicional. */
+body.sketch-theme .sidebar nav a.active {
+  background: #373737;
+  color: #fff;
+}
+body.sketch-theme .sidebar nav a:hover {
+  background: #dfdfdf;
+}
+body.sketch-theme .sidebar nav a.active:hover {
+  background: #454545;
+}
+body.sketch-theme .sidebar nav a.active::after {
+  display: none;
+}
+body.sketch-theme .sidebar nav {
+  gap: 8px;
+}
+
+/* Temporada y carrera con superficies blancas y esquinas suaves. */
+body.sketch-theme .session-toolbar {
+  top: 23px;
+}
+body.sketch-theme :is(.session-toolbar select, .filters select, .search-label input) {
+  background: #fff;
+  color: #373737;
+  border: 1px solid #c9c9c9;
+  border-radius: 12px;
+  min-height: 44px;
+  font-size: 14px;
+}
+
+/* Etiquetas y textos de ayuda de todos los formularios. */
+body.sketch-theme :is(label, .unit, .context, .chart-help, .list-toolbar p, .section-subtitle) {
+  color: #626262;
+}
+body.sketch-theme .search-label input::placeholder {
+  color: #777;
+}
+
+/* Botones generales: cambia aquí altura, redondeado y tamaño del texto. */
+body.sketch-theme :is(.primary-button, .secondary-button, .reset, .home-analysis-button) {
+  min-height: 45px;
+  padding: 11px 20px;
+  border: 1px solid #373737;
+  border-radius: var(--button-radius);
+  background: #373737;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+/* Acciones secundarias blancas, con el mismo tamaño y forma de los botones principales. */
+body.sketch-theme .secondary-button {
+  background: #fff;
+  color: #373737;
+  border-color: #c1c1c1;
+}
+body.sketch-theme :is(.primary-button, .reset, .home-analysis-button):hover {
+  background: #4b4b4b;
+  border-color: #4b4b4b;
+}
+body.sketch-theme .secondary-button:hover {
+  background: #e7e7e7;
+}
+
+/* Las acciones de consulta del análisis también abandonan los fondos oscuros y burdeos planos. */
+body.sketch-theme #overview :is(#load-telemetry, #load-raw) {
+  background: #373737;
+  border-color: #373737;
+  color: #fff;
+}
+
+/* Foco de teclado visible y sin efectos de brillo. */
+body.sketch-theme :focus-visible {
+  outline: 2px solid #641f32;
+  outline-offset: 3px;
+}
+
+/* Superficies comunes: fichas blancas y bordes discretos como en el bosquejo. */
+body.sketch-theme
+  :is(
+    .home-panel,
+    .panel,
+    .metric,
+    .summary-card,
+    .drivers-panel,
+    .driver-fact-panel,
+    .team-detail-panel,
+    .team-detail-race,
+    .team-detail-car
+  ) {
+  background: #fff;
+  color: #373737;
+  border: 1px solid #dfdfdf;
+  border-radius: 16px;
+}
+
+/* Títulos de las fichas y valores destacados en gris grafito. */
+body.sketch-theme
+  :is(
+    .home-panel-heading h2,
+    .driver-fact-panel h2,
+    .team-detail-panel h3,
+    .team-detail-race h3,
+    .panel h3,
+    .metric strong,
+    .summary-card strong
+  ) {
+  color: #373737;
+}
+
+/* Tipografía secundaria legible sobre blanco; se evita el gris claro del tema anterior. */
+body.sketch-theme
+  :is(
+    .eyebrow,
+    .drivers-eyebrow,
+    .driver-fact-panel dt,
+    .profile-note,
+    .summary-card small,
+    .summary-card span,
+    .metric small,
+    .metric span,
+    .driver-editorial-heading p
+  ) {
+  color: #626262;
+}
+
+/* Fichas del piloto: título separado por una línea fina, sin borde pesado. */
+body.sketch-theme .driver-fact-panel h2 {
+  border-bottom-color: #777;
+  font-size: 16px;
+  padding: 13px 20px;
+}
+body.sketch-theme .driver-fact-panel dl > div {
+  font-size: 15px;
+}
+body.sketch-theme .driver-fact-panel dd {
+  color: #373737;
+}
+
+/* Perfil editorial: nombre grafito y apellido con el color de OpenF1, como en el bosquejo. */
+body.sketch-theme .driver-editorial-heading h1 {
+  color: #373737;
+}
+body.sketch-theme .driver-editorial-last {
+  color: var(--team-color);
+  text-transform: capitalize;
+}
+body.sketch-theme .driver-editorial-number {
+  color: var(--team-color);
+  -webkit-text-stroke: 1px #373737;
+}
+body.sketch-theme .driver-editorial-acronym {
+  color: #373737;
+}
+body.sketch-theme .driver-editorial-brand {
+  color: #373737;
+}
+
+/* La imagen del piloto conserva sus colores originales y la bandera completa. */
+body.sketch-theme :is(.driver-editorial-visual, .driver-editorial-visual .portrait, .portrait) {
+  background: transparent;
+}
+body.sketch-theme .driver-editorial-visual {
+  border: 0;
+  border-radius: 10px;
+}
+body.sketch-theme .driver-editorial-visual figcaption {
+  background: #fff;
+  color: #373737;
+  font-size: 12px;
+}
+
+/* Enlace de regreso con la forma del botón del bosquejo. */
+body.sketch-theme .back-link {
+  padding: 9px 18px;
+  background: #373737;
+  color: #fff;
+  border-radius: 15px;
+  font-size: 13px;
+  min-height: 39px;
+}
+
+/* Cabeceras y datos del listado de pilotos. */
+body.sketch-theme :is(.drivers-heading h1, #drivers-context, #teams-context, #race-heading) {
+  color: #373737;
+}
+body.sketch-theme .drivers-heading h1 {
+  font-style: italic;
+  font-weight: 800;
+  text-transform: none;
+}
+body.sketch-theme .list-toolbar {
+  border-color: #d3d3d3;
+}
+body.sketch-theme .driver-column-head {
+  background: #f6f6f6;
+  color: #626262;
+  border-color: #ddd;
+}
+
+/* Filas blancas con identidad de equipo solo en el número, borde e imagen. */
+body.sketch-theme .driver-row,
+body.sketch-theme .driver-row:nth-child(n) {
+  background: #fff;
+  color: #373737;
+  border-color: #dedede;
+  border-left: 4px solid var(--team-color);
+  box-shadow: none;
+}
+body.sketch-theme .driver-row:hover {
+  background: #f6f6f6;
+}
+body.sketch-theme :is(.driver-rank, .driver-info strong, .driver-points) {
+  color: #373737;
+}
+body.sketch-theme .driver-info small {
+  color: #626262;
+}
+body.sketch-theme .driver-row .portrait {
+  background: transparent;
+}
+body.sketch-theme :is(.drivers-footnote, .teams-footnote, .row-arrow) {
+  color: #626262;
+}
+
+/* Tarjetas de equipo claras; los logos se muestran sobre blanco sin alterar la imagen. */
+body.sketch-theme .team-card,
+body.sketch-theme .team-card:hover {
+  --muted: #626262;
+  background: #fff;
+  color: #373737;
+  border-radius: 16px;
+  border-color: #dedede;
+  border-top-color: var(--team-color);
+}
+body.sketch-theme
+  :is(.team-card-title strong, .team-rank, .team-stats strong, .team-card-foot, .team-monogram) {
+  color: #373737;
+}
+body.sketch-theme :is(.team-card-title small, .team-drivers, .team-stats small) {
+  color: #626262;
+}
+body.sketch-theme .team-card .team-brand-slot {
+  background: #fff;
+  border-color: #dedede;
+  border-radius: 10px;
+}
+body.sketch-theme .team-stats {
+  border-color: #d3d3d3;
+}
+/* Nombre alternativo del logo cuando el archivo local todavía falta. */
+body.sketch-theme .team-brand-slot .team-monogram {
+  color: #626262;
+}
+
+/* Detalle de equipo: neutraliza también sus variables y superficies interiores. */
+body.sketch-theme .team-detail {
+  --panel: #fff;
+  --line: #d2d2d2;
+  color: #373737;
+}
+body.sketch-theme
+  :is(.team-detail-header h2, .team-detail-panel dd, .team-detail-brand .team-monogram) {
+  color: #373737;
+}
+body.sketch-theme
+  :is(
+    .team-detail-year,
+    .team-detail-panel dt,
+    .legacy-note,
+    .team-detail-race h3 span,
+    .car-fallback
+  ) {
+  color: #626262;
+}
+body.sketch-theme .team-detail-panel dl > div {
+  border-color: #d3d3d3;
+}
+body.sketch-theme .team-detail-car::before {
+  display: none;
+}
+body.sketch-theme .profile-hero {
+  background: #fff;
+  color: #373737;
+  border-color: #ddd;
+  border-top-color: var(--team-color);
+}
+body.sketch-theme :is(.profile-main h2, .profile-main p, .profile-main .eyebrow) {
+  color: #373737;
+}
+
+/* Análisis claro: filtros suaves, cuadrícula del gráfico tenue y tabla blanca. */
+body.sketch-theme .filters {
+  background: #f8f8f8;
+  border-color: #dedede;
+  border-radius: 14px;
+}
+body.sketch-theme #overview :is(th, td, .table-scroll) {
+  color: #373737;
+  border-color: #dedede;
+}
+body.sketch-theme #overview th {
+  background: #f2f2f2;
+  font-size: 11px;
+}
+body.sketch-theme #overview td {
+  font-size: 13px;
+}
+body.sketch-theme #overview tbody tr:hover {
+  background: #f6f6f6;
+}
+body.sketch-theme
+  #overview
+  :is(.context, .chart-help, .legend, .tyre-key, .stint-label, .event-list small) {
+  color: #626262;
+}
+body.sketch-theme #overview svg text {
+  fill: #626262;
+}
+body.sketch-theme #overview svg line {
+  stroke: #d5d5d5;
+}
+body.sketch-theme #overview .event-list li {
+  border-color: #d5d5d5;
+}
+body.sketch-theme #overview pre {
+  background: #f6f6f6;
+  color: #373737;
+  border-color: #dedede;
+  border-radius: 12px;
+}
+body.sketch-theme #overview .unrun {
+  background: #dedede;
+  color: #626262;
+}
+
+/* HOME — composición del bosquejo: título inclinado, fichas a la izquierda e imagen grande a la derecha. */
+body.sketch-theme .home-race-hero {
+  position: relative;
+  grid-template-columns: minmax(0, 1.65fr) minmax(280px, 0.85fr);
+  gap: 32px;
+  padding-left: 80px;
+  align-items: start;
+  margin: 15px 0 28px;
+}
+body.sketch-theme .home-sketch-mark {
+  display: block;
+  position: absolute;
+  top: 90px;
+  left: -20px;
+  writing-mode: vertical-rl;
+  font:
+    italic 900 130px/0.8 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -8px;
+  color: #373737;
+  pointer-events: none;
+}
+body.sketch-theme .home-race-copy {
+  padding: 22px 0 0;
+  width: 100%;
+}
+body.sketch-theme #home-race-context {
+  color: #626262;
+  font-size: 13px;
+}
+body.sketch-theme #home-race-title {
+  font:
+    italic 850 clamp(46px, 5.6vw, 82px)/1.03 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -2.7px;
+  text-transform: none;
+  color: #373737;
+  margin-bottom: 13px;
+}
+body.sketch-theme #home-race-date {
+  color: #626262;
+  font-size: 14px;
+}
+/* El segundo renglón toma el color real del líder; el logo se centra sobre el título. */
+body.sketch-theme .home-title-accent {
+  display: block;
+  color: var(--home-accent);
+}
+body.sketch-theme .home-featured-team {
+  min-height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+body.sketch-theme .home-featured-team:empty {
+  display: none;
+}
+body.sketch-theme .home-featured-team a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+body.sketch-theme .home-featured-logo {
+  width: 190px;
+  height: 60px;
+  object-fit: contain;
+}
+body.sketch-theme .home-race-meta {
+  margin-bottom: 23px;
+  gap: 9px;
+}
+
+/* Etiquetas suaves de ganador, clima y estado; el ganador conserva el color de equipo. */
+body.sketch-theme .home-meta-chip {
+  background: #fff;
+  color: #494949;
+  border-color: #dedede;
+  border-radius: 12px;
+  font-size: 12px;
+  min-height: 39px;
+}
+body.sketch-theme .home-meta-chip strong,
+body.sketch-theme .home-meta-chip > span:first-child {
+  color: #373737;
+}
+body.sketch-theme .chip-divider {
+  background: #c8c8c8;
+}
+body.sketch-theme .completed-chip {
+  color: #4b573d;
+  background: #e4e8df;
+  border-color: #d1d8c9;
+}
+
+/* Ficha de campeonato situada debajo del título, no en una columna de tarjetas oscuras. */
+body.sketch-theme .home-championship-panel {
+  margin-bottom: 18px;
+}
+body.sketch-theme .home-panel {
+  padding: 18px;
+}
+body.sketch-theme .home-panel-heading {
+  border-bottom: 1px solid #777;
+  margin: 0 -18px 14px;
+  padding: 0 18px 13px;
+}
+body.sketch-theme .home-panel-heading h2 {
+  font-size: 16px;
+  font-weight: 650;
+}
+body.sketch-theme .home-panel-heading > span {
+  color: #626262;
+  font-size: 12px;
+}
+
+/* Selector de campeonato redondeado y claro. */
+body.sketch-theme .home-segmented {
+  background: #ededed;
+  border-color: #ddd;
+  border-radius: 12px;
+  padding: 4px;
+}
+body.sketch-theme .home-segmented button {
+  min-height: 36px;
+  border-radius: 9px;
+  color: #626262;
+  font-size: 12px;
+}
+body.sketch-theme .home-segmented button[aria-pressed='true'] {
+  background: #373737;
+  color: #fff;
+  box-shadow: none;
+}
+body.sketch-theme .home-standing-row {
+  border-color: #dedede;
+  min-height: 49px;
+  color: #373737;
+}
+body.sketch-theme .home-standing-row:hover {
+  background: #f2f2f2;
+}
+body.sketch-theme :is(.standing-name strong, .standing-points, .standing-rank) {
+  color: #373737;
+}
+body.sketch-theme .standing-name strong {
+  font-size: 14px;
+}
+body.sketch-theme :is(.standing-name small, .standing-points small) {
+  color: #626262;
+  font-size: 11px;
+}
+body.sketch-theme .home-panel-footer {
+  color: #626262;
+  font-size: 12px;
+  border-color: #dedede;
+}
+body.sketch-theme .home-panel-footer a {
+  color: #4b573d;
+}
+
+/* Acción principal de Home: forma y escala del botón del bosquejo, sin sombra. */
+body.sketch-theme .home-analysis-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 24px;
+}
+
+/* Imagen de carrera o del líder con bandera; conserva el archivo completo. */
+body.sketch-theme .home-race-visual {
+  margin: 0;
+  background: transparent;
+  border: 0;
+  border-radius: 12px;
+  width: 100%;
+  height: auto;
+  aspect-ratio: auto;
+  align-self: start;
+  overflow: hidden;
+}
+body.sketch-theme #home-race-photo {
+  position: relative;
+  height: auto;
+  object-fit: contain;
+  object-position: center top;
+}
+body.sketch-theme #home-photo-placeholder {
+  background: #fff;
+  color: #626262;
+  border: 1px solid #ddd;
+  border-radius: 16px;
+  min-height: 100%;
+}
+body.sketch-theme #home-photo-placeholder :is(strong, span, small) {
+  color: #626262;
+}
+body.sketch-theme .home-featured-driver {
+  position: static;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 12px 15px;
+  background: #fff;
+  color: #373737;
+  font-size: 12px;
+  border-top: 3px solid var(--home-accent);
+}
+/* Sin fotografía se reserva un marco vertical; con fotografía se respeta su altura natural. */
+body.sketch-theme .home-race-visual:has(#home-race-photo[hidden]) {
+  aspect-ratio: 1 / 2;
+}
+body.sketch-theme .standing-points {
+  font-size: 16px;
+}
+body.sketch-theme .standing-rank {
+  font-size: 16px;
+}
+/* El neumático duro sigue blanco, con contorno para distinguirlo sobre paneles blancos. */
+body.sketch-theme .home-tyre-track,
+body.sketch-theme .home-tyre-segment {
+  height: 6px;
+}
+body.sketch-theme .home-tyre-segment {
+  border-right-color: #fff;
+}
+body.sketch-theme .home-tyre-segment.hard {
+  border-top: 1px solid #a0a0a0;
+  border-bottom: 1px solid #a0a0a0;
+}
+body.sketch-theme .home-tyre-segment::after {
+  border-color: #fff;
+}
+body.sketch-theme .home-tyre-segment.hard::after {
+  border-color: #a0a0a0;
+}
+body.sketch-theme #overview .stint-bar .hard {
+  border: 1px solid #999;
+}
+
+/* Carrusel claro con botones redondeados y selección visible. */
+body.sketch-theme .home-calendar {
+  border-color: #d2d2d2;
+}
+body.sketch-theme .home-calendar > button {
+  background: #373737;
+  color: #fff;
+  border: 0;
+  border-radius: 12px;
+  width: 33px;
+}
+body.sketch-theme .home-race-card {
+  background: #fff;
+  color: #373737;
+  border: 1px solid #dedede;
+  border-radius: 14px;
+  padding: 14px;
+}
+body.sketch-theme .home-race-card:hover {
+  background: #f6f6f6;
+}
+body.sketch-theme .home-race-card.selected {
+  background: #fff;
+  border-color: #767676;
+  border-bottom: 3px solid var(--home-accent);
+}
+body.sketch-theme .home-race-card.selected strong {
+  color: #373737;
+}
+body.sketch-theme :is(.race-card-top, .country-tag, .home-race-card small) {
+  color: #626262;
+}
+
+/* Resultados y estrategia con texto más grande; sin cambiar cálculos ni datos. */
+body.sketch-theme .home-results-table {
+  color: #373737;
+  font-size: 13px;
+}
+body.sketch-theme .home-results-table th {
+  background: #fff;
+  color: #626262;
+  font-size: 11px;
+}
+body.sketch-theme .home-results-table td {
+  color: #373737;
+  border-color: #dedede;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+body.sketch-theme .home-results-table tbody tr:hover {
+  background: #f6f6f6;
+}
+body.sketch-theme :is(.home-driver-link, .home-position, .home-number, .home-time) {
+  color: #373737;
+}
+body.sketch-theme .home-driver-link {
+  font-size: 13px;
+}
+body.sketch-theme .home-team-cell {
+  color: #626262;
+}
+body.sketch-theme .home-text-button {
+  color: #373737;
+  font-size: 13px;
+  min-height: 42px;
+  border-radius: 12px;
+  background: #eee;
+  padding: 9px 15px;
+  margin-top: 12px;
+}
+body.sketch-theme :is(.home-tyre-row > button, .home-tyre-legend, #home-tyre-scale) {
+  color: #626262;
+  font-size: 11px;
+}
+body.sketch-theme .home-tyre-track {
+  background: #e4e4e4;
+}
+body.sketch-theme .home-conditions strong {
+  color: #373737;
+  font-size: 24px;
+}
+body.sketch-theme
+  :is(.home-conditions small, #home-weather-time, .home-data-note, .home-data-note p, .home-empty) {
+  color: #626262;
+}
+
+/* Estados de carga, errores y pie de página también permanecen claros. */
+body.sketch-theme .source-status {
+  border-color: #d2d2d2;
+  color: #626262;
+  font-size: 11px;
+}
+body.sketch-theme .source-status a {
+  color: #641f32;
+}
+body.sketch-theme .source-status .reset {
+  min-height: 35px;
+  font-size: 12px;
+  border-radius: 12px;
+  background: #fff;
+  color: #373737;
+  border-color: #c8c8c8;
+}
+body.sketch-theme .source-status .error {
+  color: #842a46;
+}
+body.sketch-theme footer {
+  background: #ededed;
+  color: #626262;
+  border-color: #d2d2d2;
+  font-size: 11px;
+}
+body.sketch-theme footer a {
+  color: #641f32;
+}
+
+/* Tablet: se conserva la composición con imagen lateral hasta que deja de ser legible. */
+@media (max-width: 1000px) {
+  body.sketch-theme .home-race-hero {
+    padding-left: 48px;
+    grid-template-columns: minmax(0, 1.5fr) minmax(230px, 0.85fr);
+    gap: 22px;
+  }
+  body.sketch-theme .home-sketch-mark {
+    font-size: 95px;
+    left: -16px;
+  }
+  body.sketch-theme .sidebar nav a {
+    font-size: 12px;
+    padding: 8px 10px;
+  }
+  body.sketch-theme #home-race-title {
+    font-size: 52px;
+  }
+}
+
+/* Celular: controles cómodos y fichas apiladas; las tablas solo desplazan su propio contenido. */
+@media (max-width: 700px) {
+  body.sketch-theme .home-race-hero {
+    grid-template-columns: 1fr;
+    padding-left: 34px;
+    gap: 24px;
+  }
+  body.sketch-theme .home-sketch-mark {
+    top: 70px;
+    left: -8px;
+    font-size: 65px;
+  }
+  body.sketch-theme #home-race-title {
+    font-size: 47px;
+    letter-spacing: -1.7px;
+  }
+  body.sketch-theme .home-race-visual {
+    max-width: 360px;
+    justify-self: center;
+  }
+  body.sketch-theme .home-race-copy {
+    padding-top: 8px;
+  }
+  body.sketch-theme .home-meta-chip {
+    font-size: 11px;
+  }
+  body.sketch-theme .home-panel {
+    padding: 14px;
+  }
+  body.sketch-theme .home-panel-heading {
+    margin-left: -14px;
+    margin-right: -14px;
+    padding-left: 14px;
+    padding-right: 14px;
+  }
+  body.sketch-theme .home-panel-heading h2 {
+    font-size: 15px;
+  }
+  body.sketch-theme .driver-fact-panel dl > div {
+    font-size: 13px;
+  }
+}
+
+/* Cabecera del celular: marca arriba y navegación horizontal debajo, con botones redondeados. */
+@media (max-width: 520px) {
+  body.sketch-theme .sidebar {
+    height: 125px;
+  }
+  body.sketch-theme .sidebar nav {
+    height: 50px;
+  }
+  body.sketch-theme .sidebar nav a {
+    font-size: 11px;
+    padding: 8px;
+    min-height: 37px;
+    height: 37px;
+  }
+  body.sketch-theme .session-toolbar {
+    top: 20px;
+  }
+  body.sketch-theme .catalog-mode .session-toolbar {
+    top: auto;
+  }
+}
+/* HOME — segundo bosquejo: cambia aqui columnas, cabecera roja y fichas de carrera. */
+body.sketch-theme.home-mode .sidebar {
+  border: 0;
+  height: 86px;
+  gap: 36px;
+  padding-right: 0;
+}
+/* Marca amplia y roja junto al texto platform en grafito. */
+body.sketch-theme.home-mode .brand {
+  color: #e10600;
+  font-size: 42px;
+  font-style: italic;
+  flex-shrink: 0;
+}
+body.sketch-theme.home-mode .brand span {
+  color: #373737;
+  font-size: 29px;
+  font-weight: 800;
+  letter-spacing: -1px;
+}
+/* Franja roja con enlaces grandes; se conservan las cuatro rutas funcionales existentes. */
+body.sketch-theme.home-mode .sidebar nav {
+  background: #b60000;
+  border-radius: 0 0 0 16px;
+  height: 70px;
+  align-self: flex-start;
+  flex: 1;
+  justify-content: center;
+  gap: 16px;
+  padding: 0 20px;
+}
+body.sketch-theme.home-mode .sidebar nav a {
+  color: #fff;
+  font-size: 19px;
+  font-weight: 750;
+  padding: 10px 15px;
+}
+body.sketch-theme.home-mode .sidebar nav a.active {
+  background: transparent;
+}
+body.sketch-theme.home-mode .sidebar nav a:hover {
+  background: #940000;
+}
+/* Selector de temporada junto a su titulo, fuera de la franja roja. */
+body.sketch-theme.home-mode .session-toolbar {
+  position: absolute;
+  top: 101px;
+  right: auto;
+  left: calc(41% - 125px);
+}
+/* Cuadricula principal: fichas a la izquierda y standings en la columna ancha. */
+body.sketch-theme .home-dashboard {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.82fr) minmax(0, 1.18fr);
+  gap: 24px;
+  align-items: start;
+}
+body.sketch-theme .home-season-column {
+  display: grid;
+  gap: 24px;
+}
+/* Titulo de temporada grande e inclinado como en el bosquejo. */
+body.sketch-theme #home-season-title {
+  font-size: 32px;
+  font-weight: 850;
+  font-style: italic;
+  margin: 4px 0 0;
+  padding-right: 100px;
+  letter-spacing: -0.8px;
+}
+/* Fichas blancas sin sombras; modificar padding/min-height para cambiar su escala. */
+body.sketch-theme .home-race-summary {
+  background: #fff;
+  border-radius: 8px;
+  padding: 20px 24px;
+  min-height: 215px;
+}
+body.sketch-theme .home-race-summary h2 {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 22px;
+}
+body.sketch-theme .home-race-summary > div {
+  text-align: center;
+  display: grid;
+  justify-items: center;
+  gap: 9px;
+}
+body.sketch-theme .home-race-summary strong {
+  font-size: 23px;
+  line-height: 1.3;
+  font-weight: 800;
+}
+body.sketch-theme .home-race-summary p {
+  margin: 0;
+}
+body.sketch-theme .home-race-summary .home-summary-circuit {
+  font-size: 20px;
+  font-weight: 700;
+}
+body.sketch-theme .home-race-summary time,
+body.sketch-theme .home-summary-note {
+  font-size: 14px;
+  color: #626262;
+}
+/* Ganador: enlace plano al perfil, con una zona de pulsacion comoda. */
+body.sketch-theme .home-race-summary button {
+  background: transparent;
+  color: #373737;
+  border: 0;
+  padding: 8px;
+  border-radius: 12px;
+  font-size: 16px;
+}
+body.sketch-theme .home-race-summary button:hover {
+  background: #eee;
+}
+/* Panel principal blanco; altura limitada con desplazamiento de la lista completa. */
+body.sketch-theme .home-dashboard .home-championship-panel {
+  margin: 0;
+  border: 0;
+  border-radius: 8px;
+  padding: 22px 26px;
+}
+body.sketch-theme .home-championship-panel > h2 {
+  font-size: 28px;
+  font-style: italic;
+  font-weight: 850;
+  margin: 0 0 10px;
+}
+body.sketch-theme .home-dashboard .home-segmented {
+  background: transparent;
+  border: 0;
+  gap: 34px;
+  justify-content: center;
+  margin: 0 0 20px;
+  padding: 0;
+}
+body.sketch-theme .home-dashboard .home-segmented button {
+  flex: 0 1 130px;
+  border-radius: 14px;
+  min-height: 36px;
+  font-size: 13px;
+  text-transform: none;
+}
+body.sketch-theme .home-dashboard #home-championship {
+  max-height: 460px;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  display: grid;
+  gap: 12px;
+  padding-right: 5px;
+}
+/* Filas coloreadas completas; --standing-ink calcula contraste segun el equipo. */
+body.sketch-theme .home-dashboard .home-standing-row {
+  background: var(--team-color);
+  color: var(--standing-ink);
+  border: 0;
+  border-radius: 3px;
+  min-height: 77px;
+  padding: 12px 18px;
+  grid-template-columns: 46px minmax(0, 1fr) auto;
+  gap: 16px;
+}
+body.sketch-theme .home-dashboard .home-standing-row:hover {
+  filter: brightness(0.94);
+}
+body.sketch-theme .home-dashboard .standing-team-mark {
+  display: none;
+}
+body.sketch-theme .home-dashboard .standing-rank {
+  color: inherit;
+  font-size: 36px;
+  font-weight: 850;
+}
+body.sketch-theme .home-dashboard .standing-name strong {
+  color: inherit;
+  font-size: 16px;
+  font-weight: 750;
+  white-space: normal;
+}
+body.sketch-theme .home-dashboard .standing-name small {
+  color: inherit;
+  font-size: 15px;
+  opacity: 0.95;
+  margin-top: 4px;
+}
+body.sketch-theme .home-dashboard .standing-points {
+  color: inherit;
+  font-size: 16px;
+}
+body.sketch-theme .home-dashboard .standing-points small {
+  color: inherit;
+  font-size: 12px;
+}
+/* Resultados y estrategia accesibles desde un desplegable discreto. */
+body.sketch-theme .home-race-details {
+  margin-top: 24px;
+}
+body.sketch-theme .home-race-details > summary {
+  cursor: pointer;
+  width: fit-content;
+  background: #373737;
+  color: #fff;
+  padding: 14px 22px;
+  border-radius: 15px;
+  font-size: 15px;
+}
+/* Tablet: navegacion compacta y selector junto a la temporada. */
+@media (max-width: 1000px) {
+  body.sketch-theme.home-mode .brand {
+    font-size: 34px;
+  }
+  body.sketch-theme.home-mode .brand span {
+    font-size: 22px;
+  }
+  body.sketch-theme.home-mode .sidebar {
+    gap: 16px;
+  }
+  body.sketch-theme.home-mode .sidebar nav {
+    gap: 0;
+    padding: 0 8px;
+  }
+  body.sketch-theme.home-mode .sidebar nav a {
+    font-size: 15px;
+    padding: 8px 12px;
+  }
+  body.sketch-theme .home-dashboard {
+    grid-template-columns: minmax(260px, 0.85fr) minmax(0, 1.15fr);
+    gap: 18px;
+  }
+  body.sketch-theme #home-season-title {
+    font-size: 26px;
+  }
+  body.sketch-theme.home-mode .session-toolbar {
+    left: calc(44% - 125px);
+  }
+}
+/* Celular: cabecera roja horizontal, despues carreras y clasificacion apiladas. */
+@media (max-width: 700px) {
+  body.sketch-theme.home-mode .sidebar {
+    height: 132px;
+    padding: 18px 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  body.sketch-theme.home-mode .brand {
+    width: 100%;
+    font-size: 34px;
+  }
+  body.sketch-theme.home-mode .sidebar nav {
+    width: calc(100% + 32px);
+    flex: auto;
+    height: 52px;
+    margin: 0 -16px;
+    border-radius: 0 0 14px 14px;
+  }
+  body.sketch-theme.home-mode .sidebar nav a {
+    font-size: 13px;
+    padding: 8px 12px;
+  }
+  body.sketch-theme.home-mode .session-toolbar {
+    top: 151px;
+    right: 16px;
+    left: auto;
+  }
+  body.sketch-theme .home-dashboard {
+    grid-template-columns: 1fr;
+  }
+  body.sketch-theme #home-season-title {
+    font-size: 28px;
+    min-height: 44px;
+  }
+  body.sketch-theme .home-season-column {
+    gap: 16px;
+  }
+  body.sketch-theme .home-race-summary {
+    min-height: 190px;
+  }
+  body.sketch-theme .home-dashboard .home-championship-panel {
+    padding: 22px 16px;
+  }
+  body.sketch-theme .home-dashboard .home-standing-row {
+    padding: 12px;
+    gap: 10px;
+    grid-template-columns: 32px minmax(0, 1fr) auto;
+  }
+  body.sketch-theme .home-dashboard .standing-rank {
+    font-size: 29px;
+  }
+  body.sketch-theme .home-dashboard .standing-name strong {
+    font-size: 14px;
+  }
+}
+/* Evita que la navegacion movil herede posicion absoluta del diseno anterior. */
+@media (max-width: 700px) {
+  body.sketch-theme.home-mode .sidebar nav {
+    position: relative;
+    inset: auto;
+    box-sizing: border-box;
+    min-width: 0;
+    flex-shrink: 1;
+  }
+}

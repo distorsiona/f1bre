@@ -1,0 +1,413 @@
+/* HOME / HTML de referencia. Estilos aislados: no alteran las otras vistas. */
+/* Tipografia y fondo tecnico claro; sin dependencia del runtime de Tailwind. */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:ital,wght@0,400;0,500;0,600;0,700;0,800;0,900;1,700;1,900&family=JetBrains+Mono:wght@400;600;700&display=swap');
+body.sketch-theme.home-mode {
+  --ink: #0f172a;
+  background-color: #f4f6f9;
+  background-image:
+    radial-gradient(#e106000c 1px, transparent 1px), radial-gradient(#0f172a09 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+  color: #0f172a;
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+}
+/* Cabecera blanca, marca bicolor inclinada y navegacion con acento rojo. */
+/* Titulo de temporada y selector en una fila propia. */
+body.sketch-theme.home-mode main {
+  max-width: 1440px;
+  margin: auto;
+  padding-top: 28px;
+}
+body.sketch-theme .home-season-header {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  margin: 0 0 26px;
+  min-height: 50px;
+  padding-right: 125px;
+}
+body.sketch-theme #home-season-title {
+  margin: 0;
+  padding: 0;
+  font-size: 46px;
+  font-weight: 900;
+  text-transform: uppercase;
+  letter-spacing: -1.4px;
+}
+body.sketch-theme #home-season-title span {
+  color: #e10600;
+  font-style: normal;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 0.85em;
+}
+body.sketch-theme #home-season-badge {
+  padding: 6px 10px;
+  background: #ecfdf5;
+  border: 1px solid #a7f3d0;
+  color: #166534;
+  font:
+    600 10px 'JetBrains Mono',
+    monospace;
+  border-radius: 5px;
+}
+body.sketch-theme.home-mode .session-toolbar {
+  top: 148px;
+  right: 34px;
+  left: auto;
+}
+body.sketch-theme .home-header-action {
+  margin-left: auto;
+  background: #e10600;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+/* Proporciones de la referencia: carreras 7/12 y campeonato 5/12. */
+body.sketch-theme .home-dashboard {
+  grid-template-columns: minmax(0, 7fr) minmax(0, 5fr);
+  gap: 28px;
+}
+body.sketch-theme .home-season-column {
+  gap: 28px;
+}
+body.sketch-theme .home-race-summary,
+body.sketch-theme .home-dashboard .home-championship-panel {
+  background: white;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 26px;
+}
+body.sketch-theme .home-race-summary h2 {
+  color: #e10600;
+  font:
+    800 12px 'Barlow Semi Condensed',
+    sans-serif;
+  letter-spacing: 1.5px;
+  padding-bottom: 16px;
+  border-bottom: 1px solid #edf0f4;
+  margin-bottom: 20px;
+}
+body.sketch-theme .home-race-summary > div {
+  display: block;
+  text-align: left;
+}
+body.sketch-theme .home-race-summary strong {
+  font-size: 28px;
+  font-weight: 850;
+  font-style: italic;
+  text-transform: uppercase;
+}
+body.sketch-theme #home-next-race {
+  min-height: 108px;
+}
+body.sketch-theme #home-next-race p {
+  margin: 10px 0;
+}
+body.sketch-theme #home-next-race time {
+  display: inline-block;
+  padding: 8px 12px;
+  background: #f1f5f9;
+  border-radius: 6px;
+  font-family: 'JetBrains Mono', monospace;
+  font-size: 11px;
+}
+/* Informe de carrera: ganador con retrato local y podio compacto. */
+body.sketch-theme .home-report-title time {
+  display: block;
+  margin: 8px 0 20px;
+}
+body.sketch-theme .home-report-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.15fr;
+  gap: 20px;
+}
+body.sketch-theme .home-winner {
+  background: #f8fafc;
+  border: 1px solid #e2e8f0;
+  border-left: 4px solid var(--winner-color);
+  border-radius: 9px;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  position: relative;
+  min-height: 165px;
+  overflow: hidden;
+}
+body.sketch-theme .home-winner .portrait {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  width: 90px;
+  height: 140px;
+  background: transparent;
+  opacity: 0.8;
+}
+body.sketch-theme .home-winner .portrait img {
+  object-fit: contain;
+  object-position: bottom;
+}
+body.sketch-theme .home-winner-tag {
+  font:
+    700 10px 'JetBrains Mono',
+    monospace;
+  color: #b80500;
+  margin-bottom: 12px;
+  z-index: 1;
+}
+body.sketch-theme .home-winner button {
+  max-width: 75%;
+  font-size: 21px;
+  font-weight: 850;
+  padding: 0;
+  text-align: left;
+  z-index: 1;
+  line-height: 1.1;
+}
+body.sketch-theme .home-winner p {
+  font-size: 12px;
+  margin-top: 8px;
+  z-index: 1;
+}
+body.sketch-theme .home-podium h3 {
+  font-size: 11px;
+  color: #64748b;
+  margin: 2px 0 12px;
+  letter-spacing: 1px;
+}
+body.sketch-theme .home-podium > div {
+  display: grid;
+  grid-template-columns: 18px minmax(0, 1fr) auto;
+  align-items: center;
+  gap: 5px;
+  border-bottom: 1px solid #edf0f4;
+  padding: 8px 0;
+}
+body.sketch-theme .home-podium b {
+  color: #b7791f;
+  font-size: 19px;
+  font-style: italic;
+}
+body.sketch-theme .home-podium button {
+  font-size: 14px;
+  font-weight: 750;
+  padding: 3px;
+  text-align: left;
+}
+body.sketch-theme .home-podium span {
+  font:
+    500 10px 'JetBrains Mono',
+    monospace;
+  color: #64748b;
+}
+body.sketch-theme .home-report-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+  align-items: center;
+  margin-top: 20px;
+  padding-top: 17px;
+  border-top: 1px solid #edf0f4;
+}
+body.sketch-theme .home-report-footer span {
+  font-size: 11px;
+  color: #64748b;
+}
+body.sketch-theme .home-report-footer a {
+  font-size: 11px;
+  font-weight: 800;
+  text-transform: uppercase;
+  background: #0f172a;
+  color: white;
+  padding: 12px;
+  border-radius: 8px;
+}
+/* Clasificacion con filas coloreadas y puntos destacados. */
+body.sketch-theme .home-championship-panel > h2 {
+  font-size: 27px;
+  text-transform: uppercase;
+}
+body.sketch-theme #home-standing-year {
+  font:
+    600 12px 'JetBrains Mono',
+    monospace;
+  background: #f1f5f9;
+  color: #64748b;
+  padding: 4px 7px;
+  border-radius: 4px;
+  vertical-align: middle;
+}
+body.sketch-theme .home-dashboard .home-segmented {
+  gap: 0;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  padding: 4px;
+  border-radius: 8px;
+  margin-top: 15px;
+}
+body.sketch-theme .home-dashboard .home-segmented button {
+  flex: 1;
+  border-radius: 5px;
+  min-height: 34px;
+}
+body.sketch-theme .home-dashboard .home-segmented button[aria-pressed='true'] {
+  background: white;
+  color: #0f172a;
+}
+body.sketch-theme .home-dashboard #home-championship {
+  max-height: 536px;
+  gap: 12px;
+}
+body.sketch-theme .home-dashboard .home-standing-row {
+  border-radius: 8px;
+  border-left: 4px solid #0003;
+  background: linear-gradient(
+    100deg,
+    var(--team-color),
+    color-mix(in srgb, var(--team-color), white 15%)
+  );
+  min-height: 76px;
+  grid-template-columns: 32px minmax(0, 1fr) auto;
+  gap: 12px;
+  padding: 12px;
+}
+body.sketch-theme .home-dashboard .standing-rank {
+  font-style: italic;
+  font-size: 30px;
+}
+body.sketch-theme .home-dashboard .standing-name strong {
+  font-size: 16px;
+  text-transform: uppercase;
+}
+body.sketch-theme .home-dashboard .standing-name small {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+body.sketch-theme .home-dashboard .standing-points {
+  font:
+    800 21px 'JetBrains Mono',
+    monospace;
+}
+body.sketch-theme .home-dashboard .standing-points small {
+  display: block;
+  font-size: 10px;
+  text-align: right;
+}
+/* Banda inferior: acceso real a la vista de telemetria. */
+body.sketch-theme .home-insights {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 22px;
+  margin-top: 28px;
+}
+body.sketch-theme .insight-icon {
+  color: #e10600;
+  background: #fff1f2;
+  padding: 10px 14px;
+  border-radius: 8px;
+  font-size: 24px;
+}
+body.sketch-theme .home-insights h2 {
+  font-size: 15px;
+  font-weight: 850;
+  margin: 0 0 5px;
+}
+body.sketch-theme .home-insights p {
+  font-size: 13px;
+  color: #64748b;
+  margin: 0;
+}
+body.sketch-theme .home-insights a {
+  margin-left: auto;
+  flex-shrink: 0;
+  background: #0f172a;
+  color: white;
+  font-size: 12px;
+  font-weight: 800;
+  text-transform: uppercase;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+/* Tablet: conservar tarjetas legibles y evitar que la cabecera se desborde. */
+@media (max-width: 1100px) {
+  body.sketch-theme .home-dashboard {
+    grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+    gap: 20px;
+  }
+  body.sketch-theme .home-report-grid {
+    grid-template-columns: 1fr;
+  }
+  body.sketch-theme .home-season-header {
+    flex-wrap: wrap;
+  }
+  body.sketch-theme .home-header-action {
+    margin-left: 0;
+  }
+}
+/* Celular: navegacion blanca, contenido apilado y controles grandes. */
+@media (max-width: 700px) {
+  body.sketch-theme.home-mode .session-toolbar {
+    top: 211px;
+    right: 16px;
+  }
+  body.sketch-theme .home-season-header {
+    padding-right: 95px;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+  body.sketch-theme #home-season-title {
+    font-size: 32px;
+    min-height: 0;
+  }
+  body.sketch-theme #home-season-badge {
+    font-size: 9px;
+  }
+  body.sketch-theme .home-header-action {
+    font-size: 10px;
+    padding: 10px;
+  }
+  body.sketch-theme .home-dashboard {
+    grid-template-columns: 1fr;
+  }
+  body.sketch-theme .home-race-summary {
+    padding: 20px;
+  }
+  body.sketch-theme .home-report-grid {
+    grid-template-columns: 1fr;
+  }
+  body.sketch-theme .home-insights {
+    flex-wrap: wrap;
+    padding: 18px;
+  }
+  body.sketch-theme .home-insights > div {
+    flex: 1;
+  }
+  body.sketch-theme .home-insights a {
+    margin-left: 0;
+  }
+}
+/* Neutraliza centrados y fuentes de los bosquejos anteriores dentro de estas fichas. */
+body.sketch-theme.home-mode :is(h1, h2, h3, h4, button, .brand, .standing-name strong) {
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+}
+body.sketch-theme .home-race-summary > div {
+  justify-items: stretch;
+}
+body.sketch-theme .home-report-title,
+body.sketch-theme .home-report-grid,
+body.sketch-theme .home-report-footer {
+  width: 100%;
+  text-align: left;
+}
+body.sketch-theme #home-next-race p {
+  text-align: left;
+}

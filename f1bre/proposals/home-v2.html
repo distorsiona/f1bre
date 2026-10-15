@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>F1BRE — Home proposal 02</title>
+    <link rel="stylesheet" href="home-v2.css" />
+  </head>
+  <body>
+    <!-- Propuesta independiente: no sustituye Home ni realiza consultas a OpenF1. -->
+    <div class="proposal-note">
+      <strong>PROPUESTA HOME / 02</strong
+      ><span>Propuesta descartada · Referencia vigente: bosquejo claro</span
+      ><a href="../index.html#home">Ver Home actual ↗</a>
+    </div>
+    <header class="site-header">
+      <a class="brand" href="#race" aria-label="F1BRE proposal home"
+        >F1BRE<span>F1 FAN PLATFORM</span></a
+      >
+      <nav aria-label="Main navigation">
+        <a class="active" href="#race" aria-current="page">Home</a
+        ><a href="../index.html#drivers">Drivers</a><a href="../index.html#teams">Teams</a
+        ><a href="../index.html#overview">Race analysis</a>
+      </nav>
+      <div class="season"><span>SEASON</span><strong>2025</strong></div>
+    </header>
+    <main>
+      <!-- Carrera y campeón tienen roles distintos: azul Red Bull y naranja McLaren. -->
+      <div class="weekend-heading" id="race">
+        <p><span class="status-dot"></span>THE FINAL CHEQUERED FLAG</p>
+        <span>07 DECEMBER 2025 / YAS MARINA</span>
+      </div>
+      <section class="hero" aria-label="Selected race and season champion">
+        <article class="race-feature">
+          <div class="feature-top">
+            <span>FORMULA 1 / UNITED ARAB EMIRATES</span
+            ><span class="completed">RACE COMPLETED</span>
+          </div>
+          <h1>ABU DHABI<span>GRAND PRIX</span></h1>
+          <div class="race-winner">
+            <span class="winner-label">RACE WINNER</span
+            ><strong><span>01</span> Max Verstappen</strong>
+            <p>Red Bull Racing · 58 laps</p>
+          </div>
+          <a class="button button-light" href="../index.html#overview"
+            >EXPLORE THE RACE <span>↗</span></a
+          >
+          <div class="race-facts">
+            <div><span>WINNING TIME</span><strong>1:26:07.469</strong></div>
+            <div><span>AIR TEMPERATURE</span><strong>26°C</strong></div>
+            <div><span>CONDITIONS</span><strong>No rain</strong></div>
+          </div>
+          <span class="race-watermark" aria-hidden="true">GP</span>
+        </article>
+        <article class="champion-feature">
+          <div class="champion-top">
+            <span>2025 DRIVERS’ CHAMPION</span
+            ><img src="../assets/teams/mclaren.png" alt="McLaren" />
+          </div>
+          <span class="champion-number" aria-hidden="true">04</span>
+          <div class="champion-name">
+            <p>LANDO</p>
+            <h2>NORRIS</h2>
+          </div>
+          <img
+            class="champion-photo"
+            src="../assets/drivers/norris.png"
+            alt="Lando Norris in his McLaren race suit"
+          />
+          <div class="champion-bottom">
+            <div><strong>423</strong><span>CHAMPIONSHIP POINTS</span></div>
+            <a class="button button-black" href="../index.html#driver/4"
+              >MEET LANDO <span>↗</span></a
+            >
+          </div>
+        </article>
+      </section>
+      <!-- Accesos grandes a contenido real, con estados claros y sin botones decorativos. -->
+      <nav class="section-tabs" aria-label="Explore this race">
+        <a href="#results" class="selected">01 <strong>Race results</strong><span>↓</span></a
+        ><a href="#championship">02 <strong>Championship</strong><span>↓</span></a
+        ><a href="#strategy">03 <strong>Tyre strategy</strong><span>↓</span></a>
+      </nav>
+      <div class="data-grid">
+        <section class="results-panel" id="results">
+          <div class="section-title">
+            <div>
+              <p>ABU DHABI / FINAL CLASSIFICATION</p>
+              <h2>THE RACE. <span>THE RESULTS.</span></h2>
+            </div>
+            <span class="section-index">01</span>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>POS</th>
+                  <th>DRIVER / TEAM</th>
+                  <th>TIME / GAP</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="--team: #4781d7">
+                  <td><strong>01</strong></td>
+                  <td>
+                    <a href="../index.html#driver/1"
+                      ><i></i><span>Max Verstappen<small>RED BULL RACING / #1</small></span></a
+                    >
+                  </td>
+                  <td>1:26:07.469</td>
+                </tr>
+                <tr style="--team: #ff8700">
+                  <td><strong>02</strong></td>
+                  <td>
+                    <a href="../index.html#driver/81"
+                      ><i></i><span>Oscar Piastri<small>MCLAREN / #81</small></span></a
+                    >
+                  </td>
+                  <td>+12.594</td>
+                </tr>
+                <tr style="--team: #ff8700">
+                  <td><strong>03</strong></td>
+                  <td>
+                    <a href="../index.html#driver/4"
+                      ><i></i><span>Lando Norris<small>MCLAREN / #4</small></span></a
+                    >
+                  </td>
+                  <td>+16.572</td>
+                </tr>
+                <tr style="--team: #ed1131">
+                  <td><strong>04</strong></td>
+                  <td>
+                    <a href="../index.html#driver/16"
+                      ><i></i><span>Charles Leclerc<small>FERRARI / #16</small></span></a
+                    >
+                  </td>
+                  <td>+23.279</td>
+                </tr>
+                <tr style="--team: #00d7b6">
+                  <td><strong>05</strong></td>
+                  <td>
+                    <a href="../index.html#driver/63"
+                      ><i></i><span>George Russell<small>MERCEDES / #63</small></span></a
+                    >
+                  </td>
+                  <td>+48.563</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <a class="button button-outline full-button" href="../index.html#overview"
+            >ALL RESULTS & RACE ANALYSIS <span>↗</span></a
+          >
+        </section>
+        <section class="championship-panel" id="championship">
+          <div class="section-title">
+            <div>
+              <p>2025 / DRIVER STANDINGS</p>
+              <h2>THE TITLE <span>FIGHT.</span></h2>
+            </div>
+            <span class="section-index">02</span>
+          </div>
+          <a class="standing standing-orange" href="../index.html#driver/4"
+            ><span class="standing-position">01</span>
+            <div><strong>L. NORRIS</strong><small>MCLAREN</small></div>
+            <span class="standing-score">423<small>PTS</small></span></a
+          >
+          <a class="standing standing-blue" href="../index.html#driver/1"
+            ><span class="standing-position">02</span>
+            <div><strong>M. VERSTAPPEN</strong><small>RED BULL RACING</small></div>
+            <span class="standing-score">421<small>PTS</small></span></a
+          >
+          <a class="standing standing-orange" href="../index.html#driver/81"
+            ><span class="standing-position">03</span>
+            <div><strong>O. PIASTRI</strong><small>MCLAREN</small></div>
+            <span class="standing-score">410<small>PTS</small></span></a
+          >
+          <a class="button button-outline full-button" href="../index.html#drivers"
+            >FULL DRIVER STANDINGS <span>↗</span></a
+          >
+        </section>
+      </div>
+      <!-- Las fotografías y logos pertenecen a los assets existentes del usuario. -->
+      <section class="grid-section" aria-labelledby="grid-heading">
+        <div class="section-title">
+          <div>
+            <p>DRIVERS &amp; TEAMS</p>
+            <h2 id="grid-heading">KNOW YOUR <span>GRID.</span></h2>
+          </div>
+          <a class="button button-outline" href="../index.html#teams">ALL TEAMS <span>↗</span></a>
+        </div>
+        <div class="driver-cards">
+          <a class="driver-card mclaren" href="../index.html#driver/4"
+            ><span class="driver-team">MCLAREN</span
+            ><span class="driver-background-number" aria-hidden="true">04</span
+            ><img src="../assets/drivers/norris.png" alt="Lando Norris" loading="lazy" />
+            <div>
+              <span>LANDO</span>
+              <h3>NORRIS</h3>
+              <span class="driver-cta">DRIVER PROFILE ↗</span>
+            </div></a
+          >
+          <a class="driver-card ferrari" href="../index.html#driver/16"
+            ><span class="driver-team">FERRARI</span
+            ><span class="driver-background-number" aria-hidden="true">16</span
+            ><img src="../assets/drivers/leclerc.png" alt="Charles Leclerc" loading="lazy" />
+            <div>
+              <span>CHARLES</span>
+              <h3>LECLERC</h3>
+              <span class="driver-cta">DRIVER PROFILE ↗</span>
+            </div></a
+          >
+          <a class="driver-card mercedes" href="../index.html#driver/63"
+            ><span class="driver-team">MERCEDES</span
+            ><span class="driver-background-number" aria-hidden="true">63</span
+            ><img src="../assets/drivers/russell.png" alt="George Russell" loading="lazy" />
+            <div>
+              <span>GEORGE</span>
+              <h3>RUSSELL</h3>
+              <span class="driver-cta">DRIVER PROFILE ↗</span>
+            </div></a
+          >
+        </div>
+      </section>
+      <section class="strategy-panel" id="strategy">
+        <div class="section-title">
+          <div>
+            <p>58 LAPS / ABU DHABI</p>
+            <h2>EVERY STOP <span>COUNTS.</span></h2>
+          </div>
+          <div class="tyre-legend">
+            <span><i class="medium"></i>Medium</span><span><i class="hard"></i>Hard</span>
+          </div>
+        </div>
+        <div class="strategy-row">
+          <strong>VERSTAPPEN <small>RED BULL RACING</small></strong>
+          <div class="stint-track">
+            <span class="medium" style="flex: 23">M / 23 LAPS</span
+            ><span class="hard" style="flex: 35">H / 35 LAPS</span>
+          </div>
+        </div>
+        <div class="strategy-row">
+          <strong>PIASTRI <small>MCLAREN</small></strong>
+          <div class="stint-track">
+            <span class="hard" style="flex: 41">H / 41 LAPS</span
+            ><span class="medium" style="flex: 17">M / 17 LAPS</span>
+          </div>
+        </div>
+        <div class="strategy-row">
+          <strong>NORRIS <small>MCLAREN</small></strong>
+          <div class="stint-track">
+            <span class="medium" style="flex: 16">M / 16 LAPS</span
+            ><span class="hard" style="flex: 24">H / 24 LAPS</span
+            ><span class="hard" style="flex: 18">H / 18 LAPS</span>
+          </div>
+        </div>
+        <a class="button button-military" href="../index.html#overview"
+          >COMPARE RACE STRATEGIES <span>↗</span></a
+        >
+      </section>
+    </main>
+    <footer>
+      <a class="brand" href="#race">F1BRE</a>
+      <p>Independent fan project. Data reference: Abu Dhabi 2025.</p>
+      <span>PROPUESTA VISUAL / SIN CAMBIOS EN EL HOME ACTUAL</span>
+    </footer>
+  </body>
+</html>

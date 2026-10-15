@@ -2,6 +2,8 @@
  * Los contadores generation invalidan respuestas antiguas después de cambiar la selección. */
 export const state = {
   sessions: [],
+  // Calendario completo, incluidas las futuras carreras publicadas.
+  calendar: [],
   // Sesión completa seleccionada desde /sessions; null durante una nueva carga.
   session: null,
   // Clave = endpoint. Array = respuesta válida; null = consulta fallida o no disponible.

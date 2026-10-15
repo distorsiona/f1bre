@@ -119,3 +119,15 @@ scripts/                     Comprobación de módulos y prueba opcional de API 
 ## Rendimiento y persistencia
 
 `OpenF1.peek` restaura datos guardados sin esperar red; `query` reutiliza entradas vigentes y deduplica solicitudes. `response-cache.js` conserva históricos básicos en localStorage con caducidad y presupuesto acotado. `Retry` fuerza actualización. El calendario caducado se actualiza sin bloquear datos existentes. Las pruebas cubren recargas sin red, expiración, cuotas, cambios de ruta y respuestas de carreras obsoletas.
+
+## Navbar compartido
+
+`src/ui/components/navbar.js` contiene marca, enlaces y selectores de temporada/carrera. `src/app.js` llama `mountNavbar()` antes de inicializar controles. El montaje es idempotente y nunca se repite al navegar; el controlador conserva las consultas y los eventos de seleccion. `router/router.js` solo resuelve la ruta y llama `updateNavbar()` para marcar el enlace activo.
+
+`index.html` contiene un unico `#navbar-root`, sin copiar la cabecera en cada vista. `styles/navbar.css`, ultima capa de estilos, define su distribucion responsive. Los selectores usan los mismos IDs `year` y `race` para conservar la integracion con OpenF1.
+
+## Idioma y soporte
+
+El navbar incluye iconos SVG de mundo y auriculares. Abren dialogos nativos accesibles con cierre por boton, Escape o fondo. El idioma ingles/espanol y las traducciones de etiquetas compartidas viven en `src/ui/language.js`; la preferencia usa la clave `f1bre.language` y sigue funcionando si el almacenamiento esta bloqueado. Los datos originales de OpenF1 no se modifican. Las frases nuevas deben agregarse al diccionario; los textos tecnicos no incluidos conservan su original.
+
+Para configurar el correo, completa `SUPPORT_EMAIL` en `src/config/site.js`. Vacio muestra el marcador literal `"email"`; con una direccion aparece un enlace `mailto:`. No hay formulario ni envio automatico de mensajes.

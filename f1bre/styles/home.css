@@ -551,13 +551,13 @@ body.portal-mode {
  * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
 .home-position {
   width: 35px;
-  color: #e0e3ea !important;
+  color: var(--ink);
 }
 /* Número del piloto en la tabla de resultados.
  * Dónde cambiar: color/background/border = colores. */
 .home-number {
   font-variant-numeric: tabular-nums;
-  color: #b0b6c1 !important;
+  color: var(--muted);
 }
 /* Nombre pulsable del piloto en los resultados.
  * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
@@ -584,8 +584,8 @@ body.portal-mode {
 /* Nombre de equipo en la tabla de resultados.
  * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
 .home-team-cell {
-  font-size: 10px !important;
-  color: #b6bbc4 !important;
+  font-size: 13px;
+  color: var(--muted);
 }
 /* Tiempo total o diferencia de carrera en los resultados. */
 .home-time {

@@ -116,6 +116,7 @@ export async function loadYear() {
   state.drivers = [];
   state.data = {};
   state.sessions = [];
+  state.calendar = [];
   completed = new Set();
   errors = new Set();
   state.datasetStatus = {};
@@ -130,6 +131,7 @@ export async function loadYear() {
     const saved = OpenF1.peek('sessions', params);
     const rows = saved?.rows || (await OpenF1.query('sessions', params));
     if (token !== state.generation) return;
+    state.calendar = rows;
     state.sessions = rows
       .filter(
         (session) =>

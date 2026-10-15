@@ -22,3 +22,18 @@
 @import url('./driver-profile.css');
 /* Carga race-analysis.css: RACE ANALYSIS OSCURO. Filtros, métricas, curvas, stints, tabla, telemetría y explorador. Complementa analysis.css; sus cambios quedan limitados a .analysis-mode. */
 @import url('./race-analysis.css');
+/* Diseño vigente: paleta clara, paneles y botones redondeados según el bosquejo del usuario.
+ * Se carga al final para reemplazar la apariencia oscura anterior en todas las vistas. */
+@import url('./sketch.css');
+
+/* Home vigente: HTML de referencia aportado por el usuario. */
+@import url('./home-reference.css');
+
+/* Lenguaje visual de Home compartido por listados, perfiles y analisis. */
+@import url('./platform.css');
+/* Adaptacion vigente de todas las vistas; debe ser la ultima capa. */
+@import url('./platform-responsive.css');
+/* Navbar reutilizable; reemplaza la posicion anterior de los selectores. */
+@import url('./navbar.css');
+/* Correcciones finales de consistencia entre Home y las demas vistas. */
+@import url('./ui-consistency.css');

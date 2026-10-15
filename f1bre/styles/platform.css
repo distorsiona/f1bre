@@ -1,0 +1,487 @@
+/* ESTILO COMPARTIDO VIGENTE: extiende el HTML de Home a todas las vistas.
+ * Colores generales y fuentes aqui. Colores deportivos: --team-color de OpenF1.
+ * Home conserva su composicion en home-reference.css; las bases por vista conservan sus columnas. */
+/* Fondo tecnico claro, texto grafito y tipografia del HTML de referencia. */
+body.sketch-theme.portal-mode {
+  --ink: #0f172a;
+  background-color: #f4f6f9;
+  background-image:
+    radial-gradient(#e106000c 1px, transparent 1px), radial-gradient(#0f172a09 1px, transparent 1px);
+  background-size: 24px 24px;
+  background-position:
+    0 0,
+    12px 12px;
+  color: #0f172a;
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+}
+
+/* Cabecera identica en todas las rutas: marca, navegacion y estado activo. */
+body.sketch-theme.portal-mode .sidebar {
+  height: 82px;
+  background: #ffffff;
+  border-bottom: 1px solid #e2e8f0;
+  padding: 0 32px;
+  gap: 40px;
+}
+body.sketch-theme.portal-mode .brand {
+  background: #e10600;
+  color: #fff;
+  border-radius: 5px;
+  font-size: 28px;
+  padding: 7px 10px;
+  transform: skew(-9deg);
+  gap: 10px;
+}
+body.sketch-theme.portal-mode .brand span {
+  background: #0f172a;
+  color: white;
+  font:
+    800 22px 'Barlow Semi Condensed',
+    sans-serif;
+  padding: 9px 10px;
+  margin: -7px -10px -7px 0;
+  border-radius: 0 5px 5px 0;
+}
+body.sketch-theme.portal-mode .sidebar nav {
+  background: transparent;
+  height: 100%;
+  align-self: center;
+  justify-content: flex-start;
+  padding: 0;
+  gap: 12px;
+  border-radius: 0;
+}
+body.sketch-theme.portal-mode .sidebar nav a {
+  color: #334155;
+  font-size: 15px;
+  font-weight: 800;
+  text-transform: uppercase;
+  border-radius: 5px;
+}
+body.sketch-theme.portal-mode .sidebar nav a.active {
+  background: #fff1f2;
+  color: #e10600;
+  border-bottom: 3px solid #e10600;
+}
+body.sketch-theme.portal-mode .sidebar nav a:hover {
+  background: #f1f5f9;
+  color: #e10600;
+}
+/* Fuentes coherentes: titulos deportivos y datos numericos monoespaciados. */
+body.sketch-theme.portal-mode
+  :is(h1, h2, h3, h4, button, input, select, .brand, .driver-info strong, .team-card-title strong) {
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+}
+body.sketch-theme.portal-mode
+  :is(
+    .driver-points,
+    .metric strong,
+    .team-stats strong,
+    .team-rank,
+    .driver-fact-panel dd,
+    .team-detail-panel dd,
+    .home-time,
+    .home-number
+  ) {
+  font-family: 'JetBrains Mono', monospace;
+  font-variant-numeric: tabular-nums;
+}
+/* Marco comun de las vistas y controles fuera de la navegacion. */
+body.sketch-theme.portal-mode main {
+  max-width: 1440px;
+  width: 100%;
+  margin: auto;
+}
+body.sketch-theme.catalog-mode .session-toolbar {
+  position: static;
+  order: 0;
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  align-items: center;
+  padding: 20px 0 0;
+  margin: 0;
+  gap: 12px;
+}
+body.sketch-theme.catalog-mode .session-toolbar label {
+  font-size: 11px;
+  color: #64748b;
+}
+body.sketch-theme.catalog-mode .session-toolbar label:first-child {
+  font-size: 0;
+}
+body.sketch-theme.catalog-mode :is(#drivers, #teams, #overview) {
+  padding-top: 24px;
+}
+/* Titulares y etiquetas de contexto conservan la misma jerarquia que Season en Home. */
+body.sketch-theme.portal-mode .drivers-heading h1 {
+  color: #0f172a;
+  font-size: clamp(36px, 4vw, 52px);
+  font-weight: 900;
+  font-style: italic;
+  text-transform: uppercase;
+  letter-spacing: -1px;
+}
+body.sketch-theme.portal-mode :is(.drivers-eyebrow, .eyebrow, .driver-editorial-heading p) {
+  color: #b80500;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.4px;
+}
+body.sketch-theme.portal-mode
+  :is(
+    #drivers-context,
+    #teams-context,
+    #race-heading,
+    .section-subtitle,
+    .profile-note,
+    .drivers-footnote,
+    .teams-footnote
+  ) {
+  color: #64748b;
+  font-size: 13px;
+}
+/* Paneles blancos, bordes suaves y radios iguales a las fichas de Home. */
+body.sketch-theme.portal-mode
+  :is(
+    .panel,
+    .metric,
+    .summary-card,
+    .drivers-panel,
+    .driver-fact-panel,
+    .team-detail-panel,
+    .team-detail-race,
+    .team-detail-car,
+    .team-card
+  ) {
+  color: #0f172a;
+  background: #fff;
+  border-color: #e2e8f0;
+  border-radius: 12px;
+  box-shadow: none;
+}
+body.sketch-theme.portal-mode :is(.panel, .metric) {
+  padding: 22px;
+}
+body.sketch-theme.portal-mode
+  :is(.panel h3, .team-detail-panel h3, .team-detail-race h3, .driver-fact-panel h2) {
+  color: #0f172a;
+  font-size: 19px;
+  font-weight: 850;
+}
+/* Acciones primarias rojas y secundarias grafito; sin sombras decorativas. */
+body.sketch-theme.portal-mode :is(.primary-button, #load-telemetry, #load-raw) {
+  min-height: 44px;
+  border-radius: 8px;
+  background: #e10600;
+  border: 1px solid #e10600;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 800;
+}
+body.sketch-theme.portal-mode :is(.secondary-button, .reset, .back-link) {
+  min-height: 42px;
+  border-radius: 8px;
+  background: #0f172a;
+  border: 1px solid #0f172a;
+  color: white;
+  font-size: 14px;
+  font-weight: 700;
+}
+body.sketch-theme.portal-mode :is(.primary-button, #load-telemetry, #load-raw):hover {
+  background: #b80500;
+  border-color: #b80500;
+}
+body.sketch-theme.portal-mode :is(.secondary-button, .reset, .back-link):hover {
+  background: #253248;
+  border-color: #253248;
+}
+body.sketch-theme.portal-mode button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+body.sketch-theme.portal-mode :focus-visible {
+  outline: 2px solid #e10600;
+  outline-offset: 3px;
+}
+/* Campos de formulario claros y comodos de usar en todas las pantallas. */
+body.sketch-theme.portal-mode :is(select, input[type='search'], input[type='text']) {
+  color: #0f172a;
+  background: #f8fafc;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  min-height: 44px;
+  font-size: 14px;
+}
+body.sketch-theme.portal-mode :is(.filters, .telemetry-controls, .explorer-controls) {
+  border-color: #e2e8f0;
+  background: #f8fafc;
+  border-radius: 10px;
+  padding: 14px;
+}
+/* Drivers: filas mas amplias, numero de equipo y puntos claros sobre blanco. */
+body.sketch-theme.drivers-mode .driver-row {
+  min-height: 92px;
+  border-left: 4px solid var(--team-color);
+  border-bottom-color: #e2e8f0;
+  background: linear-gradient(100deg, color-mix(in srgb, var(--team-color), white 92%), #fff 55%);
+}
+body.sketch-theme.drivers-mode .driver-row:hover {
+  background: color-mix(in srgb, var(--team-color), white 88%);
+}
+body.sketch-theme.portal-mode
+  :is(
+    .driver-info strong,
+    .driver-rank,
+    .driver-points,
+    .team-card-title strong,
+    .team-rank,
+    .team-stats strong
+  ) {
+  color: #0f172a;
+}
+body.sketch-theme.drivers-mode .driver-info strong {
+  font-size: 20px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+body.sketch-theme.drivers-mode .driver-info small {
+  font-size: 13px;
+  color: #64748b;
+}
+body.sketch-theme.drivers-mode .driver-points {
+  font-size: 22px;
+}
+body.sketch-theme.portal-mode .driver-column-head {
+  background: #f8fafc;
+  color: #64748b;
+  border-color: #e2e8f0;
+}
+body.sketch-theme.portal-mode .list-toolbar {
+  padding: 18px;
+  border-color: #e2e8f0;
+}
+/* Teams: identidad del constructor en franja, numero y fondo tenue del encabezado. */
+body.sketch-theme.teams-mode .team-card {
+  border-top: 4px solid var(--team-color);
+}
+body.sketch-theme.teams-mode .team-card:hover {
+  border-color: var(--team-color);
+  background: #fff;
+}
+body.sketch-theme.teams-mode .team-card-head {
+  background: color-mix(in srgb, var(--team-color), white 92%);
+  border-bottom: 1px solid #e2e8f0;
+}
+body.sketch-theme.teams-mode .team-card-title strong {
+  font-size: 25px;
+  font-weight: 850;
+  text-transform: uppercase;
+}
+body.sketch-theme.portal-mode
+  :is(.team-drivers, .team-card-title small, .team-stats small, .team-card-foot) {
+  color: #64748b;
+}
+body.sketch-theme.teams-mode .team-card-foot {
+  color: #b80500;
+  font-weight: 800;
+}
+/* Perfil del piloto: misma tipografia, sin perder apellido, numero y bandera del usuario. */
+body.sketch-theme.profile-mode .driver-editorial-heading h1 {
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+  font-weight: 900;
+  color: #0f172a;
+}
+body.sketch-theme.profile-mode .driver-editorial-acronym {
+  font-family: 'Barlow Semi Condensed', Arial, sans-serif;
+  color: #0f172a;
+}
+body.sketch-theme.profile-mode .driver-editorial-last {
+  color: var(--team-color);
+}
+body.sketch-theme.profile-mode .driver-fact-panel h2 {
+  border-bottom: 1px solid #e2e8f0;
+  background: #f8fafc;
+}
+body.sketch-theme.profile-mode .driver-fact-panel dt {
+  color: #64748b;
+}
+body.sketch-theme.profile-mode .driver-fact-panel dd {
+  color: #0f172a;
+  font-size: 14px;
+}
+/* Perfil del equipo: paneles de datos, coche e historia conservan su distribucion. */
+body.sketch-theme.team-profile-mode .team-detail {
+  --line: #e2e8f0;
+  color: #0f172a;
+}
+body.sketch-theme.team-profile-mode .team-detail-header h2 {
+  color: #0f172a;
+  font-weight: 900;
+  font-style: italic;
+}
+body.sketch-theme.team-profile-mode :is(.team-detail-panel h3, .team-detail-race h3) {
+  border-bottom-color: #e2e8f0;
+}
+body.sketch-theme.team-profile-mode .team-detail-panel dt {
+  color: #64748b;
+}
+body.sketch-theme.team-profile-mode .team-detail-panel dd {
+  color: #0f172a;
+}
+/* Analisis: tarjetas de cifras, tablas y graficos en el lenguaje claro de Home. */
+body.sketch-theme.analysis-mode .metric strong {
+  color: #0f172a;
+  font-size: 29px;
+}
+body.sketch-theme.analysis-mode :is(.metric small, .metric span, .chart-help, .legend, .unit) {
+  color: #64748b;
+}
+body.sketch-theme.analysis-mode table {
+  font-size: 14px;
+  color: #0f172a;
+}
+body.sketch-theme.analysis-mode th {
+  background: #f1f5f9;
+  color: #475569;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+}
+body.sketch-theme.analysis-mode td {
+  border-color: #e2e8f0;
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+body.sketch-theme.analysis-mode tbody tr:hover {
+  background: #f8fafc;
+}
+body.sketch-theme.analysis-mode :is(.chart-grid, .grid-line) {
+  stroke: #e2e8f0;
+}
+body.sketch-theme.analysis-mode svg text {
+  fill: #64748b;
+}
+/* Estados y pie compartidos: neutrales con enlaces rojos y datos legibles. */
+body.sketch-theme.portal-mode .source-status {
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+body.sketch-theme.portal-mode .source-status .reset {
+  background: #f8fafc;
+  border-color: #cbd5e1;
+  color: #334155;
+}
+body.sketch-theme.portal-mode .source-status a,
+body.sketch-theme.portal-mode footer a {
+  color: #b80500;
+}
+body.sketch-theme.portal-mode footer {
+  background: #fff;
+  border-color: #e2e8f0;
+  color: #64748b;
+}
+/* Tablet: cabecera compartida compacta sin desplazar los selectores sobre los enlaces. */
+@media (max-width: 1100px) {
+  body.sketch-theme.portal-mode .sidebar {
+    gap: 22px;
+  }
+  body.sketch-theme.portal-mode .sidebar nav {
+    gap: 0;
+  }
+  body.sketch-theme.portal-mode .sidebar nav a {
+    font-size: 13px;
+    padding: 9px;
+  }
+}
+/* Celular: marca arriba, navegacion debajo y controles en su propia fila. */
+@media (max-width: 700px) {
+  body.sketch-theme.portal-mode .sidebar {
+    height: auto;
+    min-height: 125px;
+    padding: 18px 16px 0;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  body.sketch-theme.portal-mode .brand {
+    width: auto;
+    font-size: 25px;
+  }
+  body.sketch-theme.portal-mode .brand span {
+    display: block;
+    font-size: 20px;
+  }
+  body.sketch-theme.portal-mode .sidebar nav {
+    position: relative;
+    inset: auto;
+    box-sizing: border-box;
+    min-width: 0;
+    flex-basis: 100%;
+    width: 100%;
+    height: 50px;
+    margin: 0;
+    padding: 0;
+    gap: 0;
+    justify-content: space-between;
+  }
+  body.sketch-theme.portal-mode .sidebar nav a {
+    font-size: 12px;
+    padding: 7px;
+  }
+  body.sketch-theme.catalog-mode .session-toolbar {
+    padding-top: 16px;
+    justify-content: flex-start;
+  }
+  body.sketch-theme.catalog-mode #race {
+    max-width: 100%;
+    width: 100%;
+  }
+  body.sketch-theme.catalog-mode .session-toolbar label:nth-child(2) {
+    flex: 1;
+  }
+  body.sketch-theme.portal-mode .drivers-heading h1 {
+    font-size: 36px;
+  }
+  body.sketch-theme.drivers-mode .driver-info strong {
+    font-size: 16px;
+  }
+  body.sketch-theme.drivers-mode .driver-points {
+    font-size: 17px;
+  }
+  body.sketch-theme.portal-mode :is(.panel, .metric) {
+    padding: 17px;
+  }
+}
+/* Detalles legibles: unifica el texto auxiliar que antes se dibujaba demasiado pequeno. */
+body.sketch-theme.portal-mode .sidebar {
+  border-top: 0;
+}
+body.sketch-theme.teams-mode :is(.team-driver-line, .team-card-foot) {
+  font-size: 14px;
+}
+body.sketch-theme.teams-mode :is(.team-card-title small, .team-stats small) {
+  font-size: 11px;
+}
+body.sketch-theme.portal-mode .team-stats strong {
+  font-size: 23px;
+}
+body.sketch-theme.team-profile-mode .driver-info strong {
+  font-size: 18px;
+}
+body.sketch-theme.team-profile-mode .driver-info small {
+  font-size: 12px;
+}
+body.sketch-theme.portal-mode :is(.metric small, .summary-card small, .chart-help) {
+  font-size: 12px;
+}
+/* Prioridad explicita sobre las reglas antiguas del contenedor de analisis. */
+body.sketch-theme.portal-mode #overview :is(#load-telemetry, #load-raw) {
+  background: #e10600;
+  border-color: #e10600;
+  color: #fff;
+}
+body.sketch-theme.portal-mode #overview :is(#load-telemetry, #load-raw):hover {
+  background: #b80500;
+  border-color: #b80500;
+}

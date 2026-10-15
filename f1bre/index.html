@@ -8,42 +8,18 @@
       content="F1BRE race analysis, teams and drivers. Historical data from OpenF1."
     />
     <title>F1BRE — Racing analytics</title>
-    <link rel="stylesheet" href="styles/index.css" />
+    <link rel="stylesheet" href="styles/index.css?v=home-navbar-fix" />
   </head>
-  <body class="portal-mode">
+  <body class="portal-mode sketch-theme">
     <!-- Navegación global sin cuentas ni autenticación. -->
-    <aside class="sidebar">
-      <a class="brand" href="#home" aria-label="F1BRE home">F1BRE<span>platform</span></a>
-      <nav aria-label="Main navigation">
-        <a href="#home" data-nav="home"><span class="nav-icon" aria-hidden="true">⌂</span>Home</a>
-        <a href="#drivers" data-nav="drivers"
-          ><span class="nav-icon" aria-hidden="true">▤</span>Drivers</a
-        >
-        <a href="#teams" data-nav="teams"
-          ><span class="nav-icon" aria-hidden="true">▦</span>Teams</a
-        >
-        <a href="#overview" data-nav="overview"
-          ><span class="nav-icon" aria-hidden="true">⌁</span>Race analysis</a
-        >
-      </nav>
-      <div class="sidebar-bottom">
-        <span class="source-dot"></span>OPENF1 DATA
-        <p>Historical sessions</p>
-      </div>
-      <div class="sidebar-footer">F1BRE / INDEPENDENT FAN PROJECT</div>
-    </aside>
+    <!-- Navbar compartido, montado antes de inicializar los controles. -->
+    <div id="navbar-root"></div>
     <div class="app-shell">
       <header class="topbar">
         <h1 id="page-title">RACING ANALYTICS</h1>
         <span class="topbar-label">F1BRE PLATFORM</span>
       </header>
       <main>
-        <!-- Selección común de temporada y carrera para todas las pantallas. -->
-        <div class="session-toolbar">
-          <label>Season<select id="year"></select></label
-          ><label>Race<select id="race"></select></label
-          ><span class="historical-label">HISTORICAL DATA</span>
-        </div>
         <div class="source-status">
           <p id="load-status" role="status" aria-live="polite">Loading race data…</p>
           <button id="retry" class="reset">Retry</button
@@ -51,102 +27,123 @@
         </div>
         <!-- Inicio: resumen, podio y clasificaciones de la sesión. -->
         <section id="home" data-page="home">
-          <!-- Carrera protagonista: foto local del usuario y metadatos reales. -->
-          <div class="home-race-hero">
-            <div class="home-race-copy">
-              <p id="home-race-context">HISTORICAL FORMULA 1</p>
-              <h1 id="home-race-title">Loading race…</h1>
-              <p id="home-race-date"></p>
-              <div id="home-race-meta" class="home-race-meta"></div>
-            </div>
-            <div class="home-race-visual">
-              <img id="home-race-photo" alt="" hidden />
-              <div id="home-photo-placeholder">
-                <span>RACE PHOTOGRAPH</span><strong id="home-photo-circuit">YOUR RACE IMAGE</strong
-                ><small id="home-photo-location">Add your photograph to assets/races</small>
-              </div>
-            </div>
+          <!-- Bosquejo de Home: temporada/carreras a la izquierda y campeonato a la derecha. -->
+          <div class="home-season-header">
+            <h1 id="home-season-title">Season</h1>
+            <span id="home-season-badge">Championship</span
+            ><a class="home-header-action" href="#overview">Race results &amp; strategy &#8599;</a>
           </div>
-          <div class="home-calendar">
-            <button id="home-races-prev" aria-label="Previous races">‹</button>
-            <div id="home-races" class="home-races" aria-label="Choose a completed race"></div>
-            <button id="home-races-next" aria-label="Next races">›</button>
-          </div>
-          <div class="home-content-grid">
-            <div class="home-main-column">
-              <article class="home-panel" id="home-results-panel">
-                <div class="home-panel-heading">
-                  <h2>RACE RESULTS</h2>
-                  <span id="home-results-circuit"></span>
-                </div>
-                <div class="home-table-scroll">
-                  <table class="home-results-table">
-                    <thead>
-                      <tr>
-                        <th>POS</th>
-                        <th>NO</th>
-                        <th>DRIVER</th>
-                        <th>TEAM</th>
-                        <th>LAPS</th>
-                        <th>TIME / GAP</th>
-                      </tr>
-                    </thead>
-                    <tbody id="home-result-rows">
-                      <tr>
-                        <td colspan="6" class="home-empty">Loading race results…</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                </div>
-                <button id="home-expand-results" class="home-text-button" hidden>
-                  All results ↓
-                </button>
+          <div class="home-dashboard">
+            <div class="home-season-column">
+              <article class="home-race-summary">
+                <h2>UPCOMING GRAND PRIX</h2>
+                <div id="home-next-race"><p>Loading calendar…</p></div>
               </article>
-              <article class="home-panel">
-                <div class="home-panel-heading">
-                  <h2>TYRE STRATEGY</h2>
-                  <div class="home-tyre-legend">
-                    <span><i class="soft"></i>Soft</span><span><i class="medium"></i>Medium</span
-                    ><span><i class="hard"></i>Hard</span
-                    ><span><i class="intermediate"></i>Inter</span
-                    ><span><i class="wet"></i>Wet</span>
+              <article class="home-race-summary">
+                <h2>LAST RACE REPORT</h2>
+                <div id="home-last-race"><p>Loading race…</p></div>
+              </article>
+            </div>
+            <article class="home-panel home-championship-panel">
+              <h2>Standings <span id="home-standing-year"></span></h2>
+              <div class="home-segmented" role="group" aria-label="Championship category">
+                <button data-home-standings="drivers" aria-pressed="true">Drivers</button>
+                <button data-home-standings="teams" aria-pressed="false">Teams</button>
+              </div>
+              <div id="home-championship"></div>
+              <div class="home-panel-footer">
+                <span id="home-standings-context">At selected race</span
+                ><a id="home-standing-link" href="#drivers">Explore drivers →</a>
+              </div>
+            </article>
+          </div>
+          <div class="home-insights">
+            <span class="insight-icon" aria-hidden="true">&#9889;</span>
+            <div>
+              <h2>RACE TELEMETRY &amp; SECTOR ANALYSIS</h2>
+              <p id="home-insight-context">
+                Explore the selected session, lap times and recorded tyre stints.
+              </p>
+            </div>
+            <a href="#overview">Open telemetry studio &#8599;</a>
+          </div>
+          <!-- El detalle deportivo se conserva plegado para que el inicio siga el bosquejo. -->
+          <details class="home-race-details">
+            <summary>Race results &amp; strategy <span aria-hidden="true">↓</span></summary>
+            <div class="home-calendar">
+              <button id="home-races-prev" aria-label="Previous races">‹</button>
+              <div id="home-races" class="home-races" aria-label="Choose a completed race"></div>
+              <button id="home-races-next" aria-label="Next races">›</button>
+            </div>
+            <div class="home-content-grid">
+              <div class="home-main-column">
+                <article class="home-panel" id="home-results-panel">
+                  <div class="home-panel-heading">
+                    <h2>RACE RESULTS</h2>
+                    <span id="home-results-circuit"></span>
                   </div>
-                </div>
-                <div id="home-tyre-rows"></div>
-                <div id="home-tyre-scale"></div>
-                <div class="home-panel-footer">
-                  <span>Recorded stints · Top 6 finishers</span
-                  ><a href="#overview">Race analysis →</a>
-                </div>
-              </article>
-            </div>
-            <aside class="home-side-column" aria-label="Championship and weather">
-              <article class="home-panel home-championship-panel">
-                <div class="home-panel-heading"><h2>CHAMPIONSHIP STANDINGS</h2></div>
-                <div class="home-segmented" role="group" aria-label="Championship category">
-                  <button data-home-standings="drivers" aria-pressed="true">DRIVERS</button
-                  ><button data-home-standings="teams" aria-pressed="false">CONSTRUCTORS</button>
-                </div>
-                <div id="home-championship"></div>
-                <div class="home-panel-footer">
-                  <span>At selected race</span
-                  ><a id="home-standing-link" href="#drivers">Explore drivers →</a>
-                </div>
-              </article>
-              <article class="home-panel home-weather-panel">
-                <div class="home-panel-heading">
-                  <h2>RACE CONDITIONS</h2>
-                  <span>OpenF1</span>
-                </div>
-                <div id="home-conditions" class="home-conditions"></div>
-                <p id="home-weather-time"></p>
-              </article>
-              <div class="home-data-note">
-                <span class="source-dot"></span>HISTORICAL SESSION
-                <p>Results and telemetry from OpenF1. Missing measurements appear as —.</p>
+                  <div
+                    class="home-table-scroll"
+                    tabindex="0"
+                    role="region"
+                    aria-label="Race results table"
+                  >
+                    <table class="home-results-table">
+                      <thead>
+                        <tr>
+                          <th>POS</th>
+                          <th>NO</th>
+                          <th>DRIVER</th>
+                          <th>TEAM</th>
+                          <th>LAPS</th>
+                          <th>TIME / GAP</th>
+                        </tr>
+                      </thead>
+                      <tbody id="home-result-rows">
+                        <tr>
+                          <td colspan="6" class="home-empty">Loading race results…</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                  </div>
+                  <button id="home-expand-results" class="home-text-button" hidden>
+                    All results ↓
+                  </button>
+                </article>
+                <article class="home-panel">
+                  <div class="home-panel-heading">
+                    <h2>TYRE STRATEGY</h2>
+                    <div class="home-tyre-legend">
+                      <span><i class="soft"></i>Soft</span><span><i class="medium"></i>Medium</span
+                      ><span><i class="hard"></i>Hard</span
+                      ><span><i class="intermediate"></i>Inter</span
+                      ><span><i class="wet"></i>Wet</span>
+                    </div>
+                  </div>
+                  <div id="home-tyre-rows"></div>
+                  <div id="home-tyre-scale"></div>
+                  <div class="home-panel-footer">
+                    <span>Recorded stints · Top 6 finishers</span
+                    ><a href="#overview">Race analysis →</a>
+                  </div>
+                </article>
               </div>
-            </aside>
-          </div>
+              <aside class="home-side-column" aria-label="Race conditions">
+                <article class="home-panel home-weather-panel">
+                  <div class="home-panel-heading">
+                    <h2>RACE CONDITIONS</h2>
+                    <span>OpenF1</span>
+                  </div>
+                  <div id="home-conditions" class="home-conditions"></div>
+                  <p id="home-weather-time"></p>
+                </article>
+                <div class="home-data-note">
+                  <span class="source-dot"></span>HISTORICAL SESSION
+                  <p>Results and telemetry from OpenF1. Missing measurements appear as —.</p>
+                </div>
+              </aside>
+            </div>
+          </details>
         </section>
         <!-- Lista de pilotos con búsqueda local. -->
         <section id="drivers" data-page="drivers" hidden>
@@ -233,7 +230,12 @@
                 Average driver pace in five-lap windows. Lower is faster; reported pit-entry and
                 pit-out laps are excluded.
               </p>
-              <div id="chart"></div>
+              <div
+                id="chart"
+                tabindex="0"
+                role="region"
+                aria-label="Race pace chart, scroll horizontally on small screens"
+              ></div>
               <div id="legend" class="legend"></div>
             </article>
             <article class="panel">
@@ -263,7 +265,12 @@
               </div>
               <button id="export" class="reset">Download CSV ↓</button>
             </div>
-            <div class="table-scroll">
+            <div
+              class="table-scroll"
+              tabindex="0"
+              role="region"
+              aria-label="Strategy comparison table"
+            >
               <table>
                 <thead>
                   <tr>
@@ -300,7 +307,12 @@
               ><button id="load-telemetry" class="reset">Load telemetry ↗</button>
             </div>
             <p id="telemetry-status" class="context" role="status"></p>
-            <div id="telemetry-chart"></div>
+            <div
+              id="telemetry-chart"
+              tabindex="0"
+              role="region"
+              aria-label="Telemetry chart, scroll horizontally on small screens"
+            ></div>
             <p id="telemetry-values" class="context"></p>
           </article>
           <div class="charts context-panels">
@@ -341,6 +353,10 @@
       </footer>
     </div>
     <!-- Punto de entrada: sus imports cargan todos los módulos necesarios. -->
-    <script type="module" src="src/app.js"></script>
+    <!-- Invalida la version de Home que dependia de la franja retirada, en todos sus imports. -->
+    <script type="importmap">
+      { "imports": { "./src/views/home-view.js": "./src/views/home-view.js?v=without-ticker" } }
+    </script>
+    <script type="module" src="src/app.js?v=home-navbar-fix"></script>
   </body>
 </html>

@@ -2,6 +2,7 @@
 import { $ } from '../utils/dom.js';
 import { centerSelectedRace } from '../views/home-view.js';
 import { showProfile } from '../views/profile-view.js';
+import { updateNavbar } from '../ui/components/navbar.js';
 export function renderRoute() {
   const rawHash = location.hash.slice(1) || 'home',
     parts = rawHash.split('/'),
@@ -31,13 +32,7 @@ export function renderRoute() {
     el.hidden = el.dataset.page !== page;
   });
   if (page === 'home') centerSelectedRace();
-  document.querySelectorAll('[data-nav]').forEach((el) => {
-    const active =
-      el.dataset.nav === (kind === 'driver' ? 'drivers' : kind === 'team' ? 'teams' : page);
-    el.classList.toggle('active', active);
-    if (active) el.setAttribute('aria-current', 'page');
-    else el.removeAttribute('aria-current');
-  });
+  updateNavbar(kind === 'driver' || kind === 'team' ? kind : page);
   $('page-title').textContent = {
     home: 'RACING ANALYTICS',
     teams: 'TEAMS',

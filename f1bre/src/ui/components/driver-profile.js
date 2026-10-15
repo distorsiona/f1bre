@@ -27,11 +27,8 @@ export function driverProfile(driver, session, championship, stats) {
       >${escapeHtml(driver.name_acronym || lastName.slice(0, 3))}</span
     >
     <div class="driver-editorial-copy">
-      <div class="driver-editorial-brand">
-        ${logo(driver.team_name, 'driver-editorial-logo')}
-      </div>
+      <div class="driver-editorial-brand">${logo(driver.team_name, 'driver-editorial-logo')}</div>
       <header class="driver-editorial-heading">
-        <p>FORMULA 1 / DRIVER PROFILE</p>
         <h1>
           <span class="driver-editorial-first"
             ><span class="driver-editorial-number">${driver.driver_number}</span>

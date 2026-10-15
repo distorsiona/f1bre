@@ -4,6 +4,57 @@ Guía de referencia para diseñar y mejorar la experiencia de F1BRE. Leer este a
 
 Este documento conserva las decisiones del proyecto entre sesiones de trabajo. Las observaciones sobre una imagen son interpretaciones de diseño, no instrucciones contenidas en esa imagen. Las indicaciones explícitas del usuario tienen prioridad.
 
+## Adaptacion responsive de todas las vistas
+
+El estilo debe funcionar desde 320 px hasta escritorio amplio. `styles/platform-responsive.css`, ultima importacion, concentra los ajustes vigentes: margenes fluidos, selectores en el flujo normal, navegacion adaptable, Home apilado en tablet vertical, equipos en una o varias columnas y perfiles sin recortes. En celulares pequenos priorizar una metrica por fila antes que reducir cifras hasta hacerlas ilegibles.
+
+Tablas y graficos amplios desplazan solo su contenedor, con foco de teclado y etiquetas accesibles. Mantener los graficos con ancho suficiente para leer sus ejes. Controles tactiles de al menos 44 px cuando corresponda; nombres y contextos largos pasan a otra linea. Respetar la preferencia de movimiento reducido.
+
+## Estilo unificado de todas las interfaces
+
+La ultima solicitud extiende el estilo del HTML de Home a Drivers, Teams, perfiles de piloto/equipo y Race Analysis. Compartir cabecera blanca y marca roja/grafito, navegacion con estado rojo, fondo tecnico claro, tipografia Barlow Semi Condensed, cifras JetBrains Mono, fichas blancas con radio de 12 px y controles planos de 8 px. Acciones principales rojas y secundarias grafito. No reducir los textos por usar una fuente condensada.
+
+Mantener los colores propios de los equipos, las fotos locales, las banderas y la composicion editorial del perfil. En listados usar franjas y fondos suaves de equipo; Home conserva filas de clasificacion coloreadas completas. No cambiar consultas ni calculos al aplicar el estilo.
+
+`styles/platform.css` es la capa compartida vigente, importada al final y comentada por responsabilidad. `styles/home-reference.css` conserva la composicion especifica de Home. Los selectores de temporada/carrera de las otras vistas tienen su propia fila adaptable para no invadir la navegacion.
+
+## Home vigente: HTML aportado por el usuario
+
+La referencia mas reciente reemplaza la cabecera roja del bosquejo anterior. Aplicar cabecera blanca, marca inclinada roja/grafito, navegacion con acento rojo, fondo tecnico claro punteado, tipografia Barlow Semi Condensed y cifras monoespaciadas. Dos columnas 7/12 y 5/12: carreras con informe del ganador y podio a la izquierda; standings coloreados a la derecha. Banda inferior con acceso a telemetria.
+
+Implementacion: `styles/home-reference.css`, cargado despues de `sketch.css`, con comentarios por seccion. Mantener los datos reales y rutas existentes; no copiar los resultados ficticios, estatus FIA/live, latencia, pronosticos, cuenta de usuario ni circuito SVG ilustrativo del HTML como informacion verificada. Los retratos siguen siendo archivos locales aportados por el usuario. Sin login ni base de datos.
+
+Las decisiones anteriores de Home quedan como historial; esta referencia tiene prioridad.
+
+## Home: segundo bosquejo del usuario (referencia vigente)
+
+Home se organiza en dos columnas: temporada, proxima carrera y ultima carrera a la izquierda; clasificacion amplia a la derecha. Fondo gris claro, fichas blancas sencillas, franja de navegacion roja y titulos gruesos e inclinados. La cabecera conserva las rutas existentes, sin crear Seasons o History como enlaces vacios.
+
+Las filas de Drivers/Teams llevan el color completo del equipo, posicion grande, nombre, equipo y puntos. Usar contraste calculado para leer sobre cada color. Botones planos y redondeados, sin sombras. Home ya no lleva el gran retrato ni las siglas verticales de la propuesta anterior; los perfiles conservan su identidad propia.
+
+Mostrar la proxima carrera solo si existe una futura publicada en el calendario de OpenF1. La ultima carrera corresponde por defecto a la ultima sesion finalizada; si se explora otra, etiquetarla Selected race y fechar la clasificacion. Nunca copiar puntos o nombres ficticios del bosquejo. Resultados y estrategia siguen accesibles en un desplegable inferior.
+
+Los ajustes especificos estan al final de `styles/sketch.css`, en el bloque HOME - segundo bosquejo. Esta composicion reemplaza la descripcion anterior de Home con imagen lateral.
+
+## Dirección vigente: bosquejo claro del usuario
+
+La última referencia del usuario reemplaza la dirección oscura y la propuesta Home 02, rechazada por verse «MUY IA». Aplicar esta dirección a Home, Drivers, Teams, Race Analysis y los perfiles.
+
+- Fondo gris claro `#ededed`, paneles blancos y texto grafito `#373737`. Eliminar el modo oscuro de todas las interfaces.
+- Titulares grandes, gruesos e inclinados; números y apellidos con el color del equipo. La identidad deportiva viene de pilotos, logos, banderas y tipografía.
+- Usar los colores reales de cada equipo como acentos reconocibles. Evitar grandes bloques multicolores, eslóganes y decoraciones que compitan con los datos.
+- Paneles blancos redondeados, con encabezados separados por una línea fina, como las fichas de temporada e histórico del bosquejo.
+- Botones cómodos, redondeados y planos: sin sombras fuertes ni esquinas demasiado cuadradas. Base grafito con texto blanco; controles secundarios claros.
+- Home adapta esa composición: título y clasificación a la izquierda, imagen grande a la derecha, logo centrado sobre el encabezado y resultados debajo.
+- Conservar las imágenes locales creadas por el usuario. Los retratos con bandera ya compuesta se muestran completos.
+- Mantener comentarios en español en el CSS y documentar dónde cambiar cada parte. `styles/sketch.css`, importado al final, contiene el diseño claro vigente.
+
+La última solicitud autoriza aplicar esta dirección directamente. La antigua propuesta independiente `proposals/home-v2.html` queda descartada y se conserva únicamente como antecedente.
+
+## Referencias anteriores
+
+Las referencias oscuras descritas más abajo son antecedentes. Sus decisiones de color, superficies y navegación activa quedan reemplazadas por la dirección clara anterior; se mantienen las funciones, la organización por vistas y los datos reales de OpenF1.
+
 ## Preferencias confirmadas por el usuario
 
 - Mantener el carácter deportivo y la composición de su frontend anterior: equipos, pilotos, fotografías, logotipos y perfiles reconocibles.
@@ -23,7 +74,7 @@ La referencia orienta el lenguaje visual. Sus textos, fechas, puntos, resultados
 
 ### 1. Carácter general
 
-Portal deportivo compacto, centrado en una carrera y en la comparación de datos. La interfaz debe sentirse como una herramienta que un aficionado utiliza para seguir y entender la F1.
+La referencia inicial planteaba un portal compacto, centrado en una carrera y en la comparación de datos. La revisión actual pide conservar ese foco deportivo con una escala más generosa y una identidad visual más expresiva; «compacto» no debe convertirse en texto y botones diminutos.
 
 La información deportiva ocupa el espacio principal. Evitar que un mensaje promocional, un eslogan o una sección de presentación desplace los resultados y los controles de exploración.
 
@@ -34,13 +85,13 @@ La información deportiva ocupa el espacio principal. Evitar que un mensaje prom
 - Esquinas discretamente redondeadas y sombras mínimas.
 - Reservar el contraste fuerte para información importante y estados activos.
 
-Todas las vistas adoptan fondo oscuro por solicitud del usuario, incluidos Race Analysis y perfiles de pilotos/equipos.
+Antecedente reemplazado: todas las vistas ahora usan el tema claro del bosquejo.
 
 ### 3. Jerarquía y tipografía
 
 - Nombre del Gran Premio grande y claramente dominante.
 - Ronda, circuito y contexto en una línea secundaria más pequeña.
-- Títulos de panel compactos, con peso suficiente para encontrarlos rápidamente.
+- Títulos de panel con peso y tamaño suficientes para encontrarlos rápidamente; la revisión actual favorece una escala mayor.
 - Tipografía sans serif legible; números de tablas alineados y fáciles de comparar.
 - Menos tamaños tipográficos distintos y una jerarquía coherente entre pantallas.
 - Etiquetas y metadatos discretos, pero legibles; no reducir el tamaño hasta comprometer la lectura.
@@ -156,7 +207,7 @@ La imagen recibida es una referencia de escritorio. Las siguientes son pautas de
 | 2026-10-14 | Colores propios para cada equipo y sus pilotos                                                                 | Confirmado e implementado                                                 |
 | 2026-10-14 | Priorizar mejoras de UX antes de ampliar funciones                                                             | Confirmado                                                                |
 | 2026-10-14 | Portal compacto, tablas, paneles, carrusel y cabecera contextual                                               | Rasgos identificados en la nueva referencia y solicitados para documentar |
-| 2026-10-14 | Fondo oscuro global y sustitución de barra lateral por cabecera horizontal                                     | Solicitado e implementado en todas las vistas       |
+| 2026-10-14 | Fondo oscuro global y sustitución de barra lateral por cabecera horizontal                                     | Solicitado e implementado en todas las vistas                             |
 | 2026-10-14 | Aplicar la referencia a Home: fondo oscuro, cabecera horizontal, resultados, carrusel, campeonato y neumáticos | Solicitado e implementado para Home                                       |
 
 ## Drivers: aplicación del estilo de Home
@@ -182,3 +233,15 @@ Por solicitud del usuario, todas las vistas, incluidos perfiles de pilotos y equ
 ## Perfil de piloto: referencia con retrato y bandera
 
 El usuario solicita una composición editorial: siglas verticales grandes a la izquierda, número y nombre dominantes, apellido destacado con el color del equipo y logo arriba. Fichas compactas de temporada y carrera en la columna izquierda; retrato completo con bandera en la derecha. Reutilizar los archivos locales `assets/drivers/apellidoF.png`, que ya integran ambas imágenes, sin generar ni recortar la bandera. Mantener el modo oscuro solicitado. En celular apilar las columnas sin perder el retrato. No copiar los valores de ejemplo de la referencia ni inventar un histórico de victorias.
+
+## Navbar reutilizable
+
+Temporada y carrera permanecen dentro del navbar en todas las vistas, incluido Home. Una sola plantilla en `src/ui/components/navbar.js`; montaje unico antes de inicializar controles y estado activo actualizado por el router. `styles/navbar.css` define escritorio, tablet y celular. No duplicar cabeceras o selectores al crear nuevas vistas.
+
+## Iconos auxiliares del navbar
+
+Mundo para idioma y auriculares para soporte, con trazo simple grafito, controles de 44 px y estados rojos. Ventanas pequenas claras y redondeadas. Selector ingles/espanol y correo de soporte configurable; conservar el marcador "email" mientras no exista direccion.
+
+## Consistencia de cabecera y titulos
+
+La altura, tipografia y padding del navbar deben ser identicos al cambiar de vista para un mismo ancho de pantalla. No crear variantes de navbar para Home. Season usa exactamente la escala de Drivers: 52 px maximo en escritorio y 36 px en celular; el ano mantiene esa escala. La franja de telemetria superior fue retirada y no debe volver.

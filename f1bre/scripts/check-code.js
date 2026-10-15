@@ -94,7 +94,7 @@ for (const file of walk(path.join(root, 'src')).filter((file) => file.endsWith('
   for (const node of ast.body) {
     if (node.type === 'ImportDeclaration')
       imports.push({
-        target: path.resolve(path.dirname(file), node.source.value),
+        target: path.resolve(path.dirname(file), node.source.value.split(/[?#]/)[0]),
         names: node.specifiers
           .filter((specifier) => specifier.type === 'ImportSpecifier')
           .map((specifier) => specifier.imported.name),

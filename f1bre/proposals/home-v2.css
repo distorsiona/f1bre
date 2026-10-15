@@ -1,0 +1,983 @@
+/* Propuesta autónoma de Home. Estos estilos no se importan en la web actual. */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,600;0,700;0,800;0,900;1,700;1,800;1,900&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Paleta: equipos como superficies protagonistas; marca burdeo y militar como apoyo. */
+:root {
+  color-scheme: dark;
+  --bg: #111214;
+  --panel: #1b1d21;
+  --line: #383a40;
+  --ink: #f4f3ef;
+  --muted: #b7b7bd;
+  --orange: #ff8700;
+  --blue: #3658cc;
+  --burgundy: #641f32;
+  --military: #4b573d;
+}
+* {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 24px;
+}
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    16px/1.5 Inter,
+    Arial,
+    sans-serif;
+}
+a {
+  color: inherit;
+  text-decoration: none;
+}
+img {
+  display: block;
+  max-width: 100%;
+}
+a:focus-visible {
+  outline: 3px solid #fff;
+  outline-offset: 5px;
+}
+
+/* Franja de revisión: distingue esta propuesta del producto aprobado. */
+.proposal-note {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 36px;
+  background: var(--burgundy);
+  font-size: 12px;
+}
+.proposal-note strong {
+  letter-spacing: 1px;
+}
+.proposal-note a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+/* Cabecera más grande y legible: enlaces de al menos 52 px de alto. */
+.site-header {
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  padding: 20px 36px;
+  border-bottom: 1px solid var(--line);
+  max-width: 1600px;
+  margin: auto;
+}
+.brand {
+  font:
+    italic 900 40px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -1px;
+}
+.brand span {
+  display: block;
+  margin-top: 9px;
+  font:
+    700 9px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: 2.4px;
+}
+.site-header nav {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex: 1;
+}
+.site-header nav a {
+  display: flex;
+  align-items: center;
+  min-height: 52px;
+  font-size: 15px;
+  font-weight: 600;
+  border-bottom: 3px solid transparent;
+}
+.site-header nav a.active {
+  border-color: #b8617c;
+}
+.site-header nav a:hover {
+  color: #fff;
+  border-color: #b8617c;
+}
+.season {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+  padding: 10px 17px;
+  border: 1px solid #57534b;
+  border-radius: 3px;
+  background: #25291f;
+}
+.season span {
+  font-size: 11px;
+  color: #c3c9b6;
+  letter-spacing: 1px;
+}
+.season strong {
+  font-size: 19px;
+}
+main {
+  max-width: 1500px;
+  padding: 27px 36px 50px;
+  margin: auto;
+}
+.weekend-heading {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+  align-items: center;
+  margin-bottom: 18px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+}
+.weekend-heading p {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+}
+.weekend-heading > span {
+  color: var(--muted);
+  font-size: 11px;
+}
+.status-dot {
+  width: 8px;
+  height: 8px;
+  background: #aebd8f;
+  border-radius: 50%;
+}
+
+/* Carrera azul y campeón naranja: dos bloques deportivos con funciones distintas. */
+.hero {
+  display: grid;
+  grid-template-columns: 1.3fr 1fr;
+  gap: 16px;
+}
+.race-feature {
+  position: relative;
+  padding: 26px 30px 0;
+  background: var(--blue);
+  overflow: hidden;
+  isolation: isolate;
+}
+.feature-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.6px;
+}
+.completed {
+  padding: 6px 9px;
+  border: 1px solid #bbc5ef;
+  font-size: 9px;
+  white-space: nowrap;
+}
+.race-feature h1 {
+  position: relative;
+  z-index: 1;
+  font:
+    italic 800 clamp(65px, 7.4vw, 112px)/0.86 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -1px;
+  margin: 24px 0 19px;
+}
+.race-feature h1 span {
+  display: block;
+  font-size: 0.59em;
+  margin-top: 8px;
+  letter-spacing: 1px;
+}
+.race-winner {
+  position: relative;
+  z-index: 1;
+  margin: 0 0 21px;
+}
+.winner-label {
+  display: block;
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  margin-bottom: 4px;
+}
+.race-winner > strong {
+  font-size: 22px;
+  font-weight: 700;
+}
+.race-winner > strong > span {
+  font:
+    800 30px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin-right: 9px;
+}
+.race-winner p {
+  margin: 1px 0 0;
+  font-size: 12px;
+}
+.race-watermark {
+  position: absolute;
+  z-index: -1;
+  right: -30px;
+  bottom: 105px;
+  color: #4969da;
+  font:
+    italic 900 275px/0.7 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -20px;
+  pointer-events: none;
+}
+.race-facts {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr;
+  gap: 18px;
+  padding: 19px 0;
+  margin-top: 25px;
+  border-top: 1px solid #8b9de5;
+}
+.race-facts div {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.race-facts span {
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.race-facts strong {
+  font:
+    700 25px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+
+/* Botones con altura cómoda: se enfatiza la acción, no una etiqueta diminuta. */
+.button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 25px;
+  min-height: 54px;
+  padding: 13px 20px;
+  font-size: 14px;
+  font-weight: 800;
+  letter-spacing: 0.4px;
+  border-radius: 3px;
+  border: 1px solid transparent;
+  transition:
+    transform 0.15s,
+    background 0.15s;
+}
+.button > span {
+  font-size: 23px;
+  font-weight: 400;
+  line-height: 1;
+}
+.button:hover {
+  transform: translateY(-2px);
+}
+.button-light {
+  background: #f5f3ed;
+  color: #15181c;
+}
+.button-black {
+  background: #161616;
+  color: #fff;
+}
+.button-outline {
+  background: transparent;
+  color: var(--ink);
+  border-color: #64666d;
+}
+.button-outline:hover {
+  background: #2a2c31;
+}
+.button-military {
+  background: var(--military);
+  border-color: #74825e;
+  color: #fff;
+  margin-top: 24px;
+}
+.full-button {
+  display: flex;
+  width: 100%;
+  margin-top: 18px;
+}
+
+/* Fotografía original: el campeón ocupa una parte importante del panel. */
+.champion-feature {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: var(--orange);
+  color: #151515;
+  padding: 23px 25px 22px;
+  overflow: hidden;
+  isolation: isolate;
+}
+.champion-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  z-index: 2;
+}
+.champion-top > span {
+  font-size: 11px;
+  font-weight: 800;
+  max-width: 130px;
+  letter-spacing: 0.6px;
+  line-height: 1.4;
+}
+.champion-top img {
+  width: 125px;
+  height: 40px;
+  object-fit: contain;
+  padding: 9px;
+  background: #161616;
+  border-radius: 2px;
+}
+.champion-number {
+  position: absolute;
+  right: -12px;
+  top: 70px;
+  font:
+    italic 900 260px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  color: #e87500;
+  letter-spacing: -12px;
+}
+.champion-name {
+  position: relative;
+  z-index: 2;
+  margin-top: 24px;
+}
+.champion-name p {
+  font:
+    italic 700 32px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 0;
+}
+.champion-name h2 {
+  font:
+    italic 900 clamp(64px, 7vw, 102px)/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 3px 0 0;
+  letter-spacing: -1px;
+}
+.champion-photo {
+  position: absolute;
+  z-index: 1;
+  height: 100%;
+  width: 65%;
+  object-fit: contain;
+  object-position: bottom center;
+  right: -12px;
+  top: 25px;
+}
+.champion-bottom {
+  position: relative;
+  z-index: 3;
+  display: flex;
+  gap: 15px;
+  flex-direction: column;
+  align-items: flex-start;
+  margin-top: 55px;
+}
+.champion-bottom > div {
+  display: flex;
+  flex-direction: column;
+}
+.champion-bottom strong {
+  font:
+    800 58px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+.champion-bottom > div > span {
+  font-size: 9px;
+  font-weight: 800;
+  margin-top: 8px;
+}
+.champion-bottom .button {
+  min-height: 54px;
+  padding: 12px 16px;
+}
+
+/* Navegación interna amplia para explorar la misma carrera. */
+.section-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  margin-top: 18px;
+  border: 1px solid var(--line);
+}
+.section-tabs a {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  padding: 18px 22px;
+  font:
+    600 12px Inter,
+    Arial,
+    sans-serif;
+  border-right: 1px solid var(--line);
+  color: var(--muted);
+}
+.section-tabs a:last-child {
+  border-right: 0;
+}
+.section-tabs a strong {
+  font-size: 15px;
+  color: var(--ink);
+}
+.section-tabs a > span {
+  margin-left: auto;
+  font-size: 20px;
+}
+.section-tabs a.selected,
+.section-tabs a:hover {
+  background: #292329;
+  color: #dc8ca5;
+}
+
+/* Resultados y campeonato: filas más altas, títulos y cifras con peso. */
+.data-grid {
+  display: grid;
+  grid-template-columns: 1.35fr 1fr;
+  gap: 30px;
+  margin-top: 38px;
+}
+.section-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 19px;
+}
+.section-title p {
+  font-size: 10px;
+  color: var(--muted);
+  font-weight: 600;
+  letter-spacing: 1px;
+  margin: 0 0 6px;
+}
+.section-title h2 {
+  font:
+    800 clamp(28px, 3vw, 39px)/1 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 0;
+}
+.section-title h2 span {
+  color: #c2c1c6;
+}
+.section-index {
+  font:
+    700 43px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  color: #6a6b72;
+}
+.table-wrap {
+  overflow: auto;
+  border-top: 2px solid #e9e8e4;
+}
+table {
+  border-collapse: collapse;
+  width: 100%;
+  text-align: left;
+  font-variant-numeric: tabular-nums;
+  white-space: nowrap;
+}
+th {
+  padding: 12px;
+  color: #b7b7bd;
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.9px;
+}
+th:last-child,
+td:last-child {
+  text-align: right;
+}
+td {
+  padding: 13px 12px;
+  border-top: 1px solid var(--line);
+  background: #1b1d21;
+  font-size: 14px;
+}
+td:first-child {
+  width: 60px;
+}
+td:first-child > strong {
+  font:
+    700 26px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+td a {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 700;
+  font-size: 15px;
+}
+td a i {
+  flex-shrink: 0;
+  width: 5px;
+  height: 34px;
+  background: var(--team);
+}
+td small {
+  display: block;
+  color: #b7b7bd;
+  font-size: 11px;
+  font-weight: 500;
+  margin-top: 3px;
+  letter-spacing: 0.5px;
+}
+tbody tr:hover td {
+  background: #292b32;
+}
+.standing {
+  display: flex;
+  align-items: center;
+  gap: 17px;
+  padding: 18px;
+  min-height: 98px;
+  margin-bottom: 10px;
+  border-radius: 3px;
+}
+.standing-orange {
+  background: var(--orange);
+  color: #141414;
+}
+.standing-blue {
+  background: var(--blue);
+  color: #fff;
+}
+.standing-position {
+  font:
+    700 32px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  opacity: 0.7;
+}
+.standing div {
+  flex: 1;
+}
+.standing div > strong {
+  font:
+    800 26px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+.standing small {
+  display: block;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.7px;
+  margin-top: 2px;
+}
+.standing-score {
+  font:
+    800 39px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  text-align: right;
+}
+.standing-score small {
+  font:
+    700 9px Inter,
+    Arial,
+    sans-serif;
+  margin-top: 7px;
+}
+.standing:hover {
+  filter: brightness(1.08);
+}
+
+/* Atajos visuales a pilotos: superficies de equipo y retratos con presencia. */
+.grid-section {
+  margin-top: 43px;
+}
+.driver-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+.driver-card {
+  position: relative;
+  min-height: 245px;
+  overflow: hidden;
+  padding: 19px 22px;
+  border-radius: 3px;
+  isolation: isolate;
+}
+.mclaren {
+  background: #ff8700;
+  color: #151515;
+}
+.ferrari {
+  background: #d80c2c;
+  color: #fff;
+}
+.mercedes {
+  background: #00c6ad;
+  color: #10231f;
+}
+.driver-team {
+  font-size: 10px;
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+.driver-card > div {
+  position: absolute;
+  z-index: 2;
+  bottom: 19px;
+}
+.driver-card > div > span:first-child {
+  font:
+    700 23px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+.driver-card h3 {
+  font:
+    italic 900 48px/0.95 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 4px 0 17px;
+}
+.driver-cta {
+  display: inline-block;
+  padding: 9px 12px;
+  background: #17191d;
+  color: #fff;
+  font-size: 12px;
+  font-weight: 700;
+  border-radius: 2px;
+}
+.driver-card img {
+  position: absolute;
+  height: 100%;
+  width: 59%;
+  right: 1px;
+  bottom: 0;
+  object-fit: contain;
+  object-position: bottom;
+}
+.driver-background-number {
+  position: absolute;
+  right: -2px;
+  top: 18px;
+  font:
+    italic 900 160px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  opacity: 0.13;
+}
+.driver-card:hover img {
+  transform: translateY(-5px);
+}
+
+/* Estrategia con barras legibles, etiquetas de compuesto y longitudes por vueltas. */
+.strategy-panel {
+  margin-top: 42px;
+  padding: 25px;
+  background: #1b1d21;
+  border-top: 4px solid #74825e;
+}
+.tyre-legend {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 12px;
+}
+.tyre-legend > span {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+}
+.tyre-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+.medium {
+  background: #f4d94b;
+  color: #202020;
+}
+.hard {
+  background: #f4f3ef;
+  color: #202020;
+}
+.strategy-row {
+  display: grid;
+  grid-template-columns: 175px minmax(0, 1fr);
+  gap: 23px;
+  align-items: center;
+  padding: 13px 0;
+  border-top: 1px solid var(--line);
+}
+.strategy-row > strong {
+  font-size: 12px;
+}
+.strategy-row small {
+  display: block;
+  font-size: 9px;
+  font-weight: 500;
+  color: #aaaeb8;
+  margin-top: 4px;
+}
+.stint-track {
+  display: flex;
+  gap: 5px;
+}
+.stint-track > span {
+  min-width: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 10px;
+  font-weight: 700;
+  min-height: 30px;
+  border-radius: 2px;
+}
+footer {
+  max-width: 1500px;
+  margin: auto;
+  padding: 27px 36px;
+  border-top: 1px solid var(--line);
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  color: #aaaeb8;
+}
+footer .brand {
+  font-size: 29px;
+  color: #e8d2da;
+}
+footer p {
+  flex: 1;
+  font-size: 11px;
+}
+footer > span {
+  font-size: 9px;
+}
+
+/* Tablet: conservar el peso visual sin comprimir todo a texto pequeño. */
+@media (max-width: 1000px) {
+  .site-header {
+    gap: 28px;
+  }
+  .site-header nav {
+    gap: 18px;
+  }
+  .hero {
+    grid-template-columns: 1.2fr 1fr;
+  }
+  .race-feature {
+    padding: 23px 22px 0;
+  }
+  .feature-top {
+    flex-wrap: wrap;
+  }
+  .data-grid {
+    gap: 22px;
+  }
+  .standing {
+    gap: 12px;
+    padding: 17px 14px;
+  }
+  .standing div > strong {
+    font-size: 23px;
+  }
+  .driver-card h3 {
+    font-size: 40px;
+  }
+}
+
+/* Celular: botones grandes y bloques apilados; tablas se desplazan internamente. */
+@media (max-width: 760px) {
+  .proposal-note {
+    padding: 10px 18px;
+    flex-wrap: wrap;
+    gap: 5px 15px;
+    font-size: 10px;
+  }
+  .proposal-note span {
+    order: 3;
+    width: 100%;
+  }
+  .proposal-note a {
+    margin-left: auto;
+  }
+  .site-header {
+    flex-wrap: wrap;
+    padding: 20px 18px 0;
+    gap: 20px;
+  }
+  .site-header > .brand {
+    flex: 1;
+  }
+  .site-header nav {
+    order: 3;
+    flex: 0 0 100%;
+    gap: 0;
+    justify-content: space-between;
+  }
+  .site-header nav a {
+    font-size: 13px;
+    min-height: 52px;
+  }
+  .season {
+    padding: 8px 13px;
+  }
+  main {
+    padding: 22px 18px 35px;
+  }
+  .weekend-heading {
+    flex-wrap: wrap;
+    gap: 7px;
+    font-size: 10px;
+  }
+  .weekend-heading > span {
+    font-size: 10px;
+  }
+  .hero,
+  .data-grid {
+    grid-template-columns: 1fr;
+  }
+  .race-feature h1 {
+    font-size: 80px;
+  }
+  .race-feature h1 span {
+    font-size: 45px;
+  }
+  .race-feature {
+    padding: 23px 22px 0;
+  }
+  .race-facts {
+    gap: 12px;
+  }
+  .race-facts span {
+    font-size: 8px;
+  }
+  .race-facts strong {
+    font-size: 23px;
+  }
+  .champion-feature {
+    min-height: 410px;
+  }
+  .champion-name h2 {
+    font-size: 72px;
+  }
+  .champion-photo {
+    height: calc(100% - 68px);
+    width: 54%;
+    top: 68px;
+    right: -5px;
+    object-position: bottom right;
+  }
+  .section-tabs a {
+    padding: 15px 9px;
+    gap: 8px;
+    font-size: 9px;
+  }
+  .section-tabs a strong {
+    font-size: 13px;
+  }
+  .section-tabs a > span {
+    display: none;
+  }
+  .data-grid {
+    margin-top: 30px;
+    gap: 34px;
+  }
+  .section-title h2 {
+    font-size: 31px;
+  }
+  .section-title {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+  td {
+    padding: 13px 9px;
+  }
+  td a {
+    font-size: 13px;
+    gap: 9px;
+  }
+  td:last-child {
+    font-size: 12px;
+  }
+  .driver-cards {
+    grid-template-columns: 1fr;
+  }
+  .driver-card {
+    min-height: 265px;
+  }
+  .driver-card h3 {
+    font-size: 57px;
+  }
+  .strategy-panel {
+    padding: 20px 16px;
+  }
+  .strategy-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+  .strategy-row > strong {
+    display: flex;
+    justify-content: space-between;
+  }
+  .strategy-row small {
+    margin: 0;
+  }
+  .tyre-legend {
+    font-size: 11px;
+  }
+  .stint-track > span {
+    font-size: 8px;
+  }
+  .button {
+    min-height: 54px;
+  }
+  footer {
+    padding: 24px 18px;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  footer > span {
+    width: 100%;
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .button,
+  .driver-card img {
+    transition: none;
+  }
+}

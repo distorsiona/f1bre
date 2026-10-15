@@ -2,6 +2,7 @@
 import { state } from '../state/store.js';
 import { $, RaceData, escapeHtml, getTeamColor } from '../utils/dom.js';
 import { html } from '../utils/html.js';
+import { entityPalette, portrait, imageFallbacks } from '../ui/components/entities.js';
 
 let standingsMode = 'drivers';
 let expandedResults = false;
@@ -27,15 +28,7 @@ export function centerSelectedRace() {
   });
 }
 
-/** Nombres de archivo locales, compatibles con los assets aportados por el usuario. */
-function assetName(value) {
-  return String(value || '')
-    .normalize('NFD')
-    .replace(/[\u0300-\u036f]/g, '')
-    .toLowerCase()
-    .replace(/[^a-z0-9]/g, '');
-}
-
+/** Orden de llegada publicado por OpenF1. */
 function orderedResults() {
   return [...(state.data.session_result || [])].sort(
     (a, b) => (a.position ?? 999) - (b.position ?? 999),
@@ -78,64 +71,80 @@ function bindHomeProfiles(container = $('home')) {
   );
 }
 
-/** La foto es opcional: intenta JPG y PNG locales; nunca genera o descarga una imagen. */
-function configureRacePhoto() {
-  const photo = $('home-race-photo');
-  photo.hidden = true;
-  photo.onload = () => {
-    photo.hidden = false;
-    $('home-photo-placeholder').hidden = true;
-  };
-  photo.onerror = () => {
-    if (photo.dataset.format === 'jpg') {
-      photo.dataset.format = 'png';
-      photo.src = `assets/races/${assetName(state.session.circuit_short_name)}.png`;
-    } else {
-      photo.hidden = true;
-      $('home-photo-placeholder').hidden = false;
-    }
-  };
-  photo.dataset.format = 'jpg';
-  photo.alt = `${state.session.circuit_short_name} race photograph`;
-  photo.src = `assets/races/${assetName(state.session.circuit_short_name)}.jpg`;
-}
-
-/** La cabecera usa el nombre real de /meetings cuando está disponible. */
+/** Fichas de proxima carrera y ultimo resultado, sin consultas adicionales. */
 function renderRaceHeader() {
-  const race = state.session,
-    meeting = (state.data.meetings || [])[0],
-    winnerResult = orderedResults().find(
-      (result) => result.position === 1 && !result.dsq && !result.dns,
-    ),
-    winner = state.drivers.find((driver) => driver.driver_number === winnerResult?.driver_number),
-    weather = (state.data.weather || []).at(-1);
-  $('home-race-context').textContent =
-    `${race.year} SEASON · ${race.circuit_short_name.toUpperCase()}`;
-  $('home-race-title').textContent = (meeting?.meeting_name || race.circuit_short_name).replace(
-    /Grand Prix$/i,
-    'GP',
+  const race = state.session;
+  const meeting = (state.data.meetings || [])[0];
+  const dateLabel = (date) =>
+    new Date(date).toLocaleDateString('en-GB', {
+      day: 'numeric',
+      month: 'long',
+      year: 'numeric',
+      timeZone: 'UTC',
+    });
+  $('home-season-title').innerHTML = html`Season <span>${race.year}</span>`;
+  $('home-standing-year').textContent = race.year;
+  $('home-season-badge').textContent = `${state.sessions.length} completed races`;
+  const next = (state.calendar || [])
+    .filter((item) => !item.is_cancelled && Date.parse(item.date_start) > Date.now())
+    .sort((a, b) => Date.parse(a.date_start) - Date.parse(b.date_start))[0];
+  $('home-next-race').innerHTML = next
+    ? html`<strong>${escapeHtml(next.country_name)} GP</strong>
+        <p class="home-summary-circuit">${escapeHtml(next.circuit_short_name)}</p>
+        <time>${escapeHtml(dateLabel(next.date_start))}</time>`
+    : '<strong>No upcoming race available</strong><p class="home-summary-note">For this season in the OpenF1 calendar.</p>';
+  const winnerResult = orderedResults().find((row) => row.position === 1 && !row.dsq && !row.dns);
+  const winner = state.drivers.find(
+    (driver) => driver.driver_number === winnerResult?.driver_number,
   );
-  $('home-race-date').textContent = new Date(race.date_start).toLocaleDateString('en-GB', {
-    day: 'numeric',
-    month: 'long',
-    year: 'numeric',
-    timeZone: 'UTC',
-  });
-  $('home-race-meta').innerHTML =
-    html` ${winner ? html`<button class="home-meta-chip winner-chip" data-driver-profile="${winner.driver_number}" style="--team-color:${getTeamColor(winner)}"><span>Winner</span><strong>${escapeHtml(driverLabel(winner))}</strong><i aria-hidden="true"></i></button>` : html`<span class="home-meta-chip">Result unavailable</span>`}
-      <span class="home-meta-chip"
-        >${RaceData.number(weather?.air_temperature) ? `${weather.air_temperature.toFixed(0)}°C` : '—'}<span
-          class="chip-divider"
-        ></span
-        >${weather?.rainfall === 0 ? 'No rain' : weather?.rainfall === 1 ? 'Rain' : 'Weather unavailable'}</span
-      >
-      <span class="home-meta-chip completed-chip">Completed</span>`;
-  $('home-photo-circuit').textContent = race.circuit_short_name.toUpperCase();
-  $('home-photo-location').textContent = race.country_name;
-  configureRacePhoto();
+  const latest = state.sessions.at(-1)?.session_key === race.session_key;
+  $('home-last-race').previousElementSibling.textContent = latest
+    ? 'FINISHED / LAST RACE REPORT'
+    : 'FINISHED / SELECTED RACE';
+  const podium = orderedResults().filter((row) => row.position >= 1 && row.position <= 3);
+  $('home-last-race').innerHTML = html`<div class="home-report-title">
+      <strong>${escapeHtml(meeting?.meeting_name || race.country_name + ' GP')}</strong
+      ><time>${escapeHtml(dateLabel(race.date_start))}</time>
+    </div>
+    <div class="home-report-grid">
+      <div class="home-winner" style="--winner-color:${winner ? getTeamColor(winner) : '#e10600'}">
+        ${
+          winner
+            ? html`${portrait(winner)}<span class="home-winner-tag">RACE WINNER</span
+                ><button data-driver-profile="${winner.driver_number}">
+                  ${escapeHtml(driverLabel(winner))}
+                </button>
+                <p>${escapeHtml(winner.team_name)}</p>`
+            : '<p>Winner unavailable</p>'
+        }
+      </div>
+      <div class="home-podium">
+        <h3>FINAL PODIUM</h3>
+        ${podium
+          .map((row) => {
+            const driver = state.drivers.find((item) => item.driver_number === row.driver_number);
+            return html`<div>
+              <b>${row.position}</b
+              ><button data-driver-profile="${row.driver_number}">
+                ${escapeHtml(driverLabel(driver))}</button
+              ><span>${escapeHtml(resultTime(row))}</span>
+            </div>`;
+          })
+          .join('')}
+      </div>
+    </div>
+    <div class="home-report-footer">
+      <span>Recorded race results / OpenF1</span
+      ><a href="#overview">Race results &amp; strategy analysis &#8594;</a>
+    </div>`;
+  imageFallbacks($('home-last-race'));
+  $('home-insight-context').textContent =
+    `${race.circuit_short_name} / Explore lap times, tyre strategy and on-demand car telemetry.`;
+  $('home-standings-context').textContent =
+    `At ${race.circuit_short_name} / ${dateLabel(race.date_start)}`;
 }
 
-/** Carrusel histórico: solo carreras finalizadas de la temporada, sin inventar rondas. */
+/** Carrusel de carreras finalizadas de la temporada. */
 function renderRaceCarousel() {
   $('home-races').innerHTML = state.sessions
     .map((race) => {
@@ -220,9 +229,9 @@ function renderStandings() {
     };
   });
   const driverMode = standingsMode === 'drivers',
-    rows = [...(state.data[driverMode ? 'championship_drivers' : 'championship_teams'] || [])]
-      .sort((a, b) => (a.position_current ?? 999) - (b.position_current ?? 999))
-      .slice(0, 6);
+    rows = [...(state.data[driverMode ? 'championship_drivers' : 'championship_teams'] || [])].sort(
+      (a, b) => (a.position_current ?? 999) - (b.position_current ?? 999),
+    );
   $('home-championship').innerHTML =
     rows
       .map((row) => {
@@ -231,13 +240,18 @@ function renderStandings() {
               ? driver.driver_number === row.driver_number
               : driver.team_name === row.team_name,
           ),
-          name = driverMode ? driverLabel(driver) : row.team_name,
+          name = driverMode ? driver?.full_name || `Driver #${row.driver_number}` : row.team_name,
           team = driver?.team_name || row.team_name,
-          color = driver ? getTeamColor(driver) : '#8d956e',
+          color = driver ? getTeamColor(driver) : '#dedede',
+          ink = driver ? entityPalette(driver).foreground : '#373737',
           target = driverMode
             ? `data-driver-profile="${row.driver_number}"`
             : `data-team-profile="${escapeHtml(team)}"`;
-        return html`<button class="home-standing-row" ${target} style="--team-color:${color}">
+        return html`<button
+          class="home-standing-row"
+          ${target}
+          style="--team-color:${color};--standing-ink:${ink}"
+        >
           <span class="standing-rank">${row.position_current ?? '—'}</span
           ><span class="standing-team-mark" aria-hidden="true"></span
           ><span class="standing-name"
@@ -349,18 +363,13 @@ export function renderHome() {
 
 /** Limpia las mediciones anteriores mientras se carga otra carrera. */
 export function clearHome() {
+  $('home-season-title').textContent = `Season ${$('year').value}`;
+  $('home-next-race').innerHTML = '<p>Loading calendar...</p>';
+  $('home-last-race').innerHTML = '<p>Loading race...</p>';
   $('home-results-circuit').textContent = '';
-  $('home-photo-placeholder').hidden = false;
-  $('home-photo-circuit').textContent = 'SELECTED RACE';
-  $('home-photo-location').textContent = 'Loading session…';
-  $('home-race-date').textContent = '';
   $('home-weather-time').textContent = '';
   $('home-tyre-scale').replaceChildren();
   $('home-expand-results').hidden = true;
-  $('home-race-title').textContent = 'Loading race…';
-  $('home-race-context').textContent = 'HISTORICAL FORMULA 1';
-  $('home-race-meta').replaceChildren();
-  $('home-race-photo').hidden = true;
   $('home-result-rows').innerHTML =
     '<tr><td colspan="6" class="home-empty">Loading race results…</td></tr>';
   for (const id of ['home-championship', 'home-tyre-rows', 'home-conditions'])
