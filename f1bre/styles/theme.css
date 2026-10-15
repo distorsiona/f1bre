@@ -1,0 +1,85 @@
+/* GUÍA DEL ARCHIVO: BASE GLOBAL. Fuentes, variables, reset y accesibilidad. La paleta oscura visible se redefine en home.css, dentro de body.portal-mode. */
+/* Fuentes, paleta general, reset y estados accesibles. */
+/* Carga las fuentes externas Inter y Barlow Condensed; edita esta URL para cambiar las familias disponibles */
+@import url('https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,600;0,700;0,800;1,700;1,800&family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+/* Variables globales base: cambia aquí burdeo y verde militar. El fondo/texto oscuros efectivos se redefinen en body.portal-mode de home.css. */
+:root {
+  color-scheme: light;
+  --bg: #f1f1ed;
+  --paper: #fff;
+  --ink: #22251f;
+  --muted: #666b62;
+  --line: #d3d5cd;
+  --burgundy: #641f32;
+  --military: #4b573d;
+  --pale: #e7ebdf;
+  --accent: var(--burgundy);
+}
+
+/* Modelo de caja global: padding y borde cuentan dentro del ancho declarado. */
+* {
+  box-sizing: border-box;
+}
+
+/* Desplazamiento general del documento. */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Fondo, color de texto y tipografía general de la aplicación.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--ink);
+  font:
+    14px Inter,
+    Arial,
+    sans-serif;
+}
+
+/* Estilo base de los enlaces.
+ * Dónde cambiar: color/background/border = colores. */
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Aspecto y tamaño de los selectores.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+button,
+input,
+select {
+  font: inherit;
+}
+
+/* Aspecto y tamaño de los selectores. */
+button,
+a,
+select {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Interacción de los botones. */
+button {
+  cursor: pointer;
+}
+
+/* Estado deshabilitado de los controles que todavía no pueden utilizarse. */
+button:disabled,
+select:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Respeta el estado hidden para ocultar vistas y elementos sin datos. */
+[hidden] {
+  display: none !important;
+}
+
+/* Indicador de foco para navegación con teclado; conserva un contorno visible. */
+:focus-visible {
+  outline: 3px solid var(--military);
+  outline-offset: 3px;
+}

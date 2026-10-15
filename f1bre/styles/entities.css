@@ -1,0 +1,739 @@
+/* GUÍA DEL ARCHIVO: COMPONENTES BASE. Filas de pilotos, tarjetas, imágenes y perfiles. Los colores deportivos se reciben de OpenF1. Los diseños actuales se ajustan en drivers.css, teams.css, profile.css y driver-profile.css. */
+/* Tarjetas, imágenes y perfiles deportivos; colores dinámicos de OpenF1. */
+/* Distribución base de tarjetas de resumen.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+}
+
+/* Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.summary-card {
+  background: #fff;
+  border: 1px solid #b3b7ab;
+  border-top: 3px solid var(--military);
+  padding: 18px 20px;
+}
+
+/* Tarjeta de resumen: etiqueta, valor y contexto. Solo afecta a la posición indicada dentro de su contenedor. */
+.summary-card:nth-child(even) {
+  border-top-color: var(--burgundy);
+}
+
+/* Tarjeta de resumen: etiqueta, valor y contexto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.summary-card small {
+  font-size: 9px;
+  letter-spacing: 0.8px;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+
+/* Tarjeta de resumen: etiqueta, valor y contexto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.summary-card strong {
+  display: block;
+  font:
+    800 28px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 10px 0 6px;
+}
+
+/* Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.summary-card span {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* Distribución base de las tarjetas de podio.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.podium-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 17px;
+}
+
+/* Tarjeta base de piloto en el podio.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores; overflow = recorte o desplazamiento. */
+.podium-card {
+  position: relative;
+  text-align: left;
+  color: var(--ink);
+  border: 1px solid #b3b7ab;
+  background: #fff;
+  border-radius: 0;
+  min-height: 240px;
+  overflow: hidden;
+  padding: 20px;
+}
+
+/* Tarjeta base de piloto en el podio. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: color/background/border = colores. */
+.podium-card:nth-child(1) {
+  background: var(--military);
+  color: #fff;
+}
+
+/* Tarjeta base de piloto en el podio. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: color/background/border = colores. */
+.podium-card:nth-child(2) {
+  background: var(--burgundy);
+  color: #fff;
+}
+
+/* Posición destacada dentro de una tarjeta de podio.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.podium-place {
+  font:
+    800 55px/1 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  position: relative;
+  z-index: 2;
+}
+
+/* Tarjeta base de piloto en el podio.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.podium-card .portrait {
+  position: absolute;
+  right: 8px;
+  top: 10px;
+  width: 55%;
+  height: 205px;
+}
+
+/* Datos del piloto en una tarjeta de podio. */
+.podium-info {
+  position: relative;
+  z-index: 2;
+  margin-top: 92px;
+}
+
+/* Datos del piloto en una tarjeta de podio. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.podium-info strong {
+  display: block;
+  font:
+    italic 800 26px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -0.3px;
+  text-transform: uppercase;
+}
+
+/* Datos del piloto en una tarjeta de podio. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.podium-info small {
+  display: block;
+  font-size: 10px;
+  margin-top: 5px;
+  opacity: 0.8;
+}
+
+/* Contenedor del retrato del piloto.
+ * Dónde cambiar: justify-content = alineación del contenido; overflow = recorte o desplazamiento. */
+.portrait {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Contenedor del retrato del piloto. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.portrait img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: top center;
+  z-index: 1;
+}
+
+/* Contenedor del retrato del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.portrait .initials {
+  font:
+    800 35px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  opacity: 0.35;
+  letter-spacing: -1px;
+}
+
+/* Contenedor del retrato del piloto. Decoración creada por CSS, sin elemento HTML adicional.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.portrait.missing:after {
+  content: 'IMAGE PENDING';
+  position: absolute;
+  bottom: 8px;
+  font-size: 7px;
+  letter-spacing: 1px;
+  opacity: 0.55;
+}
+
+/* Distribución inferior del diseño base de inicio.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.home-lower {
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  gap: 18px;
+  margin-top: 25px;
+}
+
+/* Fila compacta compartida para clasificaciones.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.compact-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border-top: 1px solid #e4e5dd;
+  padding: 13px 0;
+  font-size: 11px;
+  width: 100%;
+  background: transparent;
+  border-left: 0;
+  border-right: 0;
+  border-bottom: 0;
+  text-align: left;
+  color: var(--ink);
+}
+
+/* Fila compacta compartida para clasificaciones. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.compact-row:hover {
+  color: var(--burgundy);
+}
+
+/* Puesto de clasificación en una fila compacta.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; color/background/border = colores. */
+.compact-rank {
+  width: 25px;
+  font-weight: 800;
+  font-size: 18px;
+  color: var(--military);
+}
+
+/* Fila compacta compartida para clasificaciones. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.compact-row strong {
+  display: block;
+  font-size: 12px;
+}
+
+/* Fila compacta compartida para clasificaciones. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.compact-row small {
+  display: block;
+  color: var(--muted);
+  font-size: 9px;
+  margin-top: 4px;
+}
+
+/* Fila compacta compartida para clasificaciones.
+ * Dónde cambiar: color/background/border = colores. */
+.compact-row .score {
+  margin-left: auto;
+  font-weight: 800;
+  color: var(--burgundy);
+}
+
+/* Tamaño del logo pequeño usado en filas compartidas.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.mini-logo {
+  width: 34px;
+  height: 28px;
+  object-fit: contain;
+}
+
+/* Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores; overflow = recorte o desplazamiento. */
+.driver-row {
+  display: flex;
+  width: 100%;
+  height: 117px;
+  align-items: center;
+  padding: 0 22px 0 0;
+  text-align: left;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid #b4b9ad;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+/* Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: color/background/border = colores. */
+.driver-row:nth-child(4n + 1) {
+  background: var(--military);
+  border-color: var(--military);
+  color: #fff;
+}
+
+/* Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: color/background/border = colores. */
+.driver-row:nth-child(4n + 2) {
+  background: var(--burgundy);
+  border-color: var(--burgundy);
+  color: #fff;
+}
+
+/* Fila pulsable que abre el perfil del piloto. Estado al pasar el cursor. */
+.driver-row:hover {
+  outline: 2px solid #858b78;
+  outline-offset: 1px;
+}
+
+/* Logo del equipo dentro de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.driver-row .driver-logo {
+  width: 70px;
+  text-align: center;
+}
+
+/* Logo del equipo dentro de la fila del piloto. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.driver-logo img {
+  width: 39px;
+  max-height: 45px;
+  object-fit: contain;
+}
+
+/* Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+.driver-row .driver-number {
+  width: 74px;
+  flex-shrink: 0;
+  text-align: center;
+  font:
+    800 49px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -2px;
+}
+
+/* Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.driver-row .portrait {
+  height: 117px;
+  width: 125px;
+  flex-shrink: 0;
+}
+
+/* Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.driver-row .driver-info {
+  padding: 0 22px;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Nombre y equipo dentro de la fila del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.driver-info strong {
+  display: block;
+  font-size: 17px;
+  font-weight: 900;
+  letter-spacing: -0.5px;
+}
+
+/* Nombre y equipo dentro de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.driver-info small {
+  display: block;
+  margin-top: 7px;
+  font-size: 11px;
+  opacity: 0.75;
+}
+
+/* Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.driver-row .driver-points {
+  font:
+    800 28px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  text-align: right;
+  white-space: nowrap;
+}
+
+/* Puntos de campeonato alineados al final de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.driver-points small {
+  display: block;
+  font:
+    600 8px Inter,
+    Arial,
+    sans-serif;
+  margin-top: 5px;
+  letter-spacing: 1px;
+  opacity: 0.7;
+}
+
+/* Flecha al final de filas de pilotos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.row-arrow {
+  margin-left: 25px;
+  opacity: 0.6;
+  font-size: 20px;
+}
+
+/* Cuadrícula del listado de equipos; grid-template-columns decide cuántos caben por fila.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.team-cards {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 22px;
+  margin-top: 22px;
+}
+
+/* Superficie y espaciado de una tarjeta del equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.team-card {
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  color: var(--ink);
+  padding: 21px;
+  background: #fff;
+  border: 1px solid #858b7e;
+  border-radius: 0;
+  min-height: 310px;
+}
+
+/* Superficie y espaciado de una tarjeta del equipo. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.team-card:hover {
+  border-color: var(--burgundy);
+  background: #fcfbf8;
+}
+
+/* Fila superior de la tarjeta: nombre y puesto del equipo.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.team-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  width: 100%;
+  margin-bottom: 18px;
+}
+
+/* Nombre y temporada del equipo en la tarjeta. */
+.team-card-title {
+  border-left: 4px solid var(--burgundy);
+  padding-left: 12px;
+}
+
+/* Nombre y temporada del equipo en la tarjeta. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.team-card-title strong {
+  display: block;
+  font:
+    italic 800 25px/0.95 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+}
+
+/* Nombre y temporada del equipo en la tarjeta. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.team-card-title small {
+  display: block;
+  margin-top: 7px;
+  font-size: 8px;
+  letter-spacing: 0.5px;
+  color: var(--muted);
+}
+
+/* Posición del equipo en el campeonato.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.team-rank {
+  font:
+    800 32px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  color: var(--military);
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño. */
+.team-brand-slot {
+  height: 68px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  border-top: 1px solid #e4e5de;
+  border-bottom: 1px solid #e4e5de;
+  margin-bottom: 15px;
+}
+
+/* Franja que contiene el logo del equipo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.team-brand-slot img {
+  max-width: 115px;
+  max-height: 52px;
+  object-fit: contain;
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.team-brand-slot .team-monogram {
+  font:
+    italic 800 21px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  color: var(--military);
+}
+
+/* Nombres de los pilotos inscritos en la tarjeta del equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.team-drivers {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
+  min-height: 42px;
+  margin: 0 0 15px;
+}
+
+/* Métricas de puntos, resultado y pilotos dentro de la tarjeta.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.team-stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 10px;
+  width: 100%;
+  margin-top: auto;
+  padding-top: 14px;
+  border-top: 1px solid var(--line);
+}
+
+/* Métricas de puntos, resultado y pilotos dentro de la tarjeta. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.team-stats strong {
+  display: block;
+  font:
+    800 25px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+}
+
+/* Métricas de puntos, resultado y pilotos dentro de la tarjeta. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.team-stats small {
+  font-size: 7px;
+  letter-spacing: 0.7px;
+  color: var(--muted);
+  display: block;
+  margin-top: 5px;
+}
+
+/* Enlace visual al perfil al pie de la tarjeta del equipo.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; color/background/border = colores. */
+.team-card-foot {
+  font-size: 9px;
+  font-weight: 700;
+  color: var(--burgundy);
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+}
+
+/* Enlace para volver al listado; --driver-color recibe el color del piloto desde JavaScript.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.back-link {
+  display: inline-block;
+  font-size: 11px;
+  color: var(--burgundy);
+  margin: 18px 0 25px;
+}
+
+/* Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño; color/background/border = colores; overflow = recorte o desplazamiento. */
+.profile-hero {
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  min-height: 300px;
+  background: var(--military);
+  color: #fff;
+  overflow: hidden;
+  border: 1px solid #333d27;
+}
+
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-main {
+  padding: 35px;
+}
+
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-main .eyebrow {
+  color: #d9dfcf;
+}
+
+/* Bloque de nombre y contexto en la cabecera base del perfil. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.profile-main h2 {
+  font-size: 65px;
+  line-height: 0.95;
+  margin: 20px 0 15px;
+}
+
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.profile-main p {
+  opacity: 0.8;
+  font-size: 12px;
+}
+
+/* Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.profile-main .driver-number {
+  font:
+    800 45px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  opacity: 0.65;
+}
+
+/* Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.profile-hero .portrait {
+  min-height: 300px;
+}
+
+/* Cabecera base del perfil con identidad e imagen. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen. */
+.profile-hero .portrait img {
+  object-fit: cover;
+  object-position: top;
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.profile-hero .team-brand-slot {
+  height: auto;
+  border: 0;
+  margin: 0;
+}
+
+/* Franja que contiene el logo del equipo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.profile-hero .team-brand-slot img {
+  max-width: 180px;
+  max-height: 140px;
+}
+
+/* Botones para ir al análisis o al equipo desde un perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-actions {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 20px 0;
+}
+
+/* Distribución de las métricas del perfil.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 15px;
+}
+
+/* Aclaración sobre la carrera y la disponibilidad de datos del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-note {
+  font-size: 11px;
+  line-height: 1.7;
+  color: var(--muted);
+  margin: 17px 0;
+}
+
+/* Imagen del coche en la ficha de equipo.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.profile-car {
+  width: 100%;
+  height: 170px;
+  object-fit: contain;
+}
+
+/* Panel de pilotos del equipo. */
+.profile-members {
+  margin-top: 25px;
+}
+
+/* Entity colors come from OpenF1 for the selected session. */
+/* Cabecera base del perfil con identidad e imagen. Estado al pasar el cursor. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-row,
+.driver-row:nth-child(4n + 1),
+.driver-row:nth-child(4n + 2),
+.podium-card,
+.podium-card:nth-child(1),
+.podium-card:nth-child(2),
+.team-card,
+.team-card:hover,
+.profile-hero {
+  background: var(--team-color, #e4e8de);
+  color: var(--team-ink, #111);
+  border-color: var(--team-color, #aeb5a4);
+}
+
+/* Superficie y espaciado de una tarjeta del equipo.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.team-card {
+  --muted: var(--team-ink, #111);
+}
+
+/* Nombre y temporada del equipo en la tarjeta.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.team-card-title {
+  border-left-color: var(--team-ink, #111);
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.team-rank,
+.team-brand-slot .team-monogram,
+.team-card-foot,
+.profile-main .eyebrow {
+  color: var(--team-ink, #111);
+}
+
+/* Nombre y temporada del equipo en la tarjeta. Etiqueta secundaria.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.team-card-title small,
+.team-drivers,
+.team-stats small {
+  color: var(--team-ink, #111);
+  opacity: 0.78;
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.team-brand-slot,
+.team-stats {
+  border-color: var(--team-line, rgba(0, 0, 0, 0.2));
+}
+
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: color/background/border = colores. */
+.team-card .team-brand-slot {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+/* Fila compacta compartida para clasificaciones.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.compact-row[data-driver-profile],
+.compact-row[data-team-profile] {
+  border-left: 3px solid var(--team-color, var(--military));
+  padding-left: 12px;
+}

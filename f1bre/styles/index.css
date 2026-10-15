@@ -1,0 +1,24 @@
+/* GUÍA DEL ARCHIVO: ÍNDICE DE ESTILOS. Este archivo decide el orden de carga. Si dos reglas tienen igual especificidad, gana la última. No cambies el orden sin revisar las vistas. */
+/* Orden de carga: base → composición → contenido → ajustes por tamaño. */
+/* Carga theme.css: BASE GLOBAL. Fuentes, variables, reset y accesibilidad. La paleta oscura visible se redefine en home.css, dentro de body.portal-mode. */
+@import url('./theme.css');
+/* Carga layout.css: ESTRUCTURA BASE. Navegación, controles y espaciado comunes. El portal oscuro de home.css y los archivos de cada vista reemplazan estas reglas cuando corresponde. */
+@import url('./layout.css');
+/* Carga entities.css: COMPONENTES BASE. Filas de pilotos, tarjetas, imágenes y perfiles. Los colores deportivos se reciben de OpenF1. Los diseños actuales se ajustan en drivers.css, teams.css, profile.css y driver-profile.css. */
+@import url('./entities.css');
+/* Carga analysis.css: ANÁLISIS BASE. Estructura de gráficos, métricas, tablas y neumáticos. Para cambiar su apariencia oscura actual, usa race-analysis.css, que se carga después. */
+@import url('./analysis.css');
+/* Carga responsive.css: ADAPTACIÓN BASE POR ANCHO. Cada @media indica cuándo se aplica. Las vistas tienen ajustes propios posteriores; si un cambio no aparece, revisa también su archivo específico. */
+@import url('./responsive.css');
+/* Carga home.css: PORTAL OSCURO + HOME. Las reglas .portal-mode son compartidas por todas las pantallas. Las reglas .home-* y #home-* corresponden al inicio. Al final están los ajustes por ancho. */
+@import url('./home.css');
+/* Carga drivers.css: LISTADO DE PILOTOS + CONTROLES COMUNES. .drivers-mode afecta la lista; .catalog-mode afecta los selectores de temporada y carrera de todas las vistas salvo Home. */
+@import url('./drivers.css');
+/* Carga teams.css: LISTADO DE EQUIPOS. Tarjetas, logos, pilotos y métricas de Teams. El detalle de cada equipo se modifica en profile.css. */
+@import url('./teams.css');
+/* Carga profile.css: PERFILES COMPARTIDOS + DETALLE DE EQUIPO. .profile-mode aplica a equipos y pilotos. .team-detail-* corresponde al equipo. El perfil editorial del piloto se completa en driver-profile.css. */
+@import url('./profile.css');
+/* Carga driver-profile.css: PERFIL EDITORIAL DEL PILOTO. Nombre, número, siglas verticales, logo centrado, fichas y foto con bandera. Tamaño del logo: .driver-editorial-logo; centrado: .driver-editorial-brand. Ajustes de celular al final. */
+@import url('./driver-profile.css');
+/* Carga race-analysis.css: RACE ANALYSIS OSCURO. Filtros, métricas, curvas, stints, tabla, telemetría y explorador. Complementa analysis.css; sus cambios quedan limitados a .analysis-mode. */
+@import url('./race-analysis.css');

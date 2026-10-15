@@ -1,0 +1,374 @@
+/* GUÍA DEL ARCHIVO: ANÁLISIS BASE. Estructura de gráficos, métricas, tablas y neumáticos. Para cambiar su apariencia oscura actual, usa race-analysis.css, que se carga después. */
+/* Gráficos, tablas, compuestos, métricas, clima y explorador de datos. */
+/* Superficie base de un panel de información.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.panel {
+  background: #fff;
+  border: 1px solid #b3b7ab;
+  padding: 22px;
+  min-width: 0;
+  border-radius: 0;
+}
+
+/* Título y contexto de una sección compartida. */
+.panel .section-heading {
+  margin-top: 0;
+}
+
+/* Etiqueta pequeña situada sobre un título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.eyebrow {
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: var(--military);
+}
+
+/* Contenedor de filtros y controles del análisis.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.filters {
+  display: flex;
+  align-items: end;
+  flex-wrap: wrap;
+  gap: 14px;
+  padding: 15px;
+  background: #e8eae3;
+  border: 1px solid var(--line);
+  margin-bottom: 10px;
+}
+
+/* Contenedor de filtros y controles del análisis. */
+.filters label {
+  flex: 1;
+  min-width: 130px;
+}
+
+/* Título base de paneles y subsecciones.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+h3 {
+  font-size: 16px;
+  margin: 8px 0 13px;
+  font-weight: 800;
+  letter-spacing: -0.4px;
+}
+
+/* Unidad de medida del gráfico.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.unit {
+  font-size: 8px;
+  color: var(--muted);
+  letter-spacing: 1px;
+}
+
+/* Fila de título y acciones de un panel de análisis.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+.panel-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Explicación de cómo leer el gráfico.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.context,
+.chart-help {
+  font-size: 10px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Cuadrícula de indicadores de la carrera.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 14px;
+  margin: 23px 0;
+}
+
+/* Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.metric {
+  background: white;
+  border: 1px solid var(--line);
+  padding: 16px;
+}
+
+/* Indicador de carrera: etiqueta, cifra y aclaración. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.metric small {
+  color: var(--muted);
+  font-size: 8px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Indicador de carrera: etiqueta, cifra y aclaración. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.metric strong {
+  display: block;
+  font:
+    800 30px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  margin: 10px 0;
+}
+
+/* Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.metric span {
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* Distribución de paneles de gráficos.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.charts {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 18px;
+}
+
+/* Grupo de paneles de clima y eventos. */
+.context-panels {
+  margin-top: 18px;
+}
+
+/* Tamaño y presentación de los gráficos SVG.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+svg {
+  display: block;
+  width: 100%;
+  margin: 16px 0;
+}
+
+/* Tamaño y presentación de los gráficos SVG.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+svg text {
+  font: 10px Arial;
+  fill: var(--muted);
+}
+
+/* Leyenda que relaciona curvas con pilotos y colores de equipo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* Leyenda que relaciona curvas con pilotos y colores de equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.legend i {
+  display: inline-block;
+  width: 13px;
+  height: 3px;
+  vertical-align: middle;
+  margin-right: 5px;
+}
+
+/* Leyenda de compuestos de neumáticos del análisis.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.tyre-key {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin: 18px 0;
+  font-size: 9px;
+  color: var(--muted);
+}
+
+/* Leyenda de compuestos de neumáticos del análisis.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.tyre-key i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 5px;
+}
+
+/* Color del neumático blando (Soft).
+ * Dónde cambiar: color/background/border = colores. */
+.soft {
+  background: #bf4e60;
+}
+
+/* Color del neumático medio (Medium).
+ * Dónde cambiar: color/background/border = colores. */
+.medium {
+  background: #ddbc55;
+}
+
+/* Color del neumático duro (Hard).
+ * Dónde cambiar: color/background/border = colores. */
+.hard {
+  background: #cdd1c5;
+}
+
+/* Color del neumático intermedio de lluvia (Inter).
+ * Dónde cambiar: color/background/border = colores. */
+.intermediate {
+  background: #7b955e;
+}
+
+/* Color del neumático de lluvia (Wet).
+ * Dónde cambiar: color/background/border = colores. */
+.wet {
+  background: #789bc7;
+}
+
+/* Tramo de estrategia sin compuesto conocido.
+ * Dónde cambiar: color/background/border = colores. */
+.unknown {
+  background: #a7aa9f;
+}
+
+/* Tramo sin stint registrado; se distingue de un compuesto real.
+ * Dónde cambiar: color/background/border = colores. */
+.unrun {
+  background: #e9ebe4;
+}
+
+/* Fila completa de estrategia de un piloto. */
+.stint-row {
+  margin-bottom: 14px;
+}
+
+/* Nombre del piloto y número de visitas a boxes en la estrategia.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; color/background/border = colores. */
+.stint-label {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  margin-bottom: 6px;
+  color: var(--muted);
+}
+
+/* Barra horizontal de compuestos de neumáticos del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.stint-bar {
+  height: 19px;
+  display: flex;
+  gap: 2px;
+}
+
+/* Barra horizontal de compuestos de neumáticos del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.stint-bar span {
+  text-align: center;
+  line-height: 19px;
+  font-size: 9px;
+  color: #1f241c;
+  border-radius: 1px;
+}
+
+/* Panel que agrupa una tabla o bloque amplio de información. */
+.table-panel {
+  margin-top: 18px;
+}
+
+/* Desplazamiento interno de tablas anchas; evita ensanchar toda la página.
+ * Dónde cambiar: overflow = recorte o desplazamiento. */
+.table-scroll {
+  overflow: auto;
+}
+
+/* Presentación general de tablas de datos.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  white-space: nowrap;
+  text-align: left;
+  font-size: 11px;
+}
+
+/* Encabezados de las columnas de tablas.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+th {
+  padding: 12px 9px;
+  color: var(--muted);
+  font-size: 8px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+/* Celdas y separación de filas de las tablas.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+td {
+  padding: 15px 9px;
+  border-top: 1px solid var(--line);
+}
+
+/* Aclaración metodológica de las métricas de comparación.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.insight {
+  font-size: 10px;
+  line-height: 1.8;
+  color: var(--muted);
+  border-left: 2px solid var(--military);
+  padding-left: 12px;
+}
+
+/* Distribución y valores del panel meteorológico.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.weather-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+/* Distribución y valores del panel meteorológico. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.weather-grid strong {
+  font-size: 23px;
+  color: var(--ink);
+  display: block;
+}
+
+/* Lista desplazable de mensajes de dirección de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones; overflow = recorte o desplazamiento. */
+.event-list {
+  list-style: none;
+  padding: 0;
+  max-height: 280px;
+  overflow: auto;
+}
+
+/* Lista desplazable de mensajes de dirección de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.event-list li {
+  padding: 12px 0;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Lista desplazable de mensajes de dirección de carrera. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.event-list small {
+  font-size: 8px;
+  color: var(--muted);
+}
+
+/* Lista desplazable de mensajes de dirección de carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.event-list p {
+  font-size: 10px;
+  line-height: 1.7;
+}
+
+/* Visor desplazable de los registros originales del explorador.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores; overflow = recorte o desplazamiento. */
+pre {
+  font-size: 10px;
+  line-height: 1.7;
+  max-height: 350px;
+  overflow: auto;
+  background: var(--bg);
+  padding: 15px;
+}

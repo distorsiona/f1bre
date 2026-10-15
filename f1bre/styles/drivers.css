@@ -1,0 +1,463 @@
+/* GUÍA DEL ARCHIVO: LISTADO DE PILOTOS + CONTROLES COMUNES. .drivers-mode afecta la lista; .catalog-mode afecta los selectores de temporada y carrera de todas las vistas salvo Home. */
+/* Drivers: panel compacto oscuro y acentos deportivos por equipo, coherentes con Home. */
+/* Contenedor de Drivers: orden y separación superior. */
+.drivers-mode #drivers {
+  order: 1;
+  padding-top: 28px;
+}
+/* Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.catalog-mode .session-toolbar label:nth-child(2) {
+  display: block;
+  font-size: 10px;
+  color: var(--muted);
+}
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.catalog-mode .session-toolbar {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+}
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.catalog-mode .session-toolbar label:first-child {
+  display: flex;
+  align-items: center;
+  flex: 0 0 auto;
+  width: auto;
+}
+/* Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor. */
+.catalog-mode .session-toolbar label:nth-child(2) {
+  min-width: 0;
+}
+/* Selector de temporada; ancho reservado para el año.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.catalog-mode #year {
+  width: 85px;
+  flex-shrink: 0;
+}
+/* Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.catalog-mode .session-toolbar label:nth-child(2) {
+  font-size: 0;
+}
+/* Selector de carrera; ancho máximo del nombre y fecha.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.catalog-mode #race {
+  max-width: 245px;
+}
+/* Título principal de la vista; también se reutiliza en Teams y Race Analysis. */
+.drivers-heading {
+  margin-bottom: 24px;
+}
+/* Etiqueta pequeña situada sobre el título principal.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.drivers-eyebrow {
+  color: #b6bea3;
+  font-size: 10px;
+  letter-spacing: 1.5px;
+  margin: 0 0 8px;
+}
+/* Título principal de la vista; también se reutiliza en Teams y Race Analysis. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.drivers-heading h1 {
+  font:
+    500 clamp(35px, 4vw, 52px)/1.05 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -1.5px;
+  margin: 0 0 10px;
+}
+/* Contexto de carrera del listado de pilotos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+#drivers-context {
+  color: var(--muted);
+  font-size: 11px;
+  margin: 0;
+  line-height: 1.6;
+}
+/* Panel oscuro que agrupa búsqueda y clasificación de pilotos.
+ * Dónde cambiar: color/background/border = colores; overflow = recorte o desplazamiento. */
+.drivers-panel {
+  background: #191c22;
+  border: 1px solid #30343c;
+  border-radius: 7px;
+  overflow: hidden;
+}
+/* Fila de recuento y buscador del listado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.drivers-mode .list-toolbar {
+  margin: 0;
+  padding: 14px 18px;
+  border-bottom: 1px solid #30343c;
+  gap: 15px;
+}
+/* Fila de recuento y buscador del listado.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.drivers-mode .list-toolbar p {
+  margin: 0;
+  font-size: 11px;
+}
+/* Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.drivers-mode .search-label {
+  width: 270px;
+  flex-shrink: 0;
+}
+/* Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.drivers-mode .search-label input {
+  background: #111419;
+  color: #eef0f4;
+  border: 1px solid #373d46;
+  border-radius: 5px;
+  font-size: 12px;
+  padding: 10px 12px;
+  min-height: 40px;
+}
+/* Contenedor y campo del buscador de pilotos. Texto de ayuda dentro del buscador.
+ * Dónde cambiar: color/background/border = colores. */
+.drivers-mode .search-label input::placeholder {
+  color: #a2a6af;
+}
+/* Encabezados y alineación de las columnas de la clasificación.
+ * Dónde cambiar: grid-template-columns = columnas; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.drivers-mode .driver-column-head {
+  display: grid;
+  grid-template-columns: 48px 62px 58px minmax(0, 1fr) 76px 34px;
+  padding: 11px 18px;
+  background: #16191f;
+  border-bottom: 1px solid #30343c;
+  font-size: 9px;
+  letter-spacing: 0.7px;
+}
+/* Encabezados y alineación de las columnas de la clasificación. Solo afecta a la posición indicada dentro de su contenedor. */
+.drivers-mode .driver-column-head span:nth-child(4) {
+  padding-left: 100px;
+}
+/* Encabezados y alineación de las columnas de la clasificación. Solo afecta a la posición indicada dentro de su contenedor. */
+.drivers-mode .driver-column-head span:nth-child(5) {
+  text-align: right;
+}
+/* Contenedor de las filas de pilotos y separación entre ellas.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.drivers-mode .driver-list {
+  gap: 0;
+}
+/* Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.drivers-mode .driver-row,
+.drivers-mode .driver-row:nth-child(n) {
+  position: relative;
+  height: 76px;
+  padding: 0 18px;
+  background: #191c22;
+  color: #eef0f4;
+  border: 0;
+  border-bottom: 1px solid #2d3139;
+  border-radius: 0;
+  box-shadow: inset 3px 0 var(--team-color);
+}
+/* Fila pulsable que abre el perfil del piloto. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.drivers-mode .driver-row:hover {
+  background: #242830;
+  outline: 0;
+}
+/* Indicador de foco para navegación con teclado; conserva un contorno visible. */
+.drivers-mode .driver-row:focus-visible {
+  z-index: 1;
+  outline: 2px solid #b3be93;
+  outline-offset: -3px;
+}
+/* Posición de campeonato situada al inicio de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; color/background/border = colores. */
+.driver-rank {
+  width: 48px;
+  flex-shrink: 0;
+  font-size: 16px;
+  font-weight: 600;
+  font-variant-numeric: tabular-nums;
+  color: #e4e7ed;
+}
+/* Logo del equipo dentro de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.drivers-mode .driver-row .driver-logo {
+  display: block;
+  width: 62px;
+  flex-shrink: 0;
+  text-align: left;
+}
+/* Logo del equipo dentro de la fila del piloto. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.drivers-mode .driver-logo img {
+  width: 32px;
+  height: 27px;
+}
+/* Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.drivers-mode .driver-row .driver-number {
+  width: 58px;
+  text-align: left;
+  font:
+    600 21px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  color: var(--team-color);
+  letter-spacing: 0;
+}
+/* Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.drivers-mode .driver-row .portrait {
+  width: 80px;
+  height: 76px;
+  background: #22262d;
+  border-bottom: 3px solid var(--team-color);
+}
+/* Contenedor del retrato del piloto. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen. */
+.drivers-mode .portrait img {
+  object-fit: cover;
+  object-position: center top;
+}
+/* Contenedor del retrato del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.drivers-mode .portrait .initials {
+  color: var(--team-color);
+  font-size: 24px;
+  opacity: 0.9;
+}
+/* Contenedor del retrato del piloto. Decoración creada por CSS, sin elemento HTML adicional. */
+.drivers-mode .portrait.missing:after {
+  content: none;
+}
+/* Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.drivers-mode .driver-row .driver-info {
+  padding: 0 20px;
+}
+/* Nombre y equipo dentro de la fila del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.drivers-mode .driver-info strong {
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+/* Nombre y equipo dentro de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.drivers-mode .driver-info small {
+  font-size: 10px;
+  color: #b1b6c0;
+  opacity: 1;
+  margin-top: 5px;
+}
+/* Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+.drivers-mode .driver-row .driver-points {
+  width: 76px;
+  font:
+    600 18px Inter,
+    Arial,
+    sans-serif;
+  font-variant-numeric: tabular-nums;
+}
+/* Puntos de campeonato alineados al final de la fila del piloto. Etiqueta secundaria. */
+.drivers-mode .driver-points small {
+  display: none;
+}
+/* Flecha al final de filas de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.drivers-mode .row-arrow {
+  width: 34px;
+  text-align: right;
+  margin: 0;
+  color: #a4ac94;
+  font-size: 18px;
+}
+/* Nota inferior de la clasificación de pilotos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.drivers-footnote {
+  color: #a2a6af;
+  font-size: 10px;
+  line-height: 1.7;
+  padding: 12px 18px;
+  margin: 0;
+}
+/* Mensaje cuando faltan datos o no hay coincidencias.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.drivers-mode .empty {
+  padding: 25px 18px;
+  margin: 0;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 1050px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1050px) {
+  /* AJUSTE (max-width: 1050px): Selector de carrera; ancho máximo del nombre y fecha.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .catalog-mode #race {
+    max-width: 180px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 850px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 850px) {
+  /* AJUSTE (max-width: 850px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar {
+    position: static;
+    order: 0;
+    padding: 16px 0 0;
+    justify-content: space-between;
+  }
+  /* AJUSTE (max-width: 850px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar label:first-child {
+    font-size: 10px;
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 850px): Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar label:nth-child(2) {
+    font-size: 10px;
+    display: flex;
+    gap: 10px;
+    align-items: center;
+  }
+  /* AJUSTE (max-width: 850px): Selector de carrera; ancho máximo del nombre y fecha.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .catalog-mode #race {
+    max-width: 230px;
+  }
+  /* AJUSTE (max-width: 850px): Contenedor de la vista Drivers: posición y separación respecto a la cabecera. */
+  .drivers-mode #drivers {
+    padding-top: 23px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 600px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 600px) {
+  /* AJUSTE (max-width: 600px): Fila de recuento y buscador del listado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .drivers-mode .list-toolbar {
+    flex-direction: column;
+    align-items: stretch;
+    padding: 12px;
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .drivers-mode .search-label {
+    width: 100%;
+  }
+  /* AJUSTE (max-width: 600px): Fila de recuento y buscador del listado.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .drivers-mode .list-toolbar p {
+    width: auto;
+  }
+  /* AJUSTE (max-width: 600px): Encabezados y alineación de las columnas de la clasificación.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .drivers-mode .driver-column-head {
+    grid-template-columns: 30px 36px 32px minmax(0, 1fr) 40px;
+    padding: 10px 12px;
+  }
+  /* AJUSTE (max-width: 600px): Encabezados y alineación de las columnas de la clasificación. Solo afecta a la posición indicada dentro de su contenedor. */
+  .drivers-mode .driver-column-head span:nth-child(4) {
+    padding-left: 0;
+  }
+  /* AJUSTE (max-width: 600px): Encabezados y alineación de las columnas de la clasificación. */
+  .drivers-mode .driver-column-head span:last-child {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .drivers-mode .driver-row,
+  .drivers-mode .driver-row:nth-child(n) {
+    padding: 0 12px;
+    height: 72px;
+  }
+  /* AJUSTE (max-width: 600px): Posición de campeonato situada al inicio de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .driver-rank {
+    width: 30px;
+    font-size: 13px;
+  }
+  /* AJUSTE (max-width: 600px): Logo del equipo dentro de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .drivers-mode .driver-row .driver-logo {
+    width: 36px;
+  }
+  /* AJUSTE (max-width: 600px): Logo del equipo dentro de la fila del piloto. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .drivers-mode .driver-logo img {
+    width: 25px;
+    height: 25px;
+  }
+  /* AJUSTE (max-width: 600px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .drivers-mode .driver-row .driver-number {
+    width: 32px;
+    font-size: 18px;
+  }
+  /* AJUSTE (max-width: 600px): Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .drivers-mode .driver-row .portrait {
+    width: 42px;
+    height: 53px;
+    flex-shrink: 0;
+    border-bottom-width: 2px;
+    border-radius: 3px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .drivers-mode .driver-row .driver-info {
+    padding: 0 8px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .drivers-mode .driver-info strong {
+    font-size: 11px;
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .drivers-mode .driver-info small {
+    font-size: 9px;
+    margin-top: 3px;
+  }
+  /* AJUSTE (max-width: 600px): Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .drivers-mode .driver-row .driver-points {
+    width: 40px;
+    font-size: 14px;
+  }
+  /* AJUSTE (max-width: 600px): Flecha al final de filas de pilotos. */
+  .drivers-mode .row-arrow {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar {
+    gap: 8px;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar label:first-child {
+    gap: 6px;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .catalog-mode .session-toolbar label:nth-child(2) {
+    font-size: 0;
+    gap: 0;
+  }
+  /* AJUSTE (max-width: 600px): Selector de carrera; ancho máximo del nombre y fecha.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .catalog-mode #race {
+    max-width: 205px;
+    min-width: 0;
+    font-size: 11px;
+  }
+  /* AJUSTE (max-width: 600px): Título principal de la vista; también se reutiliza en Teams y Race Analysis. */
+  .drivers-heading {
+    margin-bottom: 18px;
+  }
+}

@@ -1,0 +1,473 @@
+/* GUÍA DEL ARCHIVO: ESTRUCTURA BASE. Navegación, controles y espaciado comunes. El portal oscuro de home.css y los archivos de cada vista reemplazan estas reglas cuando corresponde. */
+/* Estructura, barra lateral, cabecera, filtros compartidos y navegación. */
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.sidebar {
+  position: fixed;
+  inset: 0 auto 0 0;
+  width: 220px;
+  background: #fff;
+  border-right: 1px solid #aeb1a6;
+  display: flex;
+  flex-direction: column;
+  z-index: 10;
+}
+
+/* Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.brand {
+  height: 83px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 0 27px;
+  font:
+    italic 800 36px/0.9 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -1px;
+  color: var(--burgundy);
+  border-bottom: 1px solid var(--line);
+}
+
+/* Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.brand span {
+  font:
+    500 9px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: 3.5px;
+  color: var(--muted);
+  margin-top: 7px;
+  text-transform: uppercase;
+}
+
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.sidebar nav {
+  padding: 27px 0;
+}
+
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.sidebar nav a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  min-height: 54px;
+  padding: 0 25px;
+  color: #62675e;
+  border-left: 4px solid transparent;
+  font-weight: 600;
+}
+
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.sidebar nav a:hover {
+  background: #f6f6f2;
+}
+
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Apariencia de la opción activa.
+ * Dónde cambiar: color/background/border = colores. */
+.sidebar nav a.active {
+  color: var(--burgundy);
+  background: #f4e9ed;
+  border-color: var(--burgundy);
+}
+
+/* Iconos de navegación del diseño base.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+.nav-icon {
+  width: 21px;
+  font: 25px Arial;
+  font-weight: 400;
+  text-align: center;
+}
+
+/* Nota de datos de OpenF1 en la navegación base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.sidebar-bottom {
+  margin-top: auto;
+  padding: 25px;
+  font-size: 10px;
+  font-weight: 800;
+  color: var(--military);
+  letter-spacing: 0.6px;
+}
+
+/* Nota de datos de OpenF1 en la navegación base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.sidebar-bottom p {
+  font-size: 11px;
+  font-weight: 400;
+  color: var(--muted);
+  letter-spacing: 0;
+}
+
+/* Punto de color que acompaña a la procedencia de datos.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.source-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  background: var(--military);
+  border-radius: 50%;
+  margin-right: 7px;
+}
+
+/* Texto inferior de la navegación base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.sidebar-footer {
+  border-top: 1px solid var(--line);
+  padding: 18px 20px;
+  font-size: 8px;
+  line-height: 1.6;
+  color: var(--muted);
+  letter-spacing: 0.7px;
+}
+
+/* Contenedor global de la aplicación y margen respecto a la navegación. */
+.app-shell {
+  margin-left: 220px;
+}
+
+/* Cabecera base con el título de la página; se oculta en el portal horizontal.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.topbar {
+  height: 83px;
+  background: #fff;
+  border-bottom: 1px solid #aeb1a6;
+  padding: 0 35px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+/* Cabecera base con el título de la página; se oculta en el portal horizontal. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.topbar h1 {
+  font:
+    italic 800 22px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -0.6px;
+  margin: 0;
+}
+
+/* Texto secundario de la cabecera base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.topbar-label {
+  font-size: 9px;
+  letter-spacing: 1.5px;
+  color: var(--military);
+  font-weight: 700;
+}
+
+/* Ancho máximo, márgenes y relleno del contenido principal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+main {
+  padding: 24px 35px 40px;
+  max-width: 1680px;
+  margin: auto;
+  min-height: calc(100vh - 144px);
+}
+
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.session-toolbar {
+  display: flex;
+  align-items: end;
+  gap: 18px;
+  padding: 0 0 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Etiquetas de los controles de formulario.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+label {
+  display: block;
+  font-size: 10px;
+  font-weight: 600;
+  color: var(--muted);
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+}
+
+/* Aspecto y tamaño de los selectores.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+select,
+input {
+  display: block;
+  background: #fff;
+  color: var(--ink);
+  border: 1px solid #c1c4b9;
+  border-radius: 3px;
+  padding: 10px 12px;
+  font-size: 12px;
+  margin-top: 6px;
+}
+
+/* Aspecto y tamaño de los selectores.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+select {
+  min-width: 105px;
+  width: 100%;
+  cursor: pointer;
+}
+
+/* Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor. */
+.session-toolbar label:nth-child(2) {
+  min-width: 270px;
+}
+
+/* Etiqueta de datos históricos junto a los selectores.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.historical-label {
+  margin-left: auto;
+  font-size: 9px;
+  color: var(--military);
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding-bottom: 13px;
+}
+
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.source-status {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-size: 10px;
+  color: var(--muted);
+  min-height: 50px;
+}
+
+/* Estado global de carga, botón de reintento y enlace a OpenF1. */
+.source-status p {
+  flex: 1;
+  line-height: 1.6;
+}
+
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: color/background/border = colores. */
+.source-status a {
+  white-space: nowrap;
+  color: var(--burgundy);
+  font-weight: 600;
+}
+
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.source-status .reset {
+  padding: 5px 10px;
+  font-size: 10px;
+}
+
+/* Estado visual de un error de consulta.
+ * Dónde cambiar: color/background/border = colores. */
+.error {
+  color: var(--burgundy);
+}
+
+/* Botón de restablecer filtros, reintentar o descargar datos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.reset {
+  background: #fff;
+  color: var(--burgundy);
+  border: 1px solid #b5b9ac;
+  border-radius: 3px;
+  padding: 10px 14px;
+  font-size: 11px;
+  font-weight: 600;
+}
+
+/* Botón de restablecer filtros, reintentar o descargar datos. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.reset:hover {
+  border-color: var(--burgundy);
+  background: #f8f0f2;
+}
+
+/* Encabezado base de título y etiqueta de sección.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.page-heading {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  flex-wrap: wrap;
+  margin: 22px 0 22px;
+}
+
+/* Tamaño y espaciado de títulos de segundo nivel.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+h2 {
+  font:
+    italic 800 clamp(27px, 3vw, 43px)/1 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: -0.5px;
+  margin: 0;
+}
+
+/* Etiqueta breve junto a un título de sección.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.badge {
+  color: var(--military);
+  background: var(--pale);
+  border: 1px solid #b5beaa;
+  padding: 7px 9px;
+  font-size: 8px;
+  letter-spacing: 1px;
+  font-weight: 700;
+}
+
+/* Título y contexto de una sección compartida.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+.section-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+  margin: 25px 0 14px;
+}
+
+/* Título y contexto de una sección compartida. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.section-heading h3 {
+  font:
+    800 20px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -0.7px;
+  margin: 0;
+}
+
+/* Título y contexto de una sección compartida.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.section-heading > span,
+.section-heading > a {
+  font-size: 10px;
+  color: var(--muted);
+}
+
+/* Título y contexto de una sección compartida.
+ * Dónde cambiar: color/background/border = colores. */
+.section-heading > a {
+  color: var(--burgundy);
+}
+
+/* Fila de recuento y buscador del listado.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+.list-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 20px;
+  margin: 0 0 18px;
+}
+
+/* Descripción breve bajo el título de una sección.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.list-toolbar p,
+.section-subtitle {
+  font-size: 11px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.search-label {
+  width: 250px;
+}
+
+/* Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.search-label input {
+  width: 100%;
+  margin: 0;
+}
+
+/* Encabezados y alineación de las columnas de la clasificación.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.driver-column-head {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  color: var(--muted);
+  letter-spacing: 1px;
+  padding: 0 20px 12px;
+}
+
+/* Contenedor de las filas de pilotos y separación entre ellas.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.driver-list {
+  display: flex;
+  flex-direction: column;
+  gap: 13px;
+}
+
+/* Botón de acción principal.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.primary-button {
+  background: var(--burgundy);
+  color: #fff;
+  padding: 12px 20px;
+  font-size: 11px;
+  border: 1px solid var(--burgundy);
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Botón de acción secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.secondary-button {
+  background: white;
+  color: var(--military);
+  padding: 12px 20px;
+  font-size: 11px;
+  border: 1px solid #b2b8a9;
+  border-radius: 2px;
+  font-weight: 600;
+}
+
+/* Mensaje cuando faltan datos o no hay coincidencias.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.empty {
+  font-size: 12px;
+  color: var(--muted);
+  padding: 30px 0;
+}
+
+/* Texto disponible para lectores de pantalla y oculto visualmente.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; overflow = recorte o desplazamiento. */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+footer {
+  padding: 19px 35px;
+  border-top: 1px solid var(--line);
+  font-size: 9px;
+  color: var(--muted);
+  display: flex;
+  gap: 20px;
+  justify-content: space-between;
+}
+
+/* Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: color/background/border = colores. */
+footer a {
+  color: var(--military);
+}

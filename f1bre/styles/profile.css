@@ -1,0 +1,667 @@
+/* GUÍA DEL ARCHIVO: PERFILES COMPARTIDOS + DETALLE DE EQUIPO. .profile-mode aplica a equipos y pilotos. .team-detail-* corresponde al equipo. El perfil editorial del piloto se completa en driver-profile.css. */
+/* Team profile / dark F1BRE redesign. Existing driver-profile rules retained. */
+/* Contenedor de la vista de perfil dentro del portal. */
+.profile-mode #profile {
+  order: 1;
+}
+/* Enlace para volver al listado; --driver-color recibe el color del piloto desde JavaScript.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .back-link {
+  color: var(--driver-color, #00d2be);
+  margin: 22px 0 17px;
+}
+/* Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .profile-hero {
+  grid-template-columns: minmax(0, 1fr) 240px;
+  min-height: 190px;
+  background: #191c22;
+  color: #eef0f4;
+  border: 1px solid #30343c;
+  border-top: 3px solid var(--team-color);
+  border-radius: 7px;
+}
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .profile-main {
+  padding: 27px;
+}
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .profile-main .eyebrow {
+  color: #b6bea3;
+  font-size: 10px;
+  letter-spacing: 1px;
+}
+/* Bloque de nombre y contexto en la cabecera base del perfil. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.profile-mode .profile-main h2 {
+  font:
+    500 clamp(30px, 4vw, 50px)/1.1 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -1px;
+  margin: 14px 0 12px;
+  overflow-wrap: anywhere;
+}
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .profile-main p {
+  color: #bbc0ca;
+  opacity: 1;
+  font-size: 11px;
+  line-height: 1.7;
+  margin: 5px 0;
+}
+/* Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .profile-main .team-profile-context {
+  font-size: 10px;
+  color: #a2a6af;
+}
+/* Franja que contiene el logo del equipo.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .profile-hero .team-brand-slot {
+  padding: 25px;
+  background: #15181e;
+  border-left: 1px solid #30343c;
+}
+/* Franja que contiene el logo del equipo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.profile-mode .profile-hero .team-brand-slot img {
+  max-width: 150px;
+  max-height: 85px;
+}
+/* Nombre alternativo que se ve cuando falta el logo local.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .team-monogram {
+  color: #bfc4ce;
+  text-align: center;
+  font-size: 18px;
+}
+/* Botones para ir al análisis o al equipo desde un perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .profile-actions {
+  margin: 16px 0;
+}
+/* Botón de acción principal.
+ * Dónde cambiar: gap/padding/margin = separaciones; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .primary-button {
+  background: #172f2e;
+  color: #f5ffff;
+  border: 1px solid var(--team-color, #00d2be);
+  border-radius: 5px;
+  padding: 11px 16px;
+  cursor: pointer;
+}
+/* Botón de acción principal. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .primary-button:hover {
+  background: #24514b;
+}
+/* Distribución de las métricas del perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .profile-stat-grid {
+  gap: 12px;
+}
+/* Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .summary-card {
+  background: #101b24;
+  border: 1px solid #30404c;
+  border-radius: 6px;
+  padding: 16px;
+  min-width: 0;
+}
+/* Tarjeta de resumen: etiqueta, valor y contexto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .summary-card small {
+  color: #aeb4be;
+  font-size: 9px;
+  text-transform: uppercase;
+}
+/* Tarjeta de resumen: etiqueta, valor y contexto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .summary-card strong {
+  font:
+    600 25px Inter,
+    Arial,
+    sans-serif;
+  font-variant-numeric: tabular-nums;
+  margin: 12px 0 8px;
+  color: #f5f7fb;
+}
+/* Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .summary-card span {
+  color: #a2a6af;
+}
+/* Aclaración sobre la carrera y la disponibilidad de datos del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .profile-note {
+  font-size: 10px;
+  margin: 15px 0 20px;
+  color: #9ba7b5;
+}
+/* Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .driver-row,
+.profile-mode .driver-row:nth-child(n) {
+  background: #0d1821;
+  color: #eef0f4;
+  border: 1px solid #30404c;
+  border-left: 4px solid var(--team-color);
+  border-radius: 5px;
+  height: 104px;
+  padding: 0 12px;
+}
+/* Fila pulsable que abre el perfil del piloto. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .driver-row:hover {
+  background: #1b2a34;
+  outline: 0;
+}
+/* Logo del equipo dentro de la fila del piloto. */
+.profile-mode .driver-logo {
+  display: none;
+}
+/* Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .driver-row .driver-number {
+  width: 54px;
+  font-size: 34px;
+  color: var(--team-color);
+}
+/* Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.profile-mode .driver-row .portrait {
+  width: 84px;
+  height: 102px;
+}
+/* Contenedor del retrato del piloto. Imagen: tamaño y encuadre dentro de ese bloque. */
+.profile-mode .portrait img {
+  object-position: center top;
+}
+/* Contenedor del retrato del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .portrait .initials {
+  color: var(--team-color);
+  opacity: 0.85;
+  font-size: 25px;
+}
+/* Contenedor del retrato del piloto. Decoración creada por CSS, sin elemento HTML adicional. */
+.profile-mode .portrait.missing:after {
+  content: none;
+}
+/* Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .driver-row .driver-info {
+  padding: 0 14px;
+}
+/* Nombre y equipo dentro de la fila del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.profile-mode .driver-info strong {
+  font-size: 13px;
+}
+/* Nombre y equipo dentro de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .driver-info small {
+  font-size: 10px;
+  color: #aeb4be;
+  opacity: 1;
+}
+/* Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.profile-mode .driver-row .driver-points {
+  font:
+    600 20px Inter,
+    Arial,
+    sans-serif;
+}
+/* Flecha al final de filas de pilotos.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .row-arrow {
+  margin-left: 15px;
+  color: var(--team-color);
+}
+/* Contenedor y variables visuales del detalle de equipo.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .team-detail {
+  --panel: #0d1821;
+  --line: #30404c;
+  color: #eef3f7;
+}
+/* Cabecera del equipo: nombre, temporada y logo.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+.profile-mode .team-detail-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  margin: 10px 0 22px;
+}
+/* Cabecera del equipo: nombre, temporada y logo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .team-detail-header .eyebrow {
+  color: var(--team-color);
+  font-size: 10px;
+  letter-spacing: 1.6px;
+}
+/* Cabecera del equipo: nombre, temporada y logo. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.profile-mode .team-detail-header h2 {
+  margin: 8px 0 0;
+  font:
+    750 clamp(32px, 4vw, 54px)/1.08 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -1.5px;
+  overflow-wrap: anywhere;
+}
+/* Temporada que aparece bajo el nombre del equipo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .team-detail-year {
+  color: #8795a3;
+  font-size: 24px;
+  margin: 6px 0 0;
+}
+/* Logo y nombre alternativo del equipo en su cabecera.
+ * Dónde cambiar: justify-content = alineación del contenido. */
+.profile-mode .team-detail-brand {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  min-width: 170px;
+}
+/* Logo y nombre alternativo del equipo en su cabecera. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.profile-mode .team-detail-brand img {
+  display: block;
+  max-width: 220px;
+  max-height: 92px;
+  object-fit: contain;
+}
+/* Logo y nombre alternativo del equipo en su cabecera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .team-detail-brand .team-monogram {
+  color: #bfc4ce;
+  font-size: 14px;
+}
+/* Distribución del detalle de equipo: coche, columna central e histórico.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.profile-mode .team-detail-layout {
+  display: grid;
+  grid-template-columns: minmax(220px, 0.65fr) minmax(0, 1.45fr) minmax(250px, 0.95fr);
+  gap: 18px;
+  align-items: stretch;
+}
+/* Panel de información dentro del detalle de equipo.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .team-detail-panel,
+.profile-mode .team-detail-car {
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  min-width: 0;
+}
+/* Panel de información dentro del detalle de equipo.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .team-detail-panel {
+  padding: 20px;
+}
+/* Panel de información dentro del detalle de equipo. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .team-detail-panel h3,
+.profile-mode .team-detail-race h3 {
+  font:
+    700 16px Inter,
+    Arial,
+    sans-serif;
+  text-transform: uppercase;
+  color: #f1f5f9;
+  margin: 0 0 18px;
+}
+/* Columna central que agrupa pilotos y especificaciones.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .team-detail-center {
+  display: grid;
+  grid-template-rows: auto 1fr;
+  gap: 18px;
+  min-width: 0;
+}
+/* Listado de pilotos dentro del detalle de equipo.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .team-detail-drivers .driver-list {
+  display: grid;
+  gap: 12px;
+}
+/* Contenedor de la fotografía del coche.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; gap/padding/margin = separaciones; overflow = recorte o desplazamiento. */
+.profile-mode .team-detail-car {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 18px;
+  min-height: 540px;
+  overflow: hidden;
+}
+/* Contenedor de la fotografía del coche. Decoración creada por CSS, sin elemento HTML adicional.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .team-detail-car::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at 50% 40%,
+    color-mix(in srgb, var(--team-color) 12%, transparent),
+    transparent 65%
+  );
+  pointer-events: none;
+}
+/* Contenedor de la fotografía del coche. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.profile-mode .team-detail-car img {
+  position: relative;
+  display: block;
+  width: 100%;
+  max-width: 310px;
+  max-height: 620px;
+  height: 100%;
+  object-fit: contain;
+  z-index: 1;
+}
+/* Texto alternativo cuando no está disponible la imagen del coche.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .car-fallback {
+  display: none;
+  color: #aab5c1;
+  font-size: 12px;
+}
+/* Contenedor de la fotografía del coche. Imagen: tamaño y encuadre dentro de ese bloque. */
+.profile-mode .team-detail-car img:not([src]),
+.profile-mode .team-detail-car img[src=''] {
+  display: none;
+}
+/* Contenedor de la fotografía del coche. Imagen: tamaño y encuadre dentro de ese bloque. */
+.profile-mode .team-detail-car img:not([src]) + .car-fallback,
+.profile-mode .team-detail-car img[src=''] + .car-fallback {
+  display: block;
+}
+/* Panel de información dentro del detalle de equipo.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.profile-mode .team-detail-panel dl {
+  margin: 0;
+}
+/* Panel de información dentro del detalle de equipo.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.profile-mode .team-detail-panel dl > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  gap: 12px;
+  padding: 12px 0;
+  border-top: 1px solid #253540;
+}
+/* Panel de información dentro del detalle de equipo. Nombre de cada dato.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .team-detail-panel dt {
+  color: #aeb9c6;
+}
+/* Panel de información dentro del detalle de equipo. Valor de cada dato.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .team-detail-panel dd {
+  margin: 0;
+  color: #f0f4f7;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+/* Ficha de registros históricos verificados del equipo.
+ * Dónde cambiar: grid-template-columns = columnas. */
+.profile-mode .team-detail-legacy dl > div {
+  grid-template-columns: minmax(0, 1fr) 60px;
+}
+/* Ficha de registros históricos verificados del equipo. Valor de cada dato.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.profile-mode .team-detail-legacy dd {
+  text-align: right;
+  font-size: 18px;
+}
+/* Aclaración sobre los registros históricos del equipo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .legacy-note {
+  color: #7f8e9d;
+  font-size: 11px;
+  line-height: 1.5;
+  margin-top: 20px;
+}
+/* Métricas del equipo en la carrera seleccionada.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .team-detail-race {
+  margin-top: 18px;
+  padding: 22px;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 8px;
+}
+/* Métricas del equipo en la carrera seleccionada.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .team-detail-race h3 span {
+  color: #a7b4c1;
+  font-weight: 400;
+}
+/* Distribución de las métricas del perfil.
+ * Dónde cambiar: grid-template-columns = columnas. */
+.profile-mode .team-detail-race .profile-stat-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+/* Acciones del equipo para abrir el análisis de la carrera.
+ * Dónde cambiar: justify-content = alineación del contenido. */
+.profile-mode .team-detail-race-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 1100px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1100px) {
+  /* AJUSTE (max-width: 1100px): Distribución del detalle de equipo: coche, columna central e histórico.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .profile-mode .team-detail-layout {
+    grid-template-columns: minmax(200px, 0.8fr) minmax(0, 1.5fr);
+  }
+  /* AJUSTE (max-width: 1100px): Ficha de registros históricos verificados del equipo. */
+  .profile-mode .team-detail-legacy {
+    grid-column: 1 / -1;
+  }
+  /* AJUSTE (max-width: 1100px): Contenedor de la fotografía del coche.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .team-detail-car {
+    min-height: 480px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 700px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 700px) {
+  /* AJUSTE (max-width: 700px): Cabecera del equipo: nombre, temporada y logo. */
+  .profile-mode .team-detail-header {
+    align-items: flex-start;
+  }
+  /* AJUSTE (max-width: 700px): Logo y nombre alternativo del equipo en su cabecera. */
+  .profile-mode .team-detail-brand {
+    min-width: 75px;
+  }
+  /* AJUSTE (max-width: 700px): Logo y nombre alternativo del equipo en su cabecera. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .team-detail-brand img {
+    max-width: 100px;
+    max-height: 60px;
+  }
+  /* AJUSTE (max-width: 700px): Distribución del detalle de equipo: coche, columna central e histórico.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .profile-mode .team-detail-layout {
+    grid-template-columns: 1fr;
+  }
+  /* AJUSTE (max-width: 700px): Contenedor de la fotografía del coche.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .team-detail-car {
+    min-height: 300px;
+    max-height: 440px;
+  }
+  /* AJUSTE (max-width: 700px): Contenedor de la fotografía del coche. Imagen: tamaño y encuadre dentro de ese bloque. */
+  .profile-mode .team-detail-car img {
+    max-height: 410px;
+  }
+  /* AJUSTE (max-width: 700px): Ficha de registros históricos verificados del equipo. */
+  .profile-mode .team-detail-legacy {
+    grid-column: auto;
+  }
+  /* AJUSTE (max-width: 700px): Distribución de las métricas del perfil.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .profile-mode .team-detail-race .profile-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+  /* AJUSTE (max-width: 700px): Métricas del equipo en la carrera seleccionada.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-mode .team-detail-race {
+    padding: 14px;
+  }
+  /* AJUSTE (max-width: 700px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .profile-mode .driver-row .driver-number {
+    width: 36px;
+    font-size: 25px;
+  }
+  /* AJUSTE (max-width: 700px): Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .driver-row .portrait {
+    width: 52px;
+    height: 82px;
+  }
+  /* AJUSTE (max-width: 700px): Fila pulsable que abre el perfil del piloto. Solo afecta a la posición indicada dentro de su contenedor.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .profile-mode .driver-row,
+  .profile-mode .driver-row:nth-child(n) {
+    height: 84px;
+    padding: 0 8px;
+  }
+  /* AJUSTE (max-width: 700px): Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-mode .driver-row .driver-info {
+    padding: 0 8px;
+  }
+  /* AJUSTE (max-width: 700px): Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-mode .driver-row .driver-points {
+    font-size: 17px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 600px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 600px) {
+  /* AJUSTE (max-width: 600px): Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño. */
+  .profile-mode .profile-hero {
+    grid-template-columns: minmax(0, 1fr) 100px;
+    min-height: 170px;
+  }
+  /* AJUSTE (max-width: 600px): Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-mode .profile-main {
+    padding: 18px 14px;
+  }
+  /* AJUSTE (max-width: 600px): Bloque de nombre y contexto en la cabecera base del perfil. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-mode .profile-main h2 {
+    font-size: 29px;
+  }
+  /* AJUSTE (max-width: 600px): Franja que contiene el logo del equipo.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-mode .profile-hero .team-brand-slot {
+    padding: 12px;
+  }
+  /* AJUSTE (max-width: 600px): Franja que contiene el logo del equipo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .profile-hero .team-brand-slot img {
+    max-width: 75px;
+    max-height: 60px;
+  }
+  /* AJUSTE (max-width: 600px): Distribución de las métricas del perfil.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .profile-mode .profile-stat-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-mode .summary-card {
+    padding: 13px;
+  }
+  /* AJUSTE (max-width: 600px): Tarjeta de resumen: etiqueta, valor y contexto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-mode .summary-card strong {
+    font-size: 22px;
+  }
+}
+
+/* Elementos exclusivos del perfil de piloto. */
+/* Estado alternativo cuando la imagen o el elemento está oculto. */
+.profile-mode .team-detail-car img[hidden] + .car-fallback {
+  display: block;
+}
+/* Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.profile-mode .profile-hero > .portrait {
+  min-height: 190px;
+  background: #15181e;
+}
+/* Cabecera base del perfil con identidad e imagen. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen. */
+.profile-mode .profile-hero > .portrait img {
+  object-fit: contain;
+  object-position: center top;
+}
+/* Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.profile-mode .profile-main > .driver-number {
+  color: var(--team-color);
+  opacity: 1;
+}
+/* Superficie base de un panel de información.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.profile-mode .panel {
+  background: #191c22;
+  border: 1px solid #30343c;
+  border-radius: 6px;
+  padding: 17px;
+}
+/* Superficie base de un panel de información. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.profile-mode .panel h3 {
+  color: #eef0f4;
+  font-size: 14px;
+  font-weight: 600;
+}
+/* Botón de acción secundaria.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .secondary-button {
+  background: #1b2027;
+  border: 1px solid #414854;
+  color: #d2d8c6;
+  border-radius: 4px;
+}
+/* Botón de acción secundaria. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.profile-mode .secondary-button:hover {
+  background: #2a3039;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 600px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 600px) {
+  /* AJUSTE (max-width: 600px): Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-mode .profile-hero > .portrait {
+    min-height: 170px;
+  }
+  /* AJUSTE (max-width: 600px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-mode .profile-main > .driver-number {
+    font-size: 30px;
+  }
+}

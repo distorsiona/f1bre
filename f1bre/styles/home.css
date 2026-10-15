@@ -1,0 +1,1199 @@
+/* GUÍA DEL ARCHIVO: PORTAL OSCURO + HOME. Las reglas .portal-mode son compartidas por todas las pantallas. Las reglas .home-* y #home-* corresponden al inicio. Al final están los ajustes por ancho. */
+/* Superficies y navegación compartidas por Home, Drivers y Teams; contenido deportivo de Home. */
+/* Paleta oscura de todo el portal: cambia aquí --bg, --ink, --muted y --line.
+ * Dónde cambiar: color/background/border = colores. */
+body.portal-mode {
+  --ink: #eef0f4;
+  --muted: #a2a6af;
+  --bg: #101216;
+  --line: #30343c;
+  color-scheme: dark;
+  background: var(--bg);
+  color: var(--ink);
+}
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode .sidebar {
+  position: relative;
+  top: 0;
+  width: 100%;
+  height: 74px;
+  flex-direction: row;
+  align-items: center;
+  padding: 0 34px;
+  background: #191c22;
+  border: 0;
+  border-bottom: 1px solid #30333a;
+  gap: 60px;
+  z-index: 20;
+}
+/* Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode .brand {
+  height: auto;
+  border: 0;
+  padding: 0;
+  flex-direction: row;
+  align-items: baseline;
+  gap: 7px;
+  font-size: 31px;
+  line-height: 1;
+  color: #e0d2d6;
+}
+/* Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode .brand span {
+  display: block;
+  font-size: 10px;
+  letter-spacing: 1px;
+  color: #c0c4ca;
+  margin: 0;
+}
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.portal-mode .sidebar nav {
+  display: flex;
+  padding: 0;
+  gap: 25px;
+  height: 100%;
+}
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode .sidebar nav a {
+  position: relative;
+  font-weight: 400;
+  font-size: 12px;
+  padding: 0;
+  border: 0;
+  min-height: 0;
+  color: #b8bbc2;
+  background: transparent;
+}
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Apariencia de la opción activa.
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .sidebar nav a.active {
+  color: #fff;
+}
+/* Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Apariencia de la opción activa. Decoración creada por CSS, sin elemento HTML adicional.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.portal-mode .sidebar nav a.active:after {
+  content: '';
+  position: absolute;
+  bottom: 19px;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: #a5536c;
+}
+/* Nota de datos de OpenF1 en la navegación base. */
+.portal-mode .nav-icon,
+.portal-mode .sidebar-bottom,
+.portal-mode .sidebar-footer,
+.portal-mode .topbar {
+  display: none;
+}
+/* Contenedor global de la aplicación y margen respecto a la navegación.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.portal-mode .app-shell {
+  margin: 0;
+  padding: 0;
+}
+/* Ancho máximo, márgenes y relleno del contenido principal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.portal-mode main {
+  padding: 0 34px 24px;
+  max-width: 1500px;
+  display: flex;
+  flex-direction: column;
+  min-height: calc(100vh - 125px);
+}
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.portal-mode .session-toolbar {
+  position: absolute;
+  top: 17px;
+  right: 34px;
+  z-index: 21;
+  padding: 0;
+  border: 0;
+  display: block;
+}
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.portal-mode .session-toolbar label {
+  font-size: 0;
+  letter-spacing: 0;
+}
+/* Etiqueta de datos históricos junto a los selectores. Solo afecta a la posición indicada dentro de su contenedor. */
+.portal-mode .session-toolbar label:nth-child(2),
+.portal-mode .historical-label {
+  display: none;
+}
+/* Controles compartidos de temporada y carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode .session-toolbar select {
+  min-width: 85px;
+  margin: 0;
+  padding: 8px 10px;
+  background: #171a20;
+  color: #eee;
+  border-color: #353943;
+  font-size: 12px;
+}
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.portal-mode .source-status {
+  order: 2;
+  font-size: 9px;
+  min-height: 35px;
+  gap: 14px;
+  border-top: 1px solid #2c3037;
+  margin-top: 18px;
+  padding-top: 5px;
+}
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .source-status .reset {
+  background: #1c2027;
+  color: #c2c5cd;
+  border-color: #383d47;
+}
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .source-status a {
+  color: #c4c7b0;
+}
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .source-status .error {
+  color: #c68b9e;
+}
+/* Contenedor de Home y margen al desplazarse hasta la sección. */
+.portal-mode #home {
+  order: 1;
+  scroll-margin-top: 74px;
+}
+/* Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.portal-mode footer {
+  border-color: #2b2f36;
+  background: #101216;
+  color: #9ca1ac;
+  font-size: 9px;
+  padding: 15px 34px;
+}
+/* Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode footer a {
+  color: #b9bea3;
+}
+/* Cabecera de Home con información del Gran Premio e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño. */
+.home-race-hero {
+  position: relative;
+  min-height: 223px;
+  display: grid;
+  grid-template-columns: 1.15fr 1fr;
+  isolation: isolate;
+}
+/* Columna de texto del Gran Premio seleccionado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.home-race-copy {
+  position: relative;
+  z-index: 2;
+  padding: 35px 0 28px;
+  align-self: center;
+}
+/* Línea de temporada y circuito sobre el nombre del Gran Premio.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+#home-race-context {
+  font-size: 12px;
+  letter-spacing: 0.6px;
+  color: #acb0b8;
+  margin: 0 0 9px;
+}
+/* Nombre grande del Gran Premio; cambia font-size o clamp para ajustar su tamaño.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+#home-race-title {
+  font:
+    500 clamp(36px, 4vw, 62px)/1.03 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -2px;
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+/* Fecha de la carrera debajo del título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+#home-race-date {
+  font-size: 10px;
+  color: #969ca6;
+  margin: 0 0 16px;
+}
+/* Grupo de etiquetas de ganador, clima y estado de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.home-race-meta {
+  display: flex;
+  gap: 7px;
+  flex-wrap: wrap;
+  align-items: center;
+}
+/* Etiqueta compacta de contexto de carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-meta-chip {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  min-height: 29px;
+  padding: 6px 10px;
+  border: 1px solid #333740;
+  border-radius: 5px;
+  background: #20232b;
+  color: #c5c9d1;
+  font:
+    11px Inter,
+    Arial,
+    sans-serif;
+}
+/* Etiqueta compacta de contexto de carrera. Texto destacado o título.
+ * Dónde cambiar: color/background/border = colores. */
+.home-meta-chip strong {
+  font-weight: 600;
+  color: #f0f1f3;
+}
+/* Etiqueta compacta de contexto de carrera.
+ * Dónde cambiar: color/background/border = colores. */
+.home-meta-chip > span:first-child {
+  color: #b0b5bf;
+}
+/* Indicador del ganador y acento de su equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.winner-chip i {
+  width: 7px;
+  height: 7px;
+  background: var(--team-color);
+  border-radius: 50%;
+}
+/* Separador vertical entre datos de una etiqueta.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.chip-divider {
+  height: 13px;
+  width: 1px;
+  background: #42464e;
+}
+/* Etiqueta de carrera completada con acento verde militar.
+ * Dónde cambiar: color/background/border = colores. */
+.completed-chip {
+  color: #bac5a5;
+  background: #293020;
+  border-color: #414a35;
+}
+/* Marco de la fotografía del Gran Premio.
+ * Dónde cambiar: color/background/border = colores; overflow = recorte o desplazamiento. */
+.home-race-visual {
+  position: relative;
+  overflow: hidden;
+  align-self: stretch;
+  background: #171b20;
+  margin-left: 18px;
+  border-bottom: 1px solid #30353c;
+}
+/* Fotografía local del circuito o carrera de Home.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+#home-race-photo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  position: absolute;
+  inset: 0;
+}
+/* Estado alternativo cuando falta la fotografía de la carrera.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+#home-photo-placeholder {
+  height: 100%;
+  min-height: 200px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  text-align: center;
+  color: #747b84;
+  border: 1px dashed #363b44;
+  border-top: 0;
+}
+/* Estado alternativo cuando falta la fotografía de la carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+#home-photo-placeholder span {
+  font-size: 8px;
+  letter-spacing: 2px;
+  margin-bottom: 15px;
+  color: #858e99;
+}
+/* Estado alternativo cuando falta la fotografía de la carrera. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+#home-photo-placeholder strong {
+  font:
+    600 23px 'Barlow Condensed',
+    Arial,
+    sans-serif;
+  letter-spacing: 1px;
+  color: #9ba28d;
+}
+/* Estado alternativo cuando falta la fotografía de la carrera. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+#home-photo-placeholder small {
+  font-size: 10px;
+  margin-top: 9px;
+  color: #737b86;
+}
+/* Franja del carrusel y botones para desplazarse entre carreras.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.home-calendar {
+  display: flex;
+  align-items: stretch;
+  gap: 7px;
+  margin: 0 0 19px;
+  padding: 0 0 15px;
+  border-bottom: 1px solid #2b3038;
+}
+/* Franja del carrusel y botones para desplazarse entre carreras.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-calendar > button {
+  width: 22px;
+  flex-shrink: 0;
+  border: 1px solid #30343c;
+  border-radius: 5px;
+  background: #20232a;
+  color: #d2d5db;
+  font-size: 19px;
+}
+/* Carrusel desplazable de carreras terminadas.
+ * Dónde cambiar: gap/padding/margin = separaciones; overflow = recorte o desplazamiento. */
+.home-races {
+  display: flex;
+  gap: 10px;
+  overflow: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #41474e transparent;
+  flex: 1;
+  padding-bottom: 5px;
+  scroll-snap-type: x proximity;
+}
+/* Tarjeta de una carrera dentro del carrusel.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-race-card {
+  position: relative;
+  flex: 0 0 174px;
+  scroll-snap-align: center;
+  text-align: left;
+  padding: 11px 12px 10px;
+  background: #20232b;
+  color: #c6c9d0;
+  border: 1px solid transparent;
+  border-radius: 5px;
+  min-height: 83px;
+}
+/* Tarjeta de una carrera dentro del carrusel. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.home-race-card:hover {
+  background: #2b2f38;
+}
+/* Tarjeta de una carrera dentro del carrusel. Apariencia de la opción activa.
+ * Dónde cambiar: color/background/border = colores. */
+.home-race-card.selected {
+  background: #1a1e25;
+  border-color: #5e6454;
+  border-bottom: 2px solid #e2e5da;
+}
+/* Fecha y código de país en la tarjeta de carrera.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.race-card-top {
+  display: flex;
+  justify-content: space-between;
+  gap: 8px;
+  color: #a5aab4;
+  font-size: 10px;
+  margin-bottom: 5px;
+}
+/* Código de país en la tarjeta de carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.country-tag {
+  font-size: 8px;
+  font-weight: 600;
+  color: #c8cfb7;
+  letter-spacing: 0.7px;
+}
+/* Tarjeta de una carrera dentro del carrusel. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; overflow = recorte o desplazamiento. */
+.home-race-card strong {
+  display: block;
+  font-size: 14px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Tarjeta de una carrera dentro del carrusel. Texto destacado o título. Apariencia de la opción activa.
+ * Dónde cambiar: color/background/border = colores. */
+.home-race-card.selected strong {
+  color: #fff;
+}
+/* Tarjeta de una carrera dentro del carrusel. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-race-card small {
+  display: block;
+  font-size: 9px;
+  color: #9da39b;
+  margin-top: 5px;
+}
+/* Columnas principales de Home: resultados/estrategia y campeonato/clima.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.home-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.9fr) minmax(285px, 1fr);
+  gap: 15px;
+}
+/* Agrupación vertical de los paneles principales de Home.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.home-main-column,
+.home-side-column {
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+/* Superficie, borde y relleno de los paneles de Home.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores; overflow = recorte o desplazamiento. */
+.home-panel {
+  background: #191c22;
+  border: 1px solid #30343d;
+  border-radius: 7px;
+  padding: 14px 15px 10px;
+  min-width: 0;
+  overflow: hidden;
+}
+/* Fila de título y contexto dentro de un panel de Home.
+ * Dónde cambiar: justify-content = alineación del contenido; gap/padding/margin = separaciones. */
+.home-panel-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+/* Fila de título y contexto dentro de un panel de Home. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-panel-heading h2 {
+  font:
+    600 13px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -0.25px;
+  color: #eff0f4;
+  margin: 0;
+}
+/* Fila de título y contexto dentro de un panel de Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-panel-heading > span {
+  font-size: 10px;
+  color: #9aa0ab;
+}
+/* Área de desplazamiento horizontal de resultados de Home. */
+.home-table-scroll {
+  overflow-x: auto;
+}
+/* Tabla de resultados de la carrera en Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+.home-results-table {
+  white-space: nowrap;
+  width: 100%;
+  font-size: 11px;
+  border-collapse: collapse;
+  min-width: 570px;
+}
+/* Tabla de resultados de la carrera en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-results-table th {
+  color: #9198a4;
+  border-bottom: 1px solid #383d47;
+  padding: 0 8px 8px;
+  font-size: 9px;
+  font-weight: 400;
+  letter-spacing: 0.2px;
+}
+/* Tabla de resultados de la carrera en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-results-table td {
+  padding: 8px;
+  border-top: 1px solid #2a2f38;
+  font-size: 11px;
+  color: #d4d7de;
+}
+/* Tabla de resultados de la carrera en Home. */
+.home-results-table th:first-child,
+.home-results-table td:first-child {
+  padding-left: 0;
+}
+/* Tabla de resultados de la carrera en Home. */
+.home-results-table th:last-child,
+.home-results-table td:last-child {
+  text-align: right;
+  padding-right: 0;
+}
+/* Tabla de resultados de la carrera en Home. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.home-results-table tbody tr:hover {
+  background: #22262e;
+}
+/* Posición final del piloto en los resultados de Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.home-position {
+  width: 35px;
+  color: #e0e3ea !important;
+}
+/* Número del piloto en la tabla de resultados.
+ * Dónde cambiar: color/background/border = colores. */
+.home-number {
+  font-variant-numeric: tabular-nums;
+  color: #b0b6c1 !important;
+}
+/* Nombre pulsable del piloto en los resultados.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-driver-link {
+  border: 0;
+  background: transparent;
+  color: #f0f1f4;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 0;
+  text-align: left;
+  font-size: 11px;
+  white-space: nowrap;
+}
+/* Nombre pulsable del piloto en los resultados.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.home-driver-link i {
+  width: 12px;
+  height: 4px;
+  border-radius: 1px;
+  flex-shrink: 0;
+}
+/* Nombre de equipo en la tabla de resultados.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-team-cell {
+  font-size: 10px !important;
+  color: #b6bbc4 !important;
+}
+/* Tiempo total o diferencia de carrera en los resultados. */
+.home-time {
+  font-variant-numeric: tabular-nums;
+}
+/* Botón para expandir los resultados completos de la carrera.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-text-button {
+  display: block;
+  background: none;
+  border: 0;
+  color: #c6ccb7;
+  font-size: 10px;
+  padding: 11px 0 2px;
+  margin-left: auto;
+}
+/* Selector entre campeonato de pilotos y constructores.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.home-segmented {
+  display: flex;
+  background: #15181e;
+  border: 1px solid #343944;
+  border-radius: 5px;
+  padding: 2px;
+  margin-bottom: 8px;
+}
+/* Selector entre campeonato de pilotos y constructores.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-segmented button {
+  flex: 1;
+  border: 0;
+  border-radius: 3px;
+  background: transparent;
+  color: #969da9;
+  font-size: 9px;
+  padding: 5px 4px;
+}
+/* Selector entre campeonato de pilotos y constructores. Apariencia de la opción activa.
+ * Dónde cambiar: color/background/border = colores. */
+.home-segmented button[aria-pressed='true'] {
+  background: #30343e;
+  color: #f6f7f9;
+}
+/* Fila de clasificación del campeonato en Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.home-standing-row {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  min-height: 48px;
+  border: 0;
+  border-bottom: 1px solid #30343d;
+  border-left: 3px solid var(--team-color);
+  border-radius: 2px;
+  background: transparent;
+  width: 100%;
+  color: #e1e3e8;
+  text-align: left;
+  padding: 8px 7px;
+  margin: 0 0 5px;
+}
+/* Fila de clasificación del campeonato en Home. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.home-standing-row:hover {
+  background: #232730;
+}
+/* Puesto dentro del campeonato mostrado en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.standing-rank {
+  font-size: 14px;
+  color: #f2f3f6;
+  min-width: 14px;
+  font-variant-numeric: tabular-nums;
+}
+/* Marca visual del equipo junto a la clasificación.
+ * Dónde cambiar: width/height y sus límites = tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.standing-team-mark {
+  width: 16px;
+  height: 7px;
+  flex-shrink: 0;
+  background: var(--team-color);
+  border-radius: 1px;
+  transform: skew(-20deg);
+}
+/* Nombre de piloto o equipo en el panel de campeonato. */
+.standing-name {
+  min-width: 0;
+  flex: 1;
+}
+/* Nombre de piloto o equipo en el panel de campeonato. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; overflow = recorte o desplazamiento. */
+.standing-name strong {
+  display: block;
+  font-size: 11px;
+  font-weight: 500;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+/* Nombre de piloto o equipo en el panel de campeonato. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.standing-name small {
+  display: block;
+  font-size: 8px;
+  color: #999fab;
+  margin-top: 3px;
+}
+/* Puntos del campeonato en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.standing-points {
+  font-size: 11px;
+  white-space: nowrap;
+  font-variant-numeric: tabular-nums;
+}
+/* Puntos del campeonato en Home. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.standing-points small {
+  font-size: 8px;
+  color: #a5abb5;
+}
+/* Nota y enlace al pie de un panel de Home.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-panel-footer {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 9px;
+  color: #8e97a2;
+  margin-top: 11px;
+  padding-top: 9px;
+  border-top: 1px solid #30343c;
+}
+/* Nota y enlace al pie de un panel de Home.
+ * Dónde cambiar: color/background/border = colores. */
+.home-panel-footer a {
+  color: #c0c7ad;
+  white-space: nowrap;
+}
+/* Leyenda de colores de compuestos en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-tyre-legend {
+  display: flex;
+  gap: 9px;
+  flex-wrap: wrap;
+  font-size: 9px;
+  color: #b3b8c1;
+}
+/* Leyenda de colores de compuestos en Home.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.home-tyre-legend i {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  margin-right: 4px;
+}
+/* Color del neumático blando (Soft).
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .soft {
+  background: #d9474d;
+}
+/* Color del neumático medio (Medium).
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .medium {
+  background: #e9d152;
+}
+/* Color del neumático duro (Hard).
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .hard {
+  background: #f2f3ef;
+}
+/* Color del neumático intermedio de lluvia (Inter).
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .intermediate {
+  background: #6d9c52;
+}
+/* Color del neumático de lluvia (Wet).
+ * Dónde cambiar: color/background/border = colores. */
+.portal-mode .wet {
+  background: #6592d7;
+}
+/* Fila de piloto y estrategia de neumáticos de Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.home-tyre-row {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 27px;
+}
+/* Fila de piloto y estrategia de neumáticos de Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-tyre-row > button {
+  background: transparent;
+  border: 0;
+  color: #cdd1d9;
+  font-size: 10px;
+  min-width: 85px;
+  width: 85px;
+  text-align: left;
+  padding: 4px 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+/* Pista horizontal sobre la que se dibujan los stints.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.home-tyre-track {
+  height: 4px;
+  position: relative;
+  background: #323740;
+  flex: 1;
+}
+/* Tramo de un compuesto de neumáticos y marcador de parada.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.home-tyre-segment {
+  position: absolute;
+  height: 4px;
+  top: 0;
+  border-right: 4px solid #191c22;
+  border-radius: 3px;
+}
+/* Tramo de un compuesto de neumáticos y marcador de parada. Decoración creada por CSS, sin elemento HTML adicional.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.home-tyre-segment:after {
+  content: '';
+  position: absolute;
+  right: 0;
+  top: -1px;
+  width: 6px;
+  height: 6px;
+  background: inherit;
+  border-radius: 50%;
+}
+/* Escala de vueltas situada bajo la estrategia de Home.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+#home-tyre-scale {
+  display: flex;
+  justify-content: space-between;
+  margin: 8px 0 0 97px;
+  font-size: 8px;
+  color: #8e97a2;
+}
+/* Lecturas de clima de la carrera en Home.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.home-conditions {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin: 16px 0;
+}
+/* Lecturas de clima de la carrera en Home. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-conditions small {
+  display: block;
+  font-size: 8px;
+  letter-spacing: 0.6px;
+  color: #949ca8;
+}
+/* Lecturas de clima de la carrera en Home. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.home-conditions strong {
+  display: block;
+  font-size: 20px;
+  font-weight: 400;
+  margin-top: 6px;
+  color: #eceef2;
+}
+/* Hora de la observación meteorológica.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+#home-weather-time {
+  color: #929aa6;
+  font-size: 9px;
+  line-height: 1.7;
+  margin-bottom: 3px;
+}
+/* Aviso de sesión histórica y procedencia de datos de Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-data-note {
+  padding: 10px 2px;
+  color: #b6c09f;
+  font-size: 8px;
+  letter-spacing: 0.7px;
+  line-height: 1.7;
+}
+/* Aviso de sesión histórica y procedencia de datos de Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-data-note p {
+  color: #858e9b;
+  font-size: 9px;
+  letter-spacing: 0;
+  margin: 6px 0;
+}
+/* Mensaje de datos ausentes dentro de Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.home-empty {
+  font-size: 11px;
+  color: #a0a7b2;
+  padding: 22px 4px !important;
+  line-height: 1.7;
+}
+/* Estado de carga: aspecto del contenido mientras llegan los datos. */
+.portal-mode [aria-busy='true'] .home-content-grid {
+  opacity: 0.6;
+}
+/* Indicador de foco para navegación con teclado; conserva un contorno visible. */
+.portal-mode :focus-visible {
+  outline-color: #c5b5bc;
+  outline-width: 2px;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 1050px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1050px) {
+  /* AJUSTE (max-width: 1050px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode .sidebar {
+    gap: 35px;
+    padding: 0 23px;
+  }
+  /* AJUSTE (max-width: 1050px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode .sidebar nav {
+    gap: 18px;
+  }
+  /* AJUSTE (max-width: 1050px): Ancho máximo, márgenes y relleno del contenido principal. */
+  .portal-mode main {
+    padding-left: 23px;
+    padding-right: 23px;
+  }
+  /* AJUSTE (max-width: 1050px): Controles compartidos de temporada y carrera. */
+  .portal-mode .session-toolbar {
+    right: 23px;
+  }
+  /* AJUSTE (max-width: 1050px): Columnas principales de Home: resultados/estrategia y campeonato/clima.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .home-content-grid {
+    grid-template-columns: minmax(0, 1.6fr) minmax(260px, 1fr);
+    gap: 12px;
+  }
+  /* AJUSTE (max-width: 1050px): Cabecera de Home con información del Gran Premio e imagen.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .home-race-hero {
+    grid-template-columns: 1.3fr 1fr;
+  }
+  /* AJUSTE (max-width: 1050px): Nombre grande del Gran Premio; cambia font-size o clamp para ajustar su tamaño.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  #home-race-title {
+    font-size: 43px;
+  }
+  /* AJUSTE (max-width: 1050px): Superficie, borde y relleno de los paneles de Home.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .home-panel {
+    padding: 13px 12px 10px;
+  }
+  /* AJUSTE (max-width: 1050px): Leyenda de colores de compuestos en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .home-tyre-legend {
+    gap: 6px;
+    font-size: 8px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 760px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 760px) {
+  /* AJUSTE (max-width: 760px): Columnas principales de Home: resultados/estrategia y campeonato/clima.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .home-content-grid {
+    grid-template-columns: 1fr;
+  }
+  /* AJUSTE (max-width: 760px): Agrupación de los paneles secundarios de Home.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .home-side-column {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 12px;
+  }
+  /* AJUSTE (max-width: 760px): Aviso de sesión histórica y procedencia de datos de Home. */
+  .home-data-note {
+    grid-column: 1/-1;
+  }
+  /* AJUSTE (max-width: 760px): Cabecera de Home con información del Gran Premio e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño. */
+  .home-race-hero {
+    grid-template-columns: 1.3fr 1fr;
+    min-height: 200px;
+  }
+  /* AJUSTE (max-width: 760px): Columna de texto del Gran Premio seleccionado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .home-race-copy {
+    padding: 25px 0;
+  }
+  /* AJUSTE (max-width: 760px): Grupo de etiquetas de ganador, clima y estado de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .home-race-meta {
+    gap: 6px;
+  }
+  /* AJUSTE (max-width: 760px): Etiqueta compacta de contexto de carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .home-meta-chip {
+    font-size: 9px;
+    padding: 5px 7px;
+    min-height: 25px;
+  }
+  /* AJUSTE (max-width: 760px): Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .portal-mode .brand {
+    font-size: 26px;
+  }
+  /* AJUSTE (max-width: 760px): Marca F1BRE y subtítulo de plataforma. */
+  .portal-mode .brand span {
+    display: none;
+  }
+  /* AJUSTE (max-width: 760px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode .sidebar nav {
+    gap: 18px;
+  }
+  /* AJUSTE (max-width: 760px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .portal-mode .sidebar nav a {
+    font-size: 11px;
+  }
+  /* AJUSTE (max-width: 760px): Controles compartidos de temporada y carrera. */
+  .portal-mode .session-toolbar select {
+    min-width: 75px;
+  }
+  /* AJUSTE (max-width: 760px): Fila de título y contexto dentro de un panel de Home. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .home-panel-heading h2 {
+    font-size: 12px;
+  }
+  /* AJUSTE (max-width: 760px): Línea de temporada y circuito sobre el nombre del Gran Premio.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  #home-race-context {
+    font-size: 10px;
+  }
+  /* AJUSTE (max-width: 760px): Nombre grande del Gran Premio; cambia font-size o clamp para ajustar su tamaño.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  #home-race-title {
+    font-size: 37px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 520px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 520px) {
+  /* AJUSTE (max-width: 520px): Contenedor de Home y margen al desplazarse hasta la sección. */
+  .portal-mode #home {
+    scroll-margin-top: 111px;
+  }
+  /* AJUSTE (max-width: 520px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .portal-mode .sidebar {
+    height: 111px;
+    display: flex;
+    align-items: flex-start;
+    padding: 18px 17px;
+    gap: 0;
+  }
+  /* AJUSTE (max-width: 520px): Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .portal-mode .brand {
+    font-size: 29px;
+  }
+  /* AJUSTE (max-width: 520px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .portal-mode .sidebar nav {
+    position: absolute;
+    bottom: 0;
+    left: 17px;
+    right: 17px;
+    height: 43px;
+    justify-content: space-between;
+    padding: 0;
+  }
+  /* AJUSTE (max-width: 520px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .portal-mode .sidebar nav a {
+    height: 43px;
+    width: auto;
+    font-size: 11px;
+    padding: 0 1px;
+    border: 0;
+  }
+  /* AJUSTE (max-width: 520px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Apariencia de la opción activa. Decoración creada por CSS, sin elemento HTML adicional. */
+  .portal-mode .sidebar nav a.active:after {
+    bottom: 7px;
+  }
+  /* AJUSTE (max-width: 520px): Controles compartidos de temporada y carrera. */
+  .portal-mode .session-toolbar {
+    top: 14px;
+    right: 17px;
+  }
+  /* AJUSTE (max-width: 520px): Ancho máximo, márgenes y relleno del contenido principal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode main {
+    padding: 0 15px 20px;
+  }
+  /* AJUSTE (max-width: 520px): Cabecera de Home con información del Gran Premio e imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .home-race-hero {
+    display: flex;
+    flex-direction: column;
+    min-height: 0;
+    gap: 0;
+  }
+  /* AJUSTE (max-width: 520px): Columna de texto del Gran Premio seleccionado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .home-race-copy {
+    padding: 23px 0 20px;
+  }
+  /* AJUSTE (max-width: 520px): Nombre grande del Gran Premio; cambia font-size o clamp para ajustar su tamaño.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  #home-race-title {
+    font-size: 43px;
+    letter-spacing: -1.5px;
+  }
+  /* AJUSTE (max-width: 520px): Fecha de la carrera debajo del título. */
+  #home-race-date {
+    margin-bottom: 12px;
+  }
+  /* AJUSTE (max-width: 520px): Marco de la fotografía del Gran Premio.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .home-race-visual {
+    margin: 0 0 16px;
+    height: 130px;
+    min-height: 130px;
+  }
+  /* AJUSTE (max-width: 520px): Estado alternativo cuando falta la fotografía de la carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  #home-photo-placeholder {
+    min-height: 130px;
+  }
+  /* AJUSTE (max-width: 520px): Estado alternativo cuando falta la fotografía de la carrera. */
+  #home-photo-placeholder span {
+    margin-bottom: 8px;
+  }
+  /* AJUSTE (max-width: 520px): Estado alternativo cuando falta la fotografía de la carrera. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  #home-photo-placeholder strong {
+    font-size: 19px;
+  }
+  /* AJUSTE (max-width: 520px): Tarjeta de una carrera dentro del carrusel.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .home-race-card {
+    flex-basis: 150px;
+    min-height: 81px;
+  }
+  /* AJUSTE (max-width: 520px): Franja del carrusel y botones para desplazarse entre carreras.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .home-calendar {
+    gap: 5px;
+  }
+  /* AJUSTE (max-width: 520px): Franja del carrusel y botones para desplazarse entre carreras.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .home-calendar > button {
+    width: 19px;
+  }
+  /* AJUSTE (max-width: 520px): Agrupación de los paneles secundarios de Home. */
+  .home-side-column {
+    display: flex;
+  }
+  /* AJUSTE (max-width: 520px): Fila de título y contexto dentro de un panel de Home. */
+  .home-panel-heading {
+    flex-wrap: wrap;
+  }
+  /* AJUSTE (max-width: 520px): Leyenda de colores de compuestos en Home.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .home-tyre-legend {
+    font-size: 8px;
+    gap: 9px;
+  }
+  /* AJUSTE (max-width: 520px): Fila de piloto y estrategia de neumáticos de Home.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .home-tyre-row > button {
+    width: 70px;
+    min-width: 70px;
+    font-size: 9px;
+  }
+  /* AJUSTE (max-width: 520px): Escala de vueltas situada bajo la estrategia de Home. */
+  #home-tyre-scale {
+    margin-left: 82px;
+  }
+  /* AJUSTE (max-width: 520px): Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode .source-status {
+    flex-wrap: wrap;
+    margin-top: 13px;
+    gap: 8px;
+  }
+  /* AJUSTE (max-width: 520px): Estado global de carga, botón de reintento y enlace a OpenF1. */
+  .portal-mode .source-status p {
+    flex-basis: 100%;
+    margin-bottom: 0;
+  }
+  /* AJUSTE (max-width: 520px): Estado global de carga, botón de reintento y enlace a OpenF1. */
+  .portal-mode .source-status a {
+    display: block;
+  }
+  /* AJUSTE (max-width: 520px): Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .portal-mode footer {
+    padding: 15px;
+  }
+  /* AJUSTE (max-width: 520px): Fila de clasificación del campeonato en Home.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .home-standing-row {
+    min-height: 49px;
+  }
+  /* AJUSTE (max-width: 520px): Nombre de piloto o equipo en el panel de campeonato. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .standing-name strong {
+    font-size: 12px;
+  }
+}

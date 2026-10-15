@@ -1,0 +1,311 @@
+/* GUÍA DEL ARCHIVO: PERFIL EDITORIAL DEL PILOTO. Nombre, número, siglas verticales, logo centrado, fichas y foto con bandera. Tamaño del logo: .driver-editorial-logo; centrado: .driver-editorial-brand. Ajustes de celular al final. */
+/* Referencia editorial del usuario: siglas verticales, nombre dominante y foto con bandera. */
+/* Distribución general del perfil: columna de información y columna de imagen.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.driver-editorial {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.85fr);
+  gap: 30px;
+  padding: 0 0 20px 90px;
+  isolation: isolate;
+}
+/* Siglas grandes verticales detrás del nombre del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.driver-editorial-acronym {
+  position: absolute;
+  top: 55px;
+  left: -22px;
+  writing-mode: vertical-rl;
+  font:
+    italic 900 clamp(85px, 10vw, 155px)/0.8 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -7px;
+  color: #30343c;
+  z-index: -1;
+  user-select: none;
+}
+/* Columna de texto, fichas y acciones del piloto. */
+.driver-editorial-copy {
+  min-width: 0;
+}
+/* Fila del logo del equipo sobre el nombre; justify-content controla su centrado.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.driver-editorial-brand {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 66px;
+  padding: 4px 0 14px;
+  color: #c7ccd4;
+  font-size: 11px;
+  letter-spacing: 0.6px;
+}
+/* Logo del equipo en el perfil: max-width y height controlan su tamaño.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen; width/height y sus límites = tamaño. */
+.driver-editorial-logo {
+  max-width: 300px;
+  height: 100px;
+  object-fit: contain;
+}
+/* Cabecera del nombre del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.driver-editorial-heading p {
+  font-size: 9px;
+  color: #aeb5bf;
+  letter-spacing: 1.2px;
+  margin: 0 0 10px;
+}
+/* Cabecera del nombre del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.driver-editorial-heading h1 {
+  font:
+    italic 850 clamp(43px, 5.6vw, 82px)/1.02 Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: -3px;
+  margin: 0 0 24px;
+}
+/* Primera línea del nombre, junto al número del piloto. */
+.driver-editorial-first {
+  display: block;
+}
+/* Número del piloto y su contorno.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-editorial-number {
+  color: var(--team-color);
+  -webkit-text-stroke: 0.6px #d8dde5;
+  font-variant-numeric: tabular-nums;
+}
+/* Apellido destacado con el color del equipo.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-editorial-last {
+  display: block;
+  color: var(--team-color);
+  overflow-wrap: anywhere;
+  margin-top: 5px;
+  text-transform: uppercase;
+}
+/* Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: color/background/border = colores; overflow = recorte o desplazamiento. */
+.driver-fact-panel {
+  background: #191c22;
+  border: 1px solid #30343c;
+  border-radius: 8px;
+  margin-top: 14px;
+  overflow: hidden;
+}
+/* Ficha de temporada o carrera del piloto. Texto destacado o título.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.driver-fact-panel h2 {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 12px 18px;
+  border-bottom: 1px solid #3b414b;
+  font:
+    600 13px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: 0.1px;
+}
+/* Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.driver-fact-panel h2 span {
+  font:
+    400 10px Inter,
+    Arial,
+    sans-serif;
+  color: #aeb5bf;
+  text-align: right;
+}
+/* Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.driver-fact-panel dl {
+  margin: 0;
+  padding: 8px 18px 12px;
+}
+/* Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.driver-fact-panel dl > div {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 6px 0;
+  font-size: 12px;
+  line-height: 1.5;
+}
+/* Ficha de temporada o carrera del piloto. Nombre de cada dato.
+ * Dónde cambiar: color/background/border = colores. */
+.driver-fact-panel dt {
+  color: #aeb5bf;
+}
+/* Ficha de temporada o carrera del piloto. Valor de cada dato.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.driver-fact-panel dd {
+  margin: 0;
+  color: #eef0f4;
+  font-weight: 500;
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores; overflow = recorte o desplazamiento. */
+.driver-editorial-visual {
+  min-width: 0;
+  margin: 0;
+  align-self: start;
+  background: #191c22;
+  border: 1px solid #30343c;
+  border-radius: 5px;
+  overflow: hidden;
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo.
+ * Dónde cambiar: width/height y sus límites = tamaño; color/background/border = colores. */
+.driver-editorial-visual .portrait {
+  width: 100%;
+  aspect-ratio: 1 / 2;
+  height: auto;
+  min-height: 0;
+  background: #191c22;
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: object-fit/object-position = encuadre de imagen. */
+.driver-editorial-visual .portrait img {
+  object-fit: contain;
+  object-position: center top;
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-editorial-visual .portrait .initials {
+  color: var(--team-color);
+  font-size: 64px;
+  opacity: 0.8;
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo. Pie y número bajo el retrato.
+ * Dónde cambiar: justify-content = alineación del contenido; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-editorial-visual figcaption {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 12px 15px;
+  font-size: 10px;
+  color: #b8bec8;
+  border-top: 2px solid var(--team-color);
+}
+/* Columna del retrato con bandera; se usa apellidoF.png completo. Pie y número bajo el retrato.
+ * Dónde cambiar: --team-* viene de OpenF1 para el equipo de esta sesión. */
+.driver-editorial-visual figcaption span {
+  color: var(--team-color);
+  font-weight: 600;
+}
+/* Distribución general del perfil: columna de información y columna de imagen.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.driver-editorial .profile-actions {
+  margin-top: 18px;
+  gap: 10px;
+}
+/* Distribución general del perfil: columna de información y columna de imagen. */
+.driver-editorial .profile-note {
+  margin-bottom: 0;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 1000px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1000px) {
+  /* AJUSTE (max-width: 1000px): Distribución general del perfil: columna de información y columna de imagen.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .driver-editorial {
+    grid-template-columns: minmax(0, 1.5fr) minmax(210px, 0.85fr);
+    gap: 20px;
+    padding-left: 60px;
+  }
+  /* AJUSTE (max-width: 1000px): Siglas grandes verticales detrás del nombre del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-editorial-acronym {
+    left: -13px;
+    font-size: 110px;
+  }
+  /* AJUSTE (max-width: 1000px): Cabecera del nombre del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-editorial-heading h1 {
+    font-size: 54px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 700px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 700px) {
+  /* AJUSTE (max-width: 700px): Distribución general del perfil: columna de información y columna de imagen.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .driver-editorial {
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 38px;
+    gap: 20px;
+  }
+  /* AJUSTE (max-width: 700px): Siglas grandes verticales detrás del nombre del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-editorial-acronym {
+    left: -10px;
+    top: 60px;
+    font-size: 69px;
+    letter-spacing: -3px;
+  }
+  /* AJUSTE (max-width: 700px): Fila del logo del equipo sobre el nombre; justify-content controla su centrado.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .driver-editorial-brand {
+    justify-content: center;
+    min-height: 48px;
+    gap: 10px;
+    padding-bottom: 12px;
+    font-size: 10px;
+  }
+  /* AJUSTE (max-width: 700px): Logo del equipo en el perfil: max-width y height controlan su tamaño.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-editorial-logo {
+    max-width: 160px;
+    height: 52px;
+  }
+  /* AJUSTE (max-width: 700px): Cabecera del nombre del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-editorial-heading h1 {
+    font-size: clamp(39px, 9vw, 62px);
+    letter-spacing: -1.8px;
+    margin-bottom: 20px;
+  }
+  /* AJUSTE (max-width: 700px): Cabecera del nombre del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-editorial-heading p {
+    font-size: 8px;
+  }
+  /* AJUSTE (max-width: 700px): Ficha de temporada o carrera del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .driver-fact-panel h2 {
+    padding: 11px 12px;
+    font-size: 12px;
+    flex-wrap: wrap;
+  }
+  /* AJUSTE (max-width: 700px): Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .driver-fact-panel dl {
+    padding: 8px 12px;
+  }
+  /* AJUSTE (max-width: 700px): Ficha de temporada o carrera del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .driver-fact-panel dl > div {
+    font-size: 11px;
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 700px): Columna del retrato con bandera; se usa apellidoF.png completo.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-editorial-visual {
+    width: 100%;
+    max-width: 360px;
+    justify-self: center;
+  }
+  /* AJUSTE (max-width: 700px): Distribución general del perfil: columna de información y columna de imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-editorial .profile-actions > button {
+    width: 100%;
+  }
+}

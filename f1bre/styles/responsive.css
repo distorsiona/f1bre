@@ -1,0 +1,512 @@
+/* GUÍA DEL ARCHIVO: ADAPTACIÓN BASE POR ANCHO. Cada @media indica cuándo se aplica. Las vistas tienen ajustes propios posteriores; si un cambio no aparece, revisa también su archivo específico. */
+/* Adaptación de la interfaz a escritorio, tablet y celular. */
+/* ADAPTACIÓN DE PANTALLA (min-width: 1550px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (min-width: 1550px) {
+  /* AJUSTE (min-width: 1550px): Cuadrícula del listado de equipos; grid-template-columns decide cuántos caben por fila.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .team-cards {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+/* ADAPTACIÓN DE PANTALLA (max-width: 1150px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1150px) {
+  /* AJUSTE (max-width: 1150px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .sidebar {
+    width: 180px;
+  }
+  /* AJUSTE (max-width: 1150px): Contenedor global de la aplicación y margen respecto a la navegación. */
+  .app-shell {
+    margin-left: 180px;
+  }
+  /* AJUSTE (max-width: 1150px): Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .brand {
+    font-size: 32px;
+    padding-left: 22px;
+  }
+  /* AJUSTE (max-width: 1150px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .sidebar nav a {
+    padding-left: 20px;
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 1150px): Cabecera base con el título de la página; se oculta en el portal horizontal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .topbar {
+    padding: 0 25px;
+  }
+  /* AJUSTE (max-width: 1150px): Ancho máximo, márgenes y relleno del contenido principal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  main {
+    padding: 20px 25px;
+  }
+  /* AJUSTE (max-width: 1150px): Cuadrícula del listado de equipos; grid-template-columns decide cuántos caben por fila.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .team-cards {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* AJUSTE (max-width: 1150px): Tarjeta de resumen: etiqueta, valor y contexto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .summary-card {
+    padding: 14px;
+  }
+  /* AJUSTE (max-width: 1150px): Distribución de paneles de gráficos.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .charts {
+    grid-template-columns: 1fr;
+  }
+  /* AJUSTE (max-width: 1150px): Logo del equipo dentro de la fila del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-row .driver-logo {
+    width: 55px;
+  }
+  /* AJUSTE (max-width: 1150px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-row .driver-number {
+    width: 60px;
+  }
+  /* AJUSTE (max-width: 1150px): Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-row .portrait {
+    width: 105px;
+  }
+  /* AJUSTE (max-width: 1150px): Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .driver-row .driver-info {
+    padding: 0 15px;
+  }
+  /* AJUSTE (max-width: 1150px): Distribución inferior del diseño base de inicio.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .home-lower {
+    grid-template-columns: 1fr 1fr;
+  }
+  /* AJUSTE (max-width: 1150px): Tarjeta base de piloto en el podio.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .podium-card {
+    padding: 15px;
+  }
+  /* AJUSTE (max-width: 1150px): Datos del piloto en una tarjeta de podio. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .podium-info strong {
+    font-size: 23px;
+  }
+  /* AJUSTE (max-width: 1150px): Distribución base de tarjetas de resumen.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .summary-grid {
+    gap: 10px;
+  }
+}
+
+/* ADAPTACIÓN DE PANTALLA (max-width: 850px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 850px) {
+  /* AJUSTE (max-width: 850px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .sidebar {
+    width: 75px;
+  }
+  /* AJUSTE (max-width: 850px): Contenedor global de la aplicación y margen respecto a la navegación. */
+  .app-shell {
+    margin-left: 75px;
+  }
+  /* AJUSTE (max-width: 850px): Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .brand {
+    font-size: 24px;
+    padding: 0 10px;
+    align-items: center;
+  }
+  /* AJUSTE (max-width: 850px): Marca F1BRE y subtítulo de plataforma. */
+  .brand span {
+    display: none;
+  }
+  /* AJUSTE (max-width: 850px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: justify-content = alineación del contenido; width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .sidebar nav a {
+    font-size: 0;
+    gap: 0;
+    padding: 0;
+    justify-content: center;
+    height: 62px;
+  }
+  /* AJUSTE (max-width: 850px): Iconos de navegación del diseño base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .sidebar nav a .nav-icon {
+    font-size: 26px;
+  }
+  /* AJUSTE (max-width: 850px): Nota de datos de OpenF1 en la navegación base.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .sidebar-bottom {
+    padding: 20px 7px;
+    font-size: 7px;
+    text-align: center;
+  }
+  /* AJUSTE (max-width: 850px): Nota de datos de OpenF1 en la navegación base. */
+  .sidebar-bottom p,
+  .sidebar-footer {
+    display: none;
+  }
+  /* AJUSTE (max-width: 850px): Nota de datos de OpenF1 en la navegación base.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .sidebar-bottom .source-dot {
+    display: block;
+    margin: 0 auto 10px;
+  }
+  /* AJUSTE (max-width: 850px): Distribución base de tarjetas de resumen.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .summary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* AJUSTE (max-width: 850px): Distribución inferior del diseño base de inicio.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .home-lower {
+    grid-template-columns: 1fr;
+  }
+  /* AJUSTE (max-width: 850px): Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .profile-hero {
+    grid-template-columns: 1fr 230px;
+  }
+  /* AJUSTE (max-width: 850px): Bloque de nombre y contexto en la cabecera base del perfil. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-main h2 {
+    font-size: 52px;
+  }
+  /* AJUSTE (max-width: 850px): Distribución de las métricas del perfil.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .profile-stat-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* ADAPTACIÓN DE PANTALLA (max-width: 600px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 600px) {
+  /* AJUSTE (max-width: 600px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .sidebar {
+    inset: 0 0 auto 0;
+    width: 100%;
+    height: 59px;
+    flex-direction: row;
+    border-right: 0;
+    border-bottom: 1px solid #aeb1a6;
+    align-items: center;
+  }
+  /* AJUSTE (max-width: 600px): Marca F1BRE y subtítulo de plataforma.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .brand {
+    height: 59px;
+    font-size: 25px;
+    padding: 0 15px;
+    border: 0;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .sidebar nav {
+    padding: 0;
+    display: flex;
+    margin-left: auto;
+    height: 59px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .sidebar nav a {
+    height: 59px;
+    min-height: 0;
+    width: 49px;
+    border-left: 0;
+    border-bottom: 3px solid transparent;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de navegación; .portal-mode lo convierte en cabecera horizontal. Apariencia de la opción activa. */
+  .sidebar nav a.active {
+    border-bottom-color: var(--burgundy);
+  }
+  /* AJUSTE (max-width: 600px): Nota de datos de OpenF1 en la navegación base. */
+  .sidebar-bottom {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor global de la aplicación y margen respecto a la navegación. */
+  .app-shell {
+    margin-left: 0;
+    padding-top: 59px;
+  }
+  /* AJUSTE (max-width: 600px): Cabecera base con el título de la página; se oculta en el portal horizontal.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+  .topbar {
+    height: 60px;
+    padding: 0 18px;
+  }
+  /* AJUSTE (max-width: 600px): Cabecera base con el título de la página; se oculta en el portal horizontal. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .topbar h1 {
+    font-size: 17px;
+  }
+  /* AJUSTE (max-width: 600px): Texto secundario de la cabecera base. */
+  .topbar-label {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Ancho máximo, márgenes y relleno del contenido principal.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  main {
+    padding: 16px 17px;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .session-toolbar {
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera. Solo afecta a la posición indicada dentro de su contenedor. */
+  .session-toolbar label:nth-child(2) {
+    min-width: 0;
+    flex: 1;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .session-toolbar label:first-child {
+    width: 83px;
+  }
+  /* AJUSTE (max-width: 600px): Controles compartidos de temporada y carrera.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .session-toolbar select {
+    min-width: 0;
+    width: 100%;
+    font-size: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Etiqueta de datos históricos junto a los selectores. */
+  .historical-label {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .source-status {
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .source-status p {
+    font-size: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Estado global de carga, botón de reintento y enlace a OpenF1. */
+  .source-status a {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Encabezado base de título y etiqueta de sección.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .page-heading {
+    gap: 10px;
+    margin-top: 17px;
+  }
+  /* AJUSTE (max-width: 600px): Tamaño y espaciado de títulos de segundo nivel.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  h2 {
+    font-size: 33px;
+  }
+  /* AJUSTE (max-width: 600px): Etiqueta breve junto a un título de sección.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .badge {
+    font-size: 7px;
+    padding: 6px;
+  }
+  /* AJUSTE (max-width: 600px): Distribución base de las tarjetas de podio.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .podium-grid {
+    grid-template-columns: 1fr;
+  }
+  /* AJUSTE (max-width: 600px): Tarjeta base de piloto en el podio.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .podium-card {
+    min-height: 155px;
+  }
+  /* AJUSTE (max-width: 600px): Datos del piloto en una tarjeta de podio.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .podium-info {
+    margin: 27px 0 0 55px;
+  }
+  /* AJUSTE (max-width: 600px): Posición destacada dentro de una tarjeta de podio.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .podium-place {
+    font-size: 43px;
+  }
+  /* AJUSTE (max-width: 600px): Tarjeta base de piloto en el podio.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .podium-card .portrait {
+    width: 150px;
+    height: 160px;
+    right: 15px;
+    top: 0;
+  }
+  /* AJUSTE (max-width: 600px): Datos del piloto en una tarjeta de podio.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .podium-info {
+    max-width: 60%;
+    margin-left: 0;
+  }
+  /* AJUSTE (max-width: 600px): Datos del piloto en una tarjeta de podio. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .podium-info strong {
+    font-size: 24px;
+  }
+  /* AJUSTE (max-width: 600px): Cuadrícula del listado de equipos; grid-template-columns decide cuántos caben por fila.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .team-cards {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+  /* AJUSTE (max-width: 600px): Superficie y espaciado de una tarjeta del equipo.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .team-card {
+    min-height: 280px;
+  }
+  /* AJUSTE (max-width: 600px): Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-row {
+    height: 98px;
+    padding-right: 13px;
+  }
+  /* AJUSTE (max-width: 600px): Encabezados y alineación de las columnas de la clasificación.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-column-head {
+    font-size: 7px;
+    padding-left: 5px;
+    padding-right: 5px;
+  }
+  /* AJUSTE (max-width: 600px): Logo del equipo dentro de la fila del piloto. */
+  .driver-row .driver-logo {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño. */
+  .driver-row .driver-number {
+    width: 48px;
+    font-size: 37px;
+  }
+  /* AJUSTE (max-width: 600px): Fila pulsable que abre el perfil del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .driver-row .portrait {
+    width: 71px;
+    height: 98px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .driver-row .driver-info {
+    padding: 0 10px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-info strong {
+    font-size: 12px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre y equipo dentro de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-info small {
+    font-size: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Puntos de campeonato alineados al final de la fila del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-row .driver-points {
+    font-size: 24px;
+  }
+  /* AJUSTE (max-width: 600px): Flecha al final de filas de pilotos. */
+  .row-arrow {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Puntos de campeonato alineados al final de la fila del piloto. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .driver-points small {
+    font-size: 6px;
+  }
+  /* AJUSTE (max-width: 600px): Fila de recuento y buscador del listado.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .list-toolbar {
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .search-label {
+    width: 170px;
+  }
+  /* AJUSTE (max-width: 600px): Fila de recuento y buscador del listado.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .list-toolbar p {
+    font-size: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor y campo del buscador de pilotos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  .search-label input {
+    font-size: 10px;
+    padding: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: grid-template-columns = columnas; width/height y sus límites = tamaño. */
+  .profile-hero {
+    grid-template-columns: 1fr 140px;
+    min-height: 250px;
+  }
+  /* AJUSTE (max-width: 600px): Bloque de nombre y contexto en la cabecera base del perfil.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .profile-main {
+    padding: 25px 18px;
+  }
+  /* AJUSTE (max-width: 600px): Bloque de nombre y contexto en la cabecera base del perfil. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-main h2 {
+    font-size: 39px;
+    overflow-wrap: anywhere;
+  }
+  /* AJUSTE (max-width: 600px): Cabecera base del perfil con identidad e imagen.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-hero .portrait {
+    min-height: 250px;
+  }
+  /* AJUSTE (max-width: 600px): Número del piloto en filas o cabecera del perfil.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .profile-main .driver-number {
+    font-size: 30px;
+  }
+  /* AJUSTE (max-width: 600px): Franja que contiene el logo del equipo. Imagen: tamaño y encuadre dentro de ese bloque.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+  .profile-hero .team-brand-slot img {
+    max-width: 115px;
+  }
+  /* AJUSTE (max-width: 600px): Cuadrícula de indicadores de la carrera.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .metrics {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* AJUSTE (max-width: 600px): Superficie base de un panel de información.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .panel {
+    padding: 16px;
+  }
+  /* AJUSTE (max-width: 600px): Fila de título y acciones de un panel de análisis. */
+  .panel-heading {
+    flex-wrap: wrap;
+  }
+  /* AJUSTE (max-width: 600px): Unidad de medida del gráfico. */
+  .unit {
+    display: none;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de filtros y controles del análisis.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .filters {
+    padding: 12px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de filtros y controles del análisis. */
+  .filters label {
+    flex-basis: 100%;
+  }
+  /* AJUSTE (max-width: 600px): Título y contexto de una sección compartida. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .section-heading h3 {
+    font-size: 17px;
+  }
+  /* AJUSTE (max-width: 600px): Pie de página y enlace a la fuente de datos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+  footer {
+    padding: 18px;
+    flex-wrap: wrap;
+    gap: 8px;
+    font-size: 8px;
+  }
+}

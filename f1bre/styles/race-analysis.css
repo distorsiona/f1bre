@@ -1,0 +1,406 @@
+/* GUÍA DEL ARCHIVO: RACE ANALYSIS OSCURO. Filtros, métricas, curvas, stints, tabla, telemetría y explorador. Complementa analysis.css; sus cambios quedan limitados a .analysis-mode. */
+/* Análisis: controles, métricas y gráficos sobre el portal oscuro compartido. */
+/* Contenedor de Race Analysis: orden, margen superior y ancho mínimo. */
+.analysis-mode #overview {
+  order: 1;
+  padding-top: 28px;
+  min-width: 0;
+}
+/* Circuito y filtro de equipo bajo el título del análisis.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode #race-heading {
+  color: #aeb4bf;
+  font-size: 11px;
+  line-height: 1.6;
+  margin: 0;
+}
+/* Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode .panel,
+.analysis-mode .metric {
+  background: #191c22;
+  border: 1px solid #30343c;
+  border-radius: 6px;
+}
+/* Superficie base de un panel de información.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .panel {
+  padding: 17px;
+}
+/* Contenedor de filtros y controles del análisis.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode .filters {
+  background: #16191f;
+  border: 1px solid #30343c;
+  border-radius: 5px;
+  padding: 12px;
+  gap: 12px;
+}
+/* Contenedor de filtros y controles del análisis.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .filters label {
+  font-size: 9px;
+  letter-spacing: 0.4px;
+  min-width: 110px;
+}
+/* Aspecto y tamaño de los selectores.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode select {
+  background: #111419;
+  color: #eef0f4;
+  border: 1px solid #373d46;
+  border-radius: 4px;
+  min-height: 38px;
+  padding: 9px 10px;
+  font-size: 11px;
+}
+/* Botón de restablecer filtros, reintentar o descargar datos.
+ * Dónde cambiar: width/height y sus límites = tamaño; font/font-size = tipografía y tamaño; gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode .reset {
+  background: #252b20;
+  color: #d1dac1;
+  border: 1px solid #4b573d;
+  border-radius: 4px;
+  padding: 10px 12px;
+  font-size: 10px;
+  min-height: 38px;
+}
+/* Botón de restablecer filtros, reintentar o descargar datos. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode .reset:hover {
+  background: #35402b;
+  border-color: #778663;
+}
+/* Estado deshabilitado de los controles que todavía no pueden utilizarse.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode .reset:disabled:hover {
+  background: #252b20;
+}
+/* Botón para consultar telemetría de la vuelta seleccionada.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode #load-telemetry,
+.analysis-mode #load-raw {
+  background: #641f32;
+  border-color: #8b4057;
+  color: #f1e5e9;
+}
+/* Botón para consultar telemetría de la vuelta seleccionada. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode #load-telemetry:hover,
+.analysis-mode #load-raw:hover {
+  background: #7b2a42;
+}
+/* Estado global de carga, botón de reintento y enlace a OpenF1.
+ * Dónde cambiar: width/height y sus límites = tamaño; gap/padding/margin = separaciones. */
+.analysis-mode .source-status .reset {
+  min-height: 28px;
+  padding: 5px 10px;
+}
+/* Cuadrícula de indicadores de la carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .metrics {
+  gap: 12px;
+  margin: 18px 0;
+}
+/* Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .metric {
+  padding: 15px;
+}
+/* Indicador de carrera: etiqueta, cifra y aclaración. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.analysis-mode .metric small {
+  font-size: 9px;
+  color: #aeb4bf;
+}
+/* Indicador de carrera: etiqueta, cifra y aclaración. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.analysis-mode .metric strong {
+  font:
+    600 27px Inter,
+    Arial,
+    sans-serif;
+  margin: 12px 0 9px;
+  font-variant-numeric: tabular-nums;
+}
+/* Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .metric span {
+  font-size: 10px;
+  line-height: 1.5;
+}
+/* Distribución de paneles de gráficos.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+.analysis-mode .charts {
+  grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: 15px;
+  align-items: start;
+}
+/* Distribución de paneles de gráficos. */
+.analysis-mode .charts > .panel {
+  min-width: 0;
+}
+/* Título base de paneles y subsecciones. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.analysis-mode h3 {
+  font:
+    600 14px Inter,
+    Arial,
+    sans-serif;
+  letter-spacing: 0;
+  margin: 7px 0 12px;
+}
+/* Etiqueta pequeña situada sobre un título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.analysis-mode .eyebrow {
+  color: #b6bea3;
+  font-size: 8px;
+  letter-spacing: 0.8px;
+}
+/* Explicación de cómo leer el gráfico.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.analysis-mode .context,
+.analysis-mode .chart-help {
+  font-size: 10px;
+  color: #aeb4bf;
+}
+/* Unidad de medida del gráfico.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .unit {
+  font-size: 8px;
+  white-space: nowrap;
+}
+/* Tamaño y presentación de los gráficos SVG.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode svg {
+  margin: 14px 0;
+}
+/* Tamaño y presentación de los gráficos SVG. */
+.analysis-mode svg line {
+  stroke: #353c46;
+}
+/* Tamaño y presentación de los gráficos SVG. */
+.analysis-mode svg text {
+  fill: #aeb4bf;
+}
+/* Leyenda que relaciona curvas con pilotos y colores de equipo.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.analysis-mode .legend {
+  gap: 9px 12px;
+  font-size: 10px;
+  line-height: 1.5;
+}
+/* Leyenda de compuestos de neumáticos del análisis.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.analysis-mode .tyre-key {
+  margin: 15px 0;
+  gap: 11px;
+  font-size: 10px;
+}
+/* Área desplazable de estrategias de todos los pilotos.
+ * Dónde cambiar: overflow = recorte o desplazamiento. */
+.analysis-mode #stints {
+  max-height: 385px;
+  overflow-y: auto;
+  padding-right: 7px;
+  scrollbar-width: thin;
+  scrollbar-color: #4b535e transparent;
+}
+/* Fila completa de estrategia de un piloto. */
+.analysis-mode .stint-row {
+  margin-bottom: 12px;
+}
+/* Nombre del piloto y número de visitas a boxes en la estrategia.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; gap/padding/margin = separaciones. */
+.analysis-mode .stint-label {
+  font-size: 10px;
+  gap: 8px;
+  margin-bottom: 6px;
+}
+/* Nombre del piloto y número de visitas a boxes en la estrategia. */
+.analysis-mode .stint-label span:last-child {
+  white-space: nowrap;
+}
+/* Barra horizontal de compuestos de neumáticos del piloto.
+ * Dónde cambiar: width/height y sus límites = tamaño. */
+.analysis-mode .stint-bar {
+  height: 14px;
+}
+/* Barra horizontal de compuestos de neumáticos del piloto.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .stint-bar span {
+  line-height: 14px;
+  font-size: 8px;
+}
+/* Tramo de estrategia sin compuesto conocido.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode .unknown {
+  background: #68707c;
+  color: #fff;
+}
+/* Tramo sin stint registrado; se distingue de un compuesto real.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode .unrun {
+  background: #303640;
+  color: #aeb4bf;
+}
+/* Grupo de paneles de clima y eventos. */
+.analysis-mode .table-panel,
+.analysis-mode .context-panels {
+  margin-top: 15px;
+}
+/* Desplazamiento interno de tablas anchas; evita ensanchar toda la página. */
+.analysis-mode .table-scroll {
+  scrollbar-width: thin;
+  scrollbar-color: #4b535e transparent;
+}
+/* Presentación general de tablas de datos.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode table {
+  font-size: 11px;
+  font-variant-numeric: tabular-nums;
+}
+/* Encabezados de las columnas de tablas.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode th {
+  background: #14171c;
+  color: #aeb4bf;
+  padding: 11px 9px;
+}
+/* Celdas y separación de filas de las tablas.
+ * Dónde cambiar: gap/padding/margin = separaciones; color/background/border = colores. */
+.analysis-mode td {
+  padding: 11px 9px;
+  border-color: #30343c;
+}
+/* Resaltado de la fila de comparación bajo el cursor. Estado al pasar el cursor.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode tbody tr:hover {
+  background: #242830;
+}
+/* Aclaración metodológica de las métricas de comparación.
+ * Dónde cambiar: font/font-size = tipografía y tamaño; color/background/border = colores. */
+.analysis-mode .insight {
+  border-color: #687954;
+  font-size: 10px;
+}
+/* Distribución y valores del panel meteorológico.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .weather-grid {
+  gap: 15px;
+  margin: 16px 0;
+}
+/* Distribución y valores del panel meteorológico. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .weather-grid strong {
+  font-size: 22px;
+  font-weight: 500;
+  margin-top: 5px;
+}
+/* Lista desplazable de mensajes de dirección de carrera. */
+.analysis-mode .event-list {
+  max-height: 250px;
+  scrollbar-width: thin;
+  scrollbar-color: #4b535e transparent;
+}
+/* Lista desplazable de mensajes de dirección de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .event-list li {
+  padding: 10px 0;
+}
+/* Lista desplazable de mensajes de dirección de carrera. Etiqueta secundaria.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+.analysis-mode .event-list small {
+  font-size: 9px;
+}
+/* Lista desplazable de mensajes de dirección de carrera.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+.analysis-mode .event-list p {
+  margin: 5px 0;
+}
+/* Visor desplazable de los registros originales del explorador.
+ * Dónde cambiar: color/background/border = colores. */
+.analysis-mode pre {
+  background: #111419;
+  border: 1px solid #30343c;
+  border-radius: 4px;
+  color: #cbd1dc;
+}
+/* Visor desplazable de los registros originales del explorador. */
+.analysis-mode pre:empty {
+  display: none;
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 1050px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 1050px) {
+  /* AJUSTE (max-width: 1050px): Distribución de paneles de gráficos.
+ * Dónde cambiar: grid-template-columns = columnas. */
+  .analysis-mode .charts {
+    grid-template-columns: 1fr;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 850px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 850px) {
+  /* AJUSTE (max-width: 850px): Contenedor de Race Analysis y separación superior. */
+  .analysis-mode #overview {
+    padding-top: 23px;
+  }
+}
+/* ADAPTACIÓN DE PANTALLA (max-width: 600px). Estas reglas reemplazan las anteriores solo cuando se cumple este ancho. Cambia el umbral en @media; las medidas internas se ajustan debajo. */
+@media (max-width: 600px) {
+  /* AJUSTE (max-width: 600px): Cuadrícula de indicadores de la carrera.
+ * Dónde cambiar: grid-template-columns = columnas; gap/padding/margin = separaciones. */
+  .analysis-mode .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Indicador de carrera: etiqueta, cifra y aclaración.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .analysis-mode .metric {
+    padding: 12px;
+  }
+  /* AJUSTE (max-width: 600px): Indicador de carrera: etiqueta, cifra y aclaración. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .analysis-mode .metric strong {
+    font-size: 23px;
+  }
+  /* AJUSTE (max-width: 600px): Superficie base de un panel de información.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .analysis-mode .panel {
+    padding: 13px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de filtros y controles del análisis.
+ * Dónde cambiar: gap/padding/margin = separaciones. */
+  .analysis-mode .filters {
+    gap: 10px;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de filtros y controles del análisis. */
+  .analysis-mode .filters label {
+    min-width: 100%;
+  }
+  /* AJUSTE (max-width: 600px): Contenedor de filtros y controles del análisis. */
+  .analysis-mode .filters button {
+    flex: 1;
+  }
+  /* AJUSTE (max-width: 600px): Fila de título y acciones de un panel de análisis. */
+  .analysis-mode .panel-heading {
+    flex-wrap: wrap;
+  }
+  /* AJUSTE (max-width: 600px): Unidad de medida del gráfico. */
+  .analysis-mode .unit {
+    margin-bottom: 7px;
+  }
+  /* AJUSTE (max-width: 600px): Nombre del piloto y número de visitas a boxes en la estrategia.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .analysis-mode .stint-label {
+    font-size: 9px;
+  }
+  /* AJUSTE (max-width: 600px): Área desplazable de estrategias de todos los pilotos. */
+  .analysis-mode #stints {
+    max-height: 330px;
+  }
+  /* AJUSTE (max-width: 600px): Título principal de la vista; también se reutiliza en Teams y Race Analysis. Texto destacado o título.
+ * Dónde cambiar: font/font-size = tipografía y tamaño. */
+  .analysis-mode .drivers-heading h1 {
+    font-size: 33px;
+  }
+}
