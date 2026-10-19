@@ -1,15 +1,7 @@
-node_modules/
-npm-debug.log*
-.env
-.env.*
-!.env.example
-
-# Copias recuperables locales y entornos aislados.
+# Exclusiones del proyecto. Reglas comunes en ../.gitignore.
+# Respaldos recuperables locales: conservarlos en disco, fuera de Git.
 .migration-backups/
-**/.venv/
-**/__pycache__/
-**/.pytest_cache/
+
+# Datos descargados: conservar solo muestras y parametros pequenos en fixtures/.
 **/data/raw/
 **/data/cache/
-
-**/.mypy_cache/

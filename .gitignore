@@ -1,6 +1,64 @@
-# Exclusiones locales de la raiz; el proyecto tiene f1bre/.gitignore.
+# Archivos locales del sistema y del editor.
 .DS_Store
 Thumbs.db
 Desktop.ini
 *.swp
 *.swo
+*~
+.idea/
+
+# Dependencias instaladas; conservar package-lock.json y requirements-lock.txt.
+node_modules/
+.npm/
+.pnpm-store/
+
+# Entornos Python y archivos compilados.
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.tox/
+.nox/
+
+# Caches de herramientas y resultados de pruebas.
+.cache/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.hypothesis/
+.pytype/
+.coverage
+.coverage.*
+coverage/
+coverage.xml
+htmlcov/
+playwright-report/
+test-results/
+
+# Salidas reproducibles de compilacion; no excluir contratos ni fixtures.
+dist/
+build/
+
+# Configuracion privada y credenciales locales; ejemplos sin secretos permitidos.
+.env
+.env.*
+!.env.example
+!.env.*.example
+!.env.template
+.secrets/
+f1auth.json
+id_rsa
+id_ed25519
+*.key
+*.pem
+*.p12
+*.pfx
+
+# Logs, temporales y residuos de conflictos.
+*.log
+*.tmp
+*.temp
+*.bak
+*.orig
+*.rej
