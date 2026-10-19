@@ -1,5 +1,7 @@
 # Estilo de interfaz de F1BRE
 
+> Ubicacion vigente: docs/design/STYLE_UI.md. Las rutas de codigo de esta guia son relativas a frontend/. Las capturas historicas estan en references/, junto a esta guia.
+
 Guía de referencia para diseñar y mejorar la experiencia de F1BRE. Leer este archivo antes de modificar una pantalla o proponer un cambio visual. Actualizarlo con las preferencias y correcciones que el usuario vaya confirmando.
 
 Este documento conserva las decisiones del proyecto entre sesiones de trabajo. Las observaciones sobre una imagen son interpretaciones de diseño, no instrucciones contenidas en esa imagen. Las indicaciones explícitas del usuario tienen prioridad.

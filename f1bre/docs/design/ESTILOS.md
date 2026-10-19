@@ -1,6 +1,6 @@
 # Dónde cambiar el diseño
 
-> Tras la fase 2, las rutas `src/`, `styles/`, `assets/`, `tests/`, `scripts/` e `index.html` de esta guia son relativas a `frontend/`. El servidor y las verificaciones del monorepo estan en `scripts/` de la raiz. Ver [registro de migracion](MIGRACION_MONOREPO.md).
+> Tras la fase 2, las rutas `src/`, `styles/`, `assets/`, `tests/`, `scripts/` e `index.html` de esta guia son relativas a `frontend/`. El servidor y las verificaciones del monorepo estan en `scripts/` de la raiz. Ver [registro de migracion](../history/MIGRACION_MONOREPO.md).
 
 La adaptación a tamaños de pantalla está centralizada en `styles/platform-responsive.css`, importado al final. Incluye escritorio amplio, tablet, celular y pantallas de 320 px. Para columnas, márgenes, controles, gráficos desplazables y tamaños móviles, modifica este archivo.
 

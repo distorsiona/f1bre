@@ -1,6 +1,6 @@
 # Endpoints de OpenF1 usados por F1BRE
 
-> Tras la fase 2, las rutas `src/`, `styles/`, `assets/`, `tests/`, `scripts/` e `index.html` de esta guia son relativas a `frontend/`. El servidor y las verificaciones del monorepo estan en `scripts/` de la raiz. Ver [registro de migracion](MIGRACION_MONOREPO.md).
+> Tras la fase 2, las rutas `src/`, `styles/`, `assets/`, `tests/`, `scripts/` e `index.html` de esta guia son relativas a `frontend/`. El servidor y las verificaciones del monorepo estan en `scripts/` de la raiz. Ver [registro de migracion](../history/MIGRACION_MONOREPO.md).
 
 Base: `https://api.openf1.org/v1`.
 

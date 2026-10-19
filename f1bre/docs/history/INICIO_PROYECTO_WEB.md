@@ -6,15 +6,15 @@ Este documento es el punto de partida para construir un sitio web desde cero con
 
 Completa lo que ya tengas claro; el agente te ayudará a definir lo demás.
 
-| Pregunta | Respuesta |
-| --- | --- |
-| ¿Cómo se llamará el proyecto? | F1BRE |
-| ¿Qué ofrecerá el sitio? | Visualización de las métricas y telemetrías de F1 para entender técnicas y especializarse en F1 |
-| ¿Quién lo usará? | Fanáticos de F1|
-| ¿Qué problema resolverá? | Entender cómo se toman las decisiones y estrategias por cada equipo en la F1|
-| ¿Qué acción principal debe realizar el visitante? | Poder filtrar por equipo, carrera, motor las distintas estrategias por equipo |
-| ¿Qué resultado indicará que el sitio funciona bien? |La correcta visualización de las métricas obtenidas y la simplicidad para utilizar la página |
-| ¿En qué idioma estará? | Inglés principalmente, luego español |
+| Pregunta                                            | Respuesta                                                                                       |
+| --------------------------------------------------- | ----------------------------------------------------------------------------------------------- |
+| ¿Cómo se llamará el proyecto?                       | F1BRE                                                                                           |
+| ¿Qué ofrecerá el sitio?                             | Visualización de las métricas y telemetrías de F1 para entender técnicas y especializarse en F1 |
+| ¿Quién lo usará?                                    | Fanáticos de F1                                                                                 |
+| ¿Qué problema resolverá?                            | Entender cómo se toman las decisiones y estrategias por cada equipo en la F1                    |
+| ¿Qué acción principal debe realizar el visitante?   | Poder filtrar por equipo, carrera, motor las distintas estrategias por equipo                   |
+| ¿Qué resultado indicará que el sitio funciona bien? | La correcta visualización de las métricas obtenidas y la simplicidad para utilizar la página    |
+| ¿En qué idioma estará?                              | Inglés principalmente, luego español                                                            |
 
 ## 2. Alcance de la primera versión
 
@@ -95,10 +95,10 @@ Copia este texto en el chat o pide al agente que lea este archivo:
 
 ## 9. Registro de decisiones
 
-| Fecha | Decisión | Motivo |
-| --- | --- | --- |
-| 2026-10-14 | Preparar el documento de inicio antes de construir | Definir el objetivo y el alcance del sitio |
-| 2026-10-14 | Consultar OpenF1 para las métricas disponibles | Usar datos deportivos reales y señalar datos ausentes |
-| 2026-10-14 | Excluir inicio de sesión y base de datos | Instrucción explícita del usuario; usar f1-platform como referencia de estructura y funciones |
-| 2026-10-14 | Mantener la composición del frontend previo con burdeo y verde militar | Mostrar equipos, pilotos y perfiles con imágenes aportadas por el usuario |
-| 2026-10-14 | Mostrar cada piloto y equipo con su color de OpenF1 | Reservar burdeo y verde militar para la interfaz general; aplicar colores de equipo a tarjetas y perfiles |
+| Fecha      | Decisión                                                               | Motivo                                                                                                    |
+| ---------- | ---------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
+| 2026-10-14 | Preparar el documento de inicio antes de construir                     | Definir el objetivo y el alcance del sitio                                                                |
+| 2026-10-14 | Consultar OpenF1 para las métricas disponibles                         | Usar datos deportivos reales y señalar datos ausentes                                                     |
+| 2026-10-14 | Excluir inicio de sesión y base de datos                               | Instrucción explícita del usuario; usar f1-platform como referencia de estructura y funciones             |
+| 2026-10-14 | Mantener la composición del frontend previo con burdeo y verde militar | Mostrar equipos, pilotos y perfiles con imágenes aportadas por el usuario                                 |
+| 2026-10-14 | Mostrar cada piloto y equipo con su color de OpenF1                    | Reservar burdeo y verde militar para la interfaz general; aplicar colores de equipo a tarjetas y perfiles |

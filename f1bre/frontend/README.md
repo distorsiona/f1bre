@@ -18,10 +18,10 @@ No hace falta instalar paquetes npm para ejecutar la web. Las dependencias son h
 
 ## Guías del proyecto
 
-- [Dónde cambiar el CSS](../docs/ESTILOS.md): archivos, selectores y propiedades para personalizar la interfaz.
-- [Estilo de interfaz](../STYLE_UI.md): preferencias del usuario y criterios de las referencias visuales; leer antes de cambiar el diseño.
-- [Arquitectura y mapa de archivos](../docs/ARQUITECTURA.md): qué hace cada módulo y dónde editar cada función o pantalla.
-- [Endpoints de OpenF1](../docs/ENDPOINTS.md): los 18 endpoints, filtros, datos y pantallas que los utilizan.
+- [Dónde cambiar el CSS](../docs/design/ESTILOS.md): archivos, selectores y propiedades para personalizar la interfaz.
+- [Estilo de interfaz](../docs/design/STYLE_UI.md): preferencias del usuario y criterios de las referencias visuales; leer antes de cambiar el diseño.
+- [Arquitectura y mapa de archivos](../docs/architecture/ARQUITECTURA.md): qué hace cada módulo y dónde editar cada función o pantalla.
+- [Endpoints de OpenF1](../docs/api/ENDPOINTS.md): los 18 endpoints, filtros, datos y pantallas que los utilizan.
 - [Imágenes](assets/README.md): nombres y carpetas para las imágenes aportadas por el usuario.
 
 ## Estructura

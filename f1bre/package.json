@@ -9,8 +9,8 @@
     "start": "node scripts/dev-server.mjs",
     "check": "node scripts/check-structure.mjs && npm --prefix frontend run check",
     "test": "node --test tests/*.test.mjs && npm --prefix frontend test",
-    "format": "prettier --write scripts tests docs backend data_pipeline contracts fixtures index.html README.md STYLE_UI.md package.json && npm --prefix frontend run format",
-    "format:check": "prettier --check scripts tests docs backend data_pipeline contracts fixtures index.html README.md STYLE_UI.md package.json && npm --prefix frontend run format:check",
+    "format": "prettier --write scripts tests docs backend data_pipeline contracts fixtures index.html README.md package.json && npm --prefix frontend run format",
+    "format:check": "prettier --check scripts tests docs backend data_pipeline contracts fixtures index.html README.md package.json && npm --prefix frontend run format:check",
     "test:api": "npm --prefix frontend run test:api",
     "verify:migration": "node scripts/verify-migration.mjs"
   },

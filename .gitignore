@@ -1,0 +1,6 @@
+# Exclusiones locales de la raiz; el proyecto tiene f1bre/.gitignore.
+.DS_Store
+Thumbs.db
+Desktop.ini
+*.swp
+*.swo

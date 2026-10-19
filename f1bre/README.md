@@ -33,11 +33,11 @@ fixtures/        Calibraciones sinteticas y estrategia de ejemplo
 docs/            Arquitectura, endpoints, estilos y registro de migracion
 scripts/         Servidor local y verificaciones del monorepo
 tests/           Regresion HTTP de rutas/archivos tras la migracion
-STYLE_UI.md      Guia visual compartida
+docs/README.md   Indice de documentacion y referencias visuales
 index.html       Entrada de compatibilidad para servidores que siguen en la raiz
 ```
 
-Los antiguos `src/`, `styles/`, `assets/`, `tests/` y `scripts/` de la web estan dentro de `frontend/`. Imagenes de pilotos: `frontend/assets/drivers/apellidoF.png`. Las capturas de referencia anteriores permanecen en la raiz.
+Los antiguos `src/`, `styles/`, `assets/`, `tests/` y `scripts/` de la web estan dentro de `frontend/`. Imagenes de pilotos: `frontend/assets/drivers/apellidoF.png`. Las capturas de referencia estan en docs/design/references/.
 
 ## Instalar herramientas
 
@@ -66,11 +66,13 @@ Para trabajar solo con el cliente: `npm --prefix frontend run check` o `cd front
 
 ## Guias
 
-- [Registro, verificaciones y recuperacion de fases 1 y 2](docs/MIGRACION_MONOREPO.md).
-- [Mapa del frontend y flujo de datos](docs/ARQUITECTURA.md).
-- [Endpoints actuales de OpenF1](docs/ENDPOINTS.md).
-- [Donde cambiar los estilos](docs/ESTILOS.md).
-- [Guia de estilo visual](STYLE_UI.md).
+- [Indice de documentacion y organizacion de carpetas](docs/README.md).
+
+- [Registro, verificaciones y recuperacion de fases 1 y 2](docs/history/MIGRACION_MONOREPO.md).
+- [Mapa del frontend y flujo de datos](docs/architecture/ARQUITECTURA.md).
+- [Endpoints actuales de OpenF1](docs/api/ENDPOINTS.md).
+- [Donde cambiar los estilos](docs/design/ESTILOS.md).
+- [Guia de estilo visual](docs/design/STYLE_UI.md).
 - [Documentacion especifica del frontend](frontend/README.md).
 
 ## Flujo de ramas

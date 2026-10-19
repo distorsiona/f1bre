@@ -15,15 +15,15 @@ Los datos deportivos se consultarán en OpenF1. Se puede conservar una caché te
 
 ## Qué contiene el proyecto anterior
 
-| Capa | Implementación observada | Relación con el nuevo alcance |
-| --- | --- | --- |
-| Backend | FastAPI; routers de inicio, temporadas, circuitos, pilotos, constructores y carreras | Puede servir como referencia de organización y contratos, pero sus consultas a Supabase deben reemplazarse |
-| Almacenamiento | Clientes Supabase normal y administrativo; tablas deportivas y procesos de sincronización | Fuera del alcance actual |
-| Fuentes deportivas | Jolpica para datos históricos y OpenF1 para datos de sesiones | Mantener OpenF1 como fuente del explorador actual; evaluar por separado el historial anterior a 2023 |
-| Frontend | Flutter con objetivos web y aplicaciones nativas | Sus widgets Dart no se pueden copiar directamente al frontend HTML/JS actual |
-| Navegación | Inicio, pilotos, equipos y temporadas; perfiles deportivos | Reutilizar la estructura funcional |
-| Identidad visual | Fondos claros, rojo, barra lateral, tarjetas, logotipos e imágenes locales | Referencia de diseño disponible; no implica cambiar automáticamente el diseño actual |
-| Acceso de usuarios | Icono de Profile y acción de Upgrade con callbacks vacíos | No se encontró un flujo real de login; omitir estos controles en F1BRE |
+| Capa               | Implementación observada                                                                  | Relación con el nuevo alcance                                                                              |
+| ------------------ | ----------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------- |
+| Backend            | FastAPI; routers de inicio, temporadas, circuitos, pilotos, constructores y carreras      | Puede servir como referencia de organización y contratos, pero sus consultas a Supabase deben reemplazarse |
+| Almacenamiento     | Clientes Supabase normal y administrativo; tablas deportivas y procesos de sincronización | Fuera del alcance actual                                                                                   |
+| Fuentes deportivas | Jolpica para datos históricos y OpenF1 para datos de sesiones                             | Mantener OpenF1 como fuente del explorador actual; evaluar por separado el historial anterior a 2023       |
+| Frontend           | Flutter con objetivos web y aplicaciones nativas                                          | Sus widgets Dart no se pueden copiar directamente al frontend HTML/JS actual                               |
+| Navegación         | Inicio, pilotos, equipos y temporadas; perfiles deportivos                                | Reutilizar la estructura funcional                                                                         |
+| Identidad visual   | Fondos claros, rojo, barra lateral, tarjetas, logotipos e imágenes locales                | Referencia de diseño disponible; no implica cambiar automáticamente el diseño actual                       |
+| Acceso de usuarios | Icono de Profile y acción de Upgrade con callbacks vacíos                                 | No se encontró un flujo real de login; omitir estos controles en F1BRE                                     |
 
 ## Hallazgos que bloquean o limitan la reutilización
 
