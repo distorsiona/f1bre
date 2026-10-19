@@ -1,0 +1,56 @@
+{
+  "schema_version": "1.0.0",
+  "parameters_version": "synthetic-example-v1",
+  "synthetic": true,
+  "description": "Ejemplo sintetico para validar software. No representa una calibracion entrenada ni una prediccion deportiva real.",
+  "circuits": {
+    "bahrain": {
+      "name": "Bahrain International Circuit",
+      "total_laps": 57,
+      "base_lap_time": 93.5,
+      "pit_loss": 23.0,
+      "fuel_effect": 0.035,
+      "compounds": {
+        "SOFT": {
+          "alpha": 0.065,
+          "beta": 0.003,
+          "intercept": 92.8
+        },
+        "MEDIUM": {
+          "alpha": 0.045,
+          "beta": 0.0015,
+          "intercept": 93.5
+        },
+        "HARD": {
+          "alpha": 0.025,
+          "beta": 0.0008,
+          "intercept": 94.0
+        }
+      }
+    },
+    "monza": {
+      "name": "Autodromo Nazionale Monza",
+      "total_laps": 53,
+      "base_lap_time": 83.0,
+      "pit_loss": 24.5,
+      "fuel_effect": 0.03,
+      "compounds": {
+        "SOFT": {
+          "alpha": 0.065,
+          "beta": 0.003,
+          "intercept": 82.3
+        },
+        "MEDIUM": {
+          "alpha": 0.045,
+          "beta": 0.0015,
+          "intercept": 83.0
+        },
+        "HARD": {
+          "alpha": 0.025,
+          "beta": 0.0008,
+          "intercept": 83.5
+        }
+      }
+    }
+  }
+}

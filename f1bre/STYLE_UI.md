@@ -245,3 +245,19 @@ Mundo para idioma y auriculares para soporte, con trazo simple grafito, controle
 ## Consistencia de cabecera y titulos
 
 La altura, tipografia y padding del navbar deben ser identicos al cambiar de vista para un mismo ancho de pantalla. No crear variantes de navbar para Home. Season usa exactamente la escala de Drivers: 52 px maximo en escritorio y 36 px en celular; el ano mantiene esa escala. La franja de telemetria superior fue retirada y no debe volver.
+
+## Nombre del piloto en celular
+
+En perfiles hasta 700 px, centrar numero/nombre y apellido respecto al ancho completo y usar una escala protagonista de 52 a 70 px. Quitar el espacio lateral y las siglas decorativas verticales en celular; conservarlas en escritorio. Mantener el apellido con el color real del equipo. Ajustes en `styles/platform-responsive.css`.
+
+## Alineacion del perfil del piloto
+
+En escritorio, el boton de regreso, logo del equipo y borde superior del retrato comparten altura. Numero/nombre y apellido ocupan la columna completa inmediatamente debajo del logo. En celular se apilan regreso, logo, nombre, retrato y fichas. Evitar espacios superiores grandes y conservar la imagen con bandera completa. Reglas finales en `styles/platform-responsive.css`, bloque PERFIL DE PILOTO.
+
+## Curvas de companeros de equipo
+
+En Race Analysis, cada piloto conserva el matiz del equipo pero tiene un tono distinto. Diferenciar tambien con trazo continuo/discontinuo y reflejar ambos en la leyenda. La asignacion es estable por numero de piloto dentro del equipo, independiente del orden o filtro. Implementacion en `src/ui/driver-chart-style.js`.
+
+## Ubicacion tras la migracion al monorepo
+
+Las rutas de implementacion `src/`, `styles/` y `assets/` mencionadas en esta guia se encuentran ahora dentro de `frontend/`. Se conservaron sin cambios las fuentes, estilos e imagenes. Esta guia sigue en la raiz porque es compartida por el proyecto.

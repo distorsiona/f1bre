@@ -1,5 +1,7 @@
 # Organización del código
 
+> Tras la fase 2, las rutas `src/`, `styles/`, `assets/`, `tests/`, `scripts/` e `index.html` de esta guia son relativas a `frontend/`. El servidor y las verificaciones del monorepo estan en `scripts/` de la raiz. Ver [registro de migracion](MIGRACION_MONOREPO.md).
+
 La aplicación sigue siendo un sitio estático con módulos ES. No necesita build, backend propio, cuentas ni base de datos. Se debe abrir mediante un servidor HTTP local, porque los navegadores restringen imports de módulos desde `file://`.
 
 ## Mapa de archivos

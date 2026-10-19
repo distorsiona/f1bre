@@ -1,18 +1,20 @@
 {
-  "name": "f1bre",
+  "name": "f1bre-monorepo",
   "version": "0.1.0",
   "private": true,
   "type": "module",
-  "description": "F1BRE: equipos, pilotos y análisis histórico con OpenF1, sin cuentas ni base de datos.",
+  "description": "Monorepo F1BRE: frontend actual y limites preparados para API y pipeline.",
   "scripts": {
-    "check": "node scripts/check-code.js",
-    "format": "prettier --write src styles tests scripts docs index.html README.md package.json",
-    "format:check": "prettier --check src styles tests scripts docs index.html README.md package.json",
-    "test": "node --test tests/*.test.js",
-    "test:api": "node scripts/smoke-openf1.js"
+    "dev": "node scripts/dev-server.mjs",
+    "start": "node scripts/dev-server.mjs",
+    "check": "node scripts/check-structure.mjs && npm --prefix frontend run check",
+    "test": "node --test tests/*.test.mjs && npm --prefix frontend test",
+    "format": "prettier --write scripts tests docs backend data_pipeline contracts fixtures index.html README.md STYLE_UI.md package.json && npm --prefix frontend run format",
+    "format:check": "prettier --check scripts tests docs backend data_pipeline contracts fixtures index.html README.md STYLE_UI.md package.json && npm --prefix frontend run format:check",
+    "test:api": "npm --prefix frontend run test:api",
+    "verify:migration": "node scripts/verify-migration.mjs"
   },
   "devDependencies": {
-    "acorn": "^8.19.0",
     "prettier": "^3.9.10"
   }
 }

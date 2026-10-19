@@ -1,0 +1,76 @@
+{
+  "$defs": {
+    "Stint": {
+      "additionalProperties": false,
+      "properties": {
+        "compound": {
+          "enum": ["SOFT", "MEDIUM", "HARD"],
+          "title": "Compound",
+          "type": "string"
+        },
+        "end_lap": {
+          "minimum": 1,
+          "title": "End Lap",
+          "type": "integer"
+        }
+      },
+      "required": ["compound", "end_lap"],
+      "title": "Stint",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "circuit_id": {
+      "maxLength": 100,
+      "minLength": 1,
+      "pattern": "^[a-z0-9][a-z0-9_-]*$",
+      "title": "Circuit Id",
+      "type": "string"
+    },
+    "total_laps": {
+      "minimum": 1,
+      "title": "Total Laps",
+      "type": "integer"
+    },
+    "driver_id": {
+      "anyOf": [
+        {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Driver Id"
+    },
+    "team_id": {
+      "anyOf": [
+        {
+          "maxLength": 100,
+          "minLength": 1,
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
+      "default": null,
+      "title": "Team Id"
+    },
+    "stints": {
+      "items": {
+        "$ref": "#/$defs/Stint"
+      },
+      "minItems": 1,
+      "title": "Stints",
+      "type": "array"
+    }
+  },
+  "required": ["circuit_id", "total_laps", "stints"],
+  "title": "SimulationRequest",
+  "type": "object"
+}

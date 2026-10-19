@@ -1,98 +1,84 @@
-# F1BRE
+# F1BRE — monorepo
 
-Sitio web para explorar equipos, pilotos, estrategia y telemetría histórica de F1 con datos de OpenF1. Sin cuentas, login, base de datos ni datos sintéticos.
+Etapa 5: pipeline offline de FP1/FP2 y seleccion de equipo en la API implementados. Pipeline adaptado a OpenF1 sin autenticacion; calibracion real de Bahrain 2024 disponible. [Estructura, instalacion, calibracion y verificacion](data_pipeline/README.md).
 
-## Empezar
+Web de Formula 1 con datos historicos de OpenF1. Fases 1 a 4 implementadas: frontend aislado, contratos de datos y API FastAPI con simulador determinista. El frontend conserva su funcionamiento con OpenF1 y todavia no consume el nuevo simulador. Sin entrenamiento, login ni base de datos.
 
-Desde esta carpeta, iniciar el servidor:
+## Ver la web
+
+Desde esta carpeta:
 
 ```powershell
-python -m http.server 4173 --bind 127.0.0.1
+npm run dev
 ```
 
-Abrir http://127.0.0.1:4173. Detener con Ctrl+C. La aplicación usa módulos ES y debe abrirse por HTTP; no mediante doble clic en `index.html`. Requiere Internet para consultar OpenF1.
+Abrir http://127.0.0.1:4173. Detener con Ctrl+C. Guardar los archivos y recargar el navegador para ver cambios; el servidor de desarrollo desactiva la cache HTTP. Requiere Node.js para este comando e Internet para OpenF1.
 
-No hace falta instalar paquetes npm para ejecutar la web. Las dependencias son herramientas de desarrollo, no librerías cargadas en el navegador.
+Alternativa con Python, sin instalar dependencias:
 
-## Guías del proyecto
+```powershell
+python -m http.server 4173 --bind 127.0.0.1 --directory frontend
+```
 
-- [Dónde cambiar el CSS](docs/ESTILOS.md): archivos, selectores y propiedades para personalizar la interfaz.
-- [Estilo de interfaz](STYLE_UI.md): preferencias del usuario y criterios de las referencias visuales; leer antes de cambiar el diseño.
-- [Arquitectura y mapa de archivos](docs/ARQUITECTURA.md): qué hace cada módulo y dónde editar cada función o pantalla.
-- [Endpoints de OpenF1](docs/ENDPOINTS.md): los 18 endpoints, filtros, datos y pantallas que los utilizan.
-- [Imágenes](assets/README.md): nombres y carpetas para las imágenes aportadas por el usuario.
+Si usas `py`, sustituye `python` por `py`. No ejecutes ambos servidores en el mismo puerto. La orden antigua `python -m http.server 4173 --bind 127.0.0.1`, desde la raiz, tambien funciona: `index.html` redirige a `frontend/` conservando la vista y los parametros de la URL. No es necesario parar un servidor existente para usar esa compatibilidad.
 
-## Estructura
+## Estructura y responsabilidades
 
 ```text
-index.html    Estructura de las pantallas
-src/          Lógica modular: configuración, API, estado, cálculos, funciones y UI
-styles/       Paleta, estructura, tarjetas, análisis y adaptación a dispositivos
-assets/       Fotografías y logotipos locales
-docs/         Arquitectura y endpoints
-tests/        Pruebas locales sin conexión a OpenF1
-scripts/      Verificación de código y prueba opcional contra la API real
+frontend/        Web actual: HTML, JS, CSS, assets, pruebas y herramientas propias
+backend/         API FastAPI y motor determinista de estrategias
+data_pipeline/   Descarga FP1/FP2, limpieza, regresion y exportacion offline
+contracts/       Modelos Pydantic, OpenAPI y esquemas JSON generados
+fixtures/        Calibraciones sinteticas y estrategia de ejemplo
+docs/            Arquitectura, endpoints, estilos y registro de migracion
+scripts/         Servidor local y verificaciones del monorepo
+tests/           Regresion HTTP de rutas/archivos tras la migracion
+STYLE_UI.md      Guia visual compartida
+index.html       Entrada de compatibilidad para servidores que siguen en la raiz
 ```
 
-Las cuatro vistas principales viven en `src/views/`: `home-view.js`, `drivers-view.js`, `teams-view.js` y `race-analysis-view.js`. Los perfiles tienen su módulo aparte. Las rutas están en `src/router/router.js` y la coordinación en `src/controllers/view-controller.js`.
+Los antiguos `src/`, `styles/`, `assets/`, `tests/` y `scripts/` de la web estan dentro de `frontend/`. Imagenes de pilotos: `frontend/assets/drivers/apellidoF.png`. Las capturas de referencia anteriores permanecen en la raiz.
 
-El punto de entrada es `src/app.js`. El catálogo central de endpoints está en `src/config/openf1.js`. Las llamadas HTTP se realizan únicamente en `src/api/openf1-client.js`.
+## Instalar herramientas
 
-## Desarrollo y verificación
-
-Instalar las herramientas usando las versiones del lockfile:
+La web estatica y el servidor local no requieren paquetes npm. Para formato y verificaciones completas, instalar herramientas por componente:
 
 ```powershell
 npm ci
+npm --prefix frontend ci
 ```
 
-Comandos disponibles:
+No se comparten entornos Python ni se instala FastF1, Pandas o Scikit-learn en el cliente. Las dependencias actuales del frontend tienen su propio `package.json` y lockfile.
+
+## Verificar
 
 ```powershell
-npm run check         # Sintaxis, imports, exports, ciclos y archivos de entrada
-npm test              # Cálculos y cliente de API con respuestas simuladas
-npm run format        # Formatea JS, CSS, HTML y documentación
-npm run format:check  # Revisa formato sin modificar archivos
-npm run test:api      # Opcional: consulta una carrera y telemetría reales de OpenF1
+npm run check         # Estructura del monorepo y validacion de modulos del frontend
+npm test              # Regresion HTTP y todas las pruebas existentes del frontend
+npm run format:check  # Formato de herramientas, documentacion y frontend
+npm run test:api      # Opcional: llamadas reales a OpenF1; necesita Internet
+npm run verify:migration # Compara fuentes/assets trasladados con el respaldo local
 ```
 
-Los comentarios del código están en español. Los textos de la interfaz están en inglés. Se recomienda comprobar cambios de lógica con `check` y `test`; cambios visuales se revisan también en navegador.
+`verify:migration` requiere `.migration-backups/`, excluido de Git: es una auditoria local de esta migracion, no un requisito de CI para otros clones. `npm test` no usa el respaldo ni consulta OpenF1.
 
-## Funciones actuales
+Para trabajar solo con el cliente: `npm --prefix frontend run check` o `cd frontend` y `npm test`.
 
-- Home oscuro con cabecera del GP, fotografía local opcional, carrusel de carreras, resultados, estrategia de neumáticos y campeonato alternable entre pilotos/constructores.
-- Lista de pilotos con búsqueda por nombre, número o equipo.
-- Tarjetas de equipos, perfiles deportivos y navegación al análisis filtrado.
-- Colores de equipo desde `team_colour` de OpenF1; texto claro u oscuro según contraste. Burdeo y verde militar se reservan para la interfaz general.
-- Ritmo en ventanas de cinco vueltas, compuestos y stints por piloto, visitas a boxes y duraciones.
-- Telemetría por piloto/vuelta: velocidad, acelerador, freno, RPM, marcha y DRS.
-- Clima, mensajes de control de carrera y explorador de los 18 endpoints.
-- Exportación CSV de la comparación y de los registros del explorador.
+## Guias
 
-Las imágenes se reutilizaron del proyecto Flutter anterior, sin generarlas ni modificarlas. Puedes reemplazarlas en `assets/`; no cambian automáticamente al seleccionar temporada.
+- [Registro, verificaciones y recuperacion de fases 1 y 2](docs/MIGRACION_MONOREPO.md).
+- [Mapa del frontend y flujo de datos](docs/ARQUITECTURA.md).
+- [Endpoints actuales de OpenF1](docs/ENDPOINTS.md).
+- [Donde cambiar los estilos](docs/ESTILOS.md).
+- [Guia de estilo visual](STYLE_UI.md).
+- [Documentacion especifica del frontend](frontend/README.md).
 
-## Datos y límites
+## Flujo de ramas
 
-Fuente: https://openf1.org/docs/. Se listan carreras desde 2023 que terminaron hace más de 30 minutos. La temporada predeterminada es 2025, o el año actual si es anterior. No se habilitaron datos en vivo ni credenciales.
+Trabajo actual en `refactor`. Git no admite `\` en nombres de ramas. La rama conserva los cambios previos del usuario; la copia recuperable registra ese estado anterior a los movimientos. No se hizo merge, push ni despliegue.
 
-La cola del cliente separa peticiones al menos 2,2 segundos, deduplica solicitudes iguales y mantiene hasta 60 respuestas en memoria. Recargar borra esa caché. Varias pestañas no comparten esta cola.
+Tras revisar esta migracion se puede integrar en la rama principal. Para trabajo futuro, usar ramas cortas por funcionalidad y cambios de contrato compatibles. API, motor y codigo del pipeline ya estan implementados. La calibracion real ya esta disponible; la integracion con la UI sigue pendiente.
 
-Un valor desconocido aparece como “—”; no se convierte en cero. La parrilla puede estar ausente y los campeonatos/radio pueden tener cobertura parcial. OpenF1 no suministra fabricante del motor, combustible ni temperaturas de neumáticos.
+## API de simulacion (puerto 8000)
 
-El ritmo excluye pit-out y entradas al pit lane identificadas en el dataset de boxes, pero puede incluir tráfico y neutralizaciones. Las visitas a boxes pueden incluir drive-throughs. Estas mediciones no prueban por sí solas la intención o eficacia de una estrategia.
-
-## Verificación de la reorganización
-
-Se verificaron los módulos ES y su grafo de imports sin ciclos. Las cinco pruebas de cálculos y cliente pasaron. La prueba de API real es opcional y no forma parte de `npm test`.
-
-Las verificaciones anteriores contra OpenF1 incluyeron Monza 2024 (sesión 9590), la sesión 9839, telemetría y descarga CSV. La disponibilidad del proveedor puede cambiar y no se verificó cada endpoint en todas las sesiones.
-
-El rediseño de Home se comprobó con resultados reales: alternancia de campeonato entre pilotos y constructores, expansión de 8 a 20 resultados y cambio de Abu Dhabi a Qatar desde el carrusel. Se revisó a 1366 px y 390 px, sin desbordamiento horizontal de la página. Las tablas amplias permiten desplazamiento dentro de su panel.
-
-## Próximas etapas
-
-Pulir la UX y ajustar las pantallas a las imágenes de referencia del usuario. Después, ampliar comparaciones entre vueltas/pilotos, gráficos especializados del explorador y traducción al español. El sitio sigue siendo local y no se ha publicado.
-
-## Carga rápida
-
-Las carreras ya descargadas se restauran desde caché local al recargar. La primera visita carga datos por vista y muestra cada respuesta conforme llega: Drivers necesita dos datasets, Teams tres. El resto se consulta al abrir su pantalla. `Retry` actualiza la vista activa; se conserva la selección de temporada y carrera. Sin base de datos.
+Instalacion, arranque, endpoints, pruebas y ejemplos curl en [backend/README.md](backend/README.md). Los parametros actuales son sinteticos. Ejecutar la API en otra terminal: npm run dev inicia solamente el frontend.

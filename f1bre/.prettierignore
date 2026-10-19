@@ -1,5 +1,11 @@
 node_modules/
+.migration-backups/
+frontend/
 assets/
-package-lock.json
+**/package-lock.json
 *.jpg
 *.png
+
+**/.venv/
+**/.mypy_cache/
+**/__pycache__/

@@ -1,0 +1,15 @@
+{
+  "circuit_id": "bahrain",
+  "total_laps": 57,
+  "driver_id": null,
+  "stints": [
+    {
+      "compound": "SOFT",
+      "end_lap": 18
+    },
+    {
+      "compound": "HARD",
+      "end_lap": 57
+    }
+  ]
+}

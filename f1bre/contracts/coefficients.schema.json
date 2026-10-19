@@ -1,0 +1,146 @@
+{
+  "$defs": {
+    "CircuitCalibration": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "minLength": 1,
+          "title": "Name",
+          "type": "string"
+        },
+        "total_laps": {
+          "minimum": 1,
+          "title": "Total Laps",
+          "type": "integer"
+        },
+        "base_lap_time": {
+          "exclusiveMinimum": 0,
+          "title": "Base Lap Time",
+          "type": "number"
+        },
+        "pit_loss": {
+          "minimum": 0,
+          "title": "Pit Loss",
+          "type": "number"
+        },
+        "fuel_effect": {
+          "minimum": 0,
+          "title": "Fuel Effect",
+          "type": "number"
+        },
+        "compounds": {
+          "additionalProperties": {
+            "$ref": "#/$defs/DegradationCoefficients"
+          },
+          "propertyNames": {
+            "enum": ["SOFT", "MEDIUM", "HARD"]
+          },
+          "title": "Compounds",
+          "type": "object"
+        },
+        "teams": {
+          "additionalProperties": {
+            "$ref": "#/$defs/TeamCalibration"
+          },
+          "title": "Teams",
+          "type": "object"
+        }
+      },
+      "required": ["name", "total_laps", "base_lap_time", "pit_loss", "fuel_effect", "compounds"],
+      "title": "CircuitCalibration",
+      "type": "object"
+    },
+    "DegradationCoefficients": {
+      "additionalProperties": false,
+      "properties": {
+        "alpha": {
+          "minimum": 0,
+          "title": "Alpha",
+          "type": "number"
+        },
+        "beta": {
+          "minimum": 0,
+          "title": "Beta",
+          "type": "number"
+        },
+        "intercept": {
+          "exclusiveMinimum": 0,
+          "title": "Intercept",
+          "type": "number"
+        }
+      },
+      "required": ["alpha", "beta", "intercept"],
+      "title": "DegradationCoefficients",
+      "type": "object"
+    },
+    "TeamCalibration": {
+      "additionalProperties": false,
+      "properties": {
+        "name": {
+          "title": "Name",
+          "type": "string"
+        },
+        "compounds": {
+          "additionalProperties": {
+            "$ref": "#/$defs/DegradationCoefficients"
+          },
+          "propertyNames": {
+            "enum": ["SOFT", "MEDIUM", "HARD"]
+          },
+          "title": "Compounds",
+          "type": "object"
+        },
+        "sources": {
+          "additionalProperties": {
+            "type": "string"
+          },
+          "propertyNames": {
+            "enum": ["SOFT", "MEDIUM", "HARD"]
+          },
+          "title": "Sources",
+          "type": "object"
+        }
+      },
+      "required": ["name", "compounds", "sources"],
+      "title": "TeamCalibration",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "schema_version": {
+      "const": "1.0.0",
+      "title": "Schema Version",
+      "type": "string"
+    },
+    "parameters_version": {
+      "minLength": 1,
+      "title": "Parameters Version",
+      "type": "string"
+    },
+    "synthetic": {
+      "title": "Synthetic",
+      "type": "boolean"
+    },
+    "description": {
+      "title": "Description",
+      "type": "string"
+    },
+    "circuits": {
+      "additionalProperties": {
+        "$ref": "#/$defs/CircuitCalibration"
+      },
+      "minProperties": 1,
+      "title": "Circuits",
+      "type": "object"
+    },
+    "provenance": {
+      "additionalProperties": true,
+      "title": "Provenance",
+      "type": "object"
+    }
+  },
+  "required": ["schema_version", "parameters_version", "synthetic", "description", "circuits"],
+  "title": "CalibrationFile",
+  "type": "object"
+}

@@ -1,0 +1,545 @@
+/* RESPONSIVE VIGENTE — se carga al final.
+ * 1200 px: escritorio compacto. 900 px: tablet. 600 px: celular. 380 px: celular pequeno.
+ * Cambia aqui columnas, margenes y tamanos; colores en platform.css. */
+/* Contenedores fluidos: las columnas pueden encogerse sin empujar toda la pagina. */
+body.sketch-theme.portal-mode main {
+  width: 100%;
+  padding-inline: clamp(14px, 2.4vw, 34px);
+}
+body.sketch-theme.portal-mode
+  :is(
+    [data-page],
+    .home-dashboard,
+    .home-season-column,
+    .home-main-column,
+    .home-side-column,
+    .team-cards,
+    .team-card,
+    .charts,
+    .panel,
+    .metric,
+    .driver-editorial-copy,
+    .team-detail-layout,
+    .team-detail-panel,
+    .team-detail-race,
+    .driver-info
+  ) {
+  min-width: 0;
+}
+body.sketch-theme.portal-mode :is(img, video, canvas) {
+  max-width: 100%;
+}
+body.sketch-theme.portal-mode
+  :is(.panel-heading, .profile-actions, .home-report-footer, .home-panel-footer) {
+  flex-wrap: wrap;
+}
+/* Selectores en el flujo normal: no dependen de la altura del ticker ni pisan el titulo. */
+body.sketch-theme.portal-mode .session-toolbar {
+  position: static;
+  inset: auto;
+  order: 0;
+  align-self: stretch;
+  width: 100%;
+  display: flex;
+  justify-content: flex-end;
+  flex-wrap: wrap;
+  gap: 12px;
+  padding: 18px 0 0;
+  margin: 0 0 10px;
+}
+body.sketch-theme.home-mode main {
+  padding-top: 0;
+}
+body.sketch-theme.home-mode .home-season-header {
+  padding-right: 0;
+  flex-wrap: wrap;
+}
+body.sketch-theme.portal-mode .session-toolbar select {
+  max-width: 100%;
+  min-width: 0;
+  min-height: 44px;
+  font-size: 14px;
+}
+/* Tablas y datos crudos se desplazan en su panel; el resto de la pagina permanece estable. */
+body.sketch-theme.portal-mode :is(.table-scroll, .home-table-scroll, #chart, #telemetry-chart) {
+  max-width: 100%;
+  overflow-x: auto;
+  overscroll-behavior-inline: contain;
+}
+body.sketch-theme.portal-mode pre {
+  max-width: 100%;
+  overflow: auto;
+}
+/* Graficos proporcionales en escritorio; leyendas pueden pasar a la siguiente linea. */
+body.sketch-theme.portal-mode :is(#chart, #telemetry-chart) svg {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+body.sketch-theme.portal-mode .legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+/* Pantallas amplias: ancho de lectura limitado, sin tarjetas estiradas indefinidamente. */
+@media (min-width: 1600px) {
+  body.sketch-theme.portal-mode .sidebar {
+    padding-inline: max(32px, calc((100% - 1372px) / 2));
+  }
+  body.sketch-theme.portal-mode footer {
+    padding-inline: max(32px, calc((100% - 1372px) / 2));
+  }
+}
+/* Escritorio compacto: el perfil de equipo pasa de tres a dos columnas. */
+@media (max-width: 1200px) {
+  body.sketch-theme.team-profile-mode .team-detail-layout {
+    grid-template-columns: minmax(180px, 0.65fr) minmax(0, 1.35fr);
+    gap: 18px;
+  }
+  body.sketch-theme.team-profile-mode .team-detail-legacy {
+    grid-column: 1/-1;
+  }
+  body.sketch-theme.portal-mode .metrics {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* Tablet: Home y graficos apilados cuando dos columnas dejan poco espacio a los datos. */
+@media (max-width: 900px) {
+  body.sketch-theme .home-dashboard {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 22px;
+  }
+  body.sketch-theme .home-season-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    align-items: start;
+  }
+  body.sketch-theme .home-report-grid {
+    grid-template-columns: 1fr;
+  }
+  body.sketch-theme .home-report-footer {
+    align-items: flex-start;
+  }
+  body.sketch-theme .home-dashboard #home-championship {
+    max-height: 540px;
+  }
+  body.sketch-theme.analysis-mode .charts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme .home-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme .home-side-column {
+    width: 100%;
+  }
+  body.sketch-theme.portal-mode .filters {
+    flex-wrap: wrap;
+  }
+  body.sketch-theme.portal-mode .filters label {
+    flex: 1 1 180px;
+    min-width: 0;
+  }
+  body.sketch-theme.portal-mode .driver-editorial {
+    grid-template-columns: minmax(0, 1.3fr) minmax(200px, 1fr);
+    padding-left: 42px;
+    gap: 18px;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-heading h1 {
+    font-size: clamp(40px, 6vw, 60px);
+    overflow-wrap: anywhere;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-acronym {
+    font-size: 85px;
+    left: -8px;
+  }
+}
+/* Celular y tablet pequena: navegacion puede envolver sin recortar enlaces. */
+@media (max-width: 700px) {
+  body.sketch-theme.portal-mode .sidebar nav {
+    height: auto;
+    min-height: 50px;
+    flex-wrap: wrap;
+    gap: 4px;
+    padding-bottom: 6px;
+  }
+  body.sketch-theme.portal-mode .sidebar nav a {
+    min-height: 44px;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1 1 auto;
+    white-space: normal;
+  }
+  body.sketch-theme.portal-mode .driver-editorial {
+    grid-template-columns: minmax(0, 1fr);
+    padding-left: 32px;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-acronym {
+    font-size: 64px;
+    top: 60px;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-visual {
+    width: 100%;
+    max-width: 420px;
+    justify-self: center;
+    margin: 0;
+  }
+  body.sketch-theme.portal-mode .driver-fact-panel dl > div {
+    gap: 12px;
+  }
+  body.sketch-theme.portal-mode .driver-fact-panel dd {
+    overflow-wrap: anywhere;
+    text-align: right;
+  }
+  body.sketch-theme.portal-mode .team-detail-layout {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme.portal-mode .team-detail-car {
+    min-height: 260px;
+    max-height: 420px;
+  }
+  body.sketch-theme.portal-mode .team-detail-car img {
+    max-height: 370px;
+    object-fit: contain;
+  }
+  body.sketch-theme.portal-mode .team-detail-header {
+    flex-wrap: wrap;
+    gap: 16px;
+  }
+  body.sketch-theme.portal-mode .team-detail-header h2 {
+    overflow-wrap: anywhere;
+    font-size: clamp(34px, 8vw, 52px);
+  }
+}
+/* Celular: una ficha por fila, filtros completos y controles tactiles amplios. */
+@media (max-width: 600px) {
+  body.sketch-theme .home-season-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme .home-report-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme .home-season-header {
+    gap: 12px;
+  }
+  body.sketch-theme .home-header-action {
+    margin-left: 0;
+  }
+  body.sketch-theme.portal-mode .session-toolbar {
+    justify-content: flex-start;
+    gap: 10px;
+  }
+  body.sketch-theme.catalog-mode .session-toolbar label:nth-child(2) {
+    display: block;
+    flex: 1 1 190px;
+    min-width: 0;
+    font-size: 0;
+  }
+  body.sketch-theme.catalog-mode #race {
+    width: 100%;
+    max-width: 100%;
+  }
+  body.sketch-theme.teams-mode .team-cards {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme.drivers-mode .list-toolbar {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+  body.sketch-theme.drivers-mode .search-label {
+    width: 100%;
+    max-width: none;
+    flex: 1 1 100%;
+  }
+  body.sketch-theme.drivers-mode .driver-row {
+    height: auto;
+    min-height: 88px;
+  }
+  body.sketch-theme.drivers-mode .driver-info strong {
+    white-space: normal;
+    overflow-wrap: normal;
+    line-height: 1.2;
+  }
+  body.sketch-theme.drivers-mode .driver-row .driver-logo {
+    display: none;
+  }
+  body.sketch-theme.drivers-mode .driver-column-head {
+    display: none;
+  }
+  body.sketch-theme.portal-mode .profile-actions {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  body.sketch-theme.portal-mode .profile-actions > button {
+    flex: 1 1 150px;
+    white-space: normal;
+  }
+  body.sketch-theme.analysis-mode .filters {
+    flex-wrap: wrap;
+  }
+  body.sketch-theme.analysis-mode .filters label {
+    min-width: 0;
+    flex: 1 1 100%;
+  }
+  body.sketch-theme.analysis-mode .filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  body.sketch-theme.analysis-mode .filters label {
+    flex: auto;
+    width: 100%;
+  }
+  body.sketch-theme.analysis-mode .filters button {
+    width: 100%;
+    min-height: 44px;
+  }
+  body.sketch-theme.analysis-mode .metric {
+    padding: 14px;
+  }
+  body.sketch-theme.analysis-mode .metric strong {
+    font-size: clamp(19px, 4.7vw, 27px);
+    overflow-wrap: anywhere;
+  }
+  body.sketch-theme.analysis-mode :is(#chart, #telemetry-chart) svg {
+    min-width: 500px;
+  }
+  body.sketch-theme.portal-mode .source-status {
+    flex-wrap: wrap;
+    gap: 10px;
+  }
+  body.sketch-theme.portal-mode footer {
+    flex-wrap: wrap;
+    gap: 12px;
+  }
+}
+/* Celular pequeno: prioriza lectura de cifras y nombres sobre columnas adicionales. */
+@media (max-width: 380px) {
+  body.sketch-theme.portal-mode .metrics {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme.analysis-mode .metric strong {
+    font-size: 28px;
+    overflow-wrap: normal;
+  }
+  body.sketch-theme.portal-mode .sidebar nav a {
+    flex-basis: calc(50% - 4px);
+    font-size: 13px;
+  }
+  body.sketch-theme.portal-mode .profile-stat-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme.portal-mode .driver-editorial {
+    padding-left: 0;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-acronym {
+    display: none;
+  }
+  body.sketch-theme .home-insights {
+    align-items: flex-start;
+  }
+  body.sketch-theme .home-insights a {
+    width: 100%;
+    text-align: center;
+  }
+}
+/* Reduce movimiento si el visitante lo solicita en su dispositivo. */
+@media (prefers-reduced-motion: reduce) {
+  body.sketch-theme.portal-mode * {
+    scroll-behavior: auto;
+    transition: none;
+    animation: none;
+  }
+}
+/* Contextos largos y nombres de circuito deben envolver, incluso a 320 px. */
+body.sketch-theme.portal-mode
+  :is(
+    #drivers-context,
+    #teams-context,
+    #race-heading,
+    .drivers-footnote,
+    .teams-footnote,
+    .profile-note,
+    .home-panel-footer,
+    .home-summary-note,
+    .event-list p
+  ) {
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+/* Tablet vertical: evita el hueco que dejan fichas con alturas muy distintas. */
+@media (min-width: 601px) and (max-width: 900px) {
+  body.sketch-theme .home-season-column {
+    grid-template-columns: minmax(0, 1fr);
+  }
+  body.sketch-theme .home-report-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr);
+  }
+}
+/* Perfil de piloto en celular: nombre protagonista, centrado respecto al ancho completo.
+ * font-size cambia la escala; text-align centra ambas lineas; padding-left elimina el hueco de las siglas. */
+@media (max-width: 700px) {
+  body.sketch-theme.portal-mode .driver-editorial {
+    padding-left: 0;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-acronym {
+    display: none;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-heading {
+    width: 100%;
+    text-align: center;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-heading h1 {
+    width: 100%;
+    margin: 8px 0 26px;
+    font-size: clamp(52px, 10vw, 70px);
+    line-height: 1.04;
+    letter-spacing: -1.5px;
+    text-align: center;
+    overflow-wrap: anywhere;
+  }
+  body.sketch-theme.portal-mode .driver-editorial-first,
+  body.sketch-theme.portal-mode .driver-editorial-last {
+    display: block;
+    width: 100%;
+    text-align: center;
+  }
+}
+/* PERFIL DE PILOTO: cabecera compacta y retrato alineado con el boton de regreso.
+ * display:contents permite compartir la cuadricula sin mover ni duplicar los componentes.
+ * El perfil de equipo no participa en estas reglas. */
+body.sketch-theme.profile-mode:not(.team-profile-mode) #profile {
+  position: relative;
+  display: grid;
+  grid-template-columns: minmax(0, 1.55fr) minmax(260px, 0.85fr);
+  gap: 16px 28px;
+  align-items: start;
+  padding-top: 20px;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode)
+  :is(#profile-content, .driver-editorial, .driver-editorial-copy) {
+  display: contents;
+}
+/* Boton y logo comparten el borde superior; la foto arranca en la misma fila. */
+body.sketch-theme.profile-mode:not(.team-profile-mode) #profile-back {
+  grid-column: 1;
+  grid-row: 1;
+  justify-self: start;
+  align-self: start;
+  margin: 0;
+  z-index: 1;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-brand {
+  grid-column: 1;
+  grid-row: 1;
+  min-height: 76px;
+  padding: 0 0 0 165px;
+  align-items: flex-start;
+  justify-content: center;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-logo {
+  height: 76px;
+  width: 250px;
+  max-width: 100%;
+  object-fit: contain;
+  object-position: center top;
+}
+/* El nombre ocupa el ancho de su columna inmediatamente debajo del logo. */
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-heading {
+  grid-column: 1;
+  grid-row: 2;
+  text-align: center;
+  min-width: 0;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-heading h1 {
+  font-size: clamp(64px, 8vw, 112px);
+  line-height: 1;
+  letter-spacing: -2px;
+  text-align: center;
+  margin: 0 0 8px;
+  overflow-wrap: anywhere;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode)
+  :is(.driver-editorial-first, .driver-editorial-last) {
+  width: 100%;
+  text-align: center;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-acronym {
+  display: none;
+}
+/* Fichas, acciones y nota continúan en la columna de datos. */
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-fact-panel {
+  grid-column: 1;
+  margin: 0;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .profile-actions {
+  grid-column: 1;
+  margin: 0;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .profile-note {
+  grid-column: 1;
+  margin: 0;
+}
+body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-visual {
+  grid-column: 2;
+  grid-row: 1 / span 6;
+  align-self: start;
+  justify-self: stretch;
+  margin: 0;
+  width: 100%;
+  max-width: none;
+}
+/* Tablet: ajustar proporcion de columnas y escala del nombre sin agregar huecos. */
+@media (min-width: 701px) and (max-width: 1000px) {
+  body.sketch-theme.profile-mode:not(.team-profile-mode) #profile {
+    grid-template-columns: minmax(0, 1.3fr) minmax(220px, 0.9fr);
+    gap: 14px 20px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-brand {
+    padding-left: 145px;
+    min-height: 65px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-logo {
+    height: 65px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-heading h1 {
+    font-size: clamp(58px, 8vw, 80px);
+  }
+}
+/* Celular: regreso y logo arriba, nombre centrado debajo y foto completa antes de las fichas. */
+@media (max-width: 700px) {
+  body.sketch-theme.profile-mode:not(.team-profile-mode) #profile {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 16px;
+    padding-top: 16px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) #profile-back {
+    grid-column: 1;
+    grid-row: 1;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-brand {
+    grid-column: 1;
+    grid-row: 2;
+    padding: 0;
+    min-height: 48px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-logo {
+    height: 56px;
+    width: 210px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-heading {
+    grid-column: 1;
+    grid-row: 3;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-heading h1 {
+    font-size: clamp(56px, 12vw, 84px);
+    margin: 0;
+    letter-spacing: -1px;
+  }
+  body.sketch-theme.profile-mode:not(.team-profile-mode) .driver-editorial-visual {
+    grid-column: 1;
+    grid-row: 4;
+    max-width: 420px;
+    justify-self: center;
+  }
+}

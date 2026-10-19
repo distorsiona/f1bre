@@ -3,3 +3,13 @@ npm-debug.log*
 .env
 .env.*
 !.env.example
+
+# Copias recuperables locales y entornos aislados.
+.migration-backups/
+**/.venv/
+**/__pycache__/
+**/.pytest_cache/
+**/data/raw/
+**/data/cache/
+
+**/.mypy_cache/

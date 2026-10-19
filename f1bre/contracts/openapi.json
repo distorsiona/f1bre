@@ -1,0 +1,367 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "F1BRE Strategy Simulator",
+    "description": "Simulacion determinista con calibraciones offline; consultar procedencia y supuestos del archivo activo.",
+    "version": "1.0.0"
+  },
+  "paths": {
+    "/health": {
+      "get": {
+        "summary": "Health",
+        "operationId": "health_health_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HealthResponse"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/circuits": {
+      "get": {
+        "summary": "Circuits",
+        "operationId": "circuits_api_circuits_get",
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "items": {
+                    "$ref": "#/components/schemas/CircuitSummary"
+                  },
+                  "type": "array",
+                  "title": "Response Circuits Api Circuits Get"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/simulate": {
+      "post": {
+        "summary": "Simulate",
+        "operationId": "simulate_api_simulate_post",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/SimulationRequest"
+              }
+            }
+          },
+          "required": true
+        },
+        "responses": {
+          "200": {
+            "description": "Successful Response",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SimulationResponse"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Circuito sin calibracion disponible."
+          },
+          "422": {
+            "description": "Validation Error",
+            "content": {
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/HTTPValidationError"
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  "components": {
+    "schemas": {
+      "CircuitSummary": {
+        "properties": {
+          "circuit_id": {
+            "type": "string",
+            "title": "Circuit Id"
+          },
+          "name": {
+            "type": "string",
+            "title": "Name"
+          },
+          "total_laps": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Total Laps"
+          },
+          "base_lap_time": {
+            "type": "number",
+            "title": "Base Lap Time"
+          },
+          "pit_loss": {
+            "type": "number",
+            "title": "Pit Loss"
+          },
+          "fuel_effect": {
+            "type": "number",
+            "title": "Fuel Effect"
+          },
+          "compounds": {
+            "items": {
+              "type": "string",
+              "enum": ["SOFT", "MEDIUM", "HARD"]
+            },
+            "type": "array",
+            "title": "Compounds"
+          },
+          "parameters_version": {
+            "type": "string",
+            "title": "Parameters Version"
+          },
+          "synthetic": {
+            "type": "boolean",
+            "title": "Synthetic"
+          },
+          "teams": {
+            "items": {
+              "type": "string"
+            },
+            "type": "array",
+            "title": "Teams"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "circuit_id",
+          "name",
+          "total_laps",
+          "base_lap_time",
+          "pit_loss",
+          "fuel_effect",
+          "compounds",
+          "parameters_version",
+          "synthetic"
+        ],
+        "title": "CircuitSummary"
+      },
+      "HTTPValidationError": {
+        "properties": {
+          "detail": {
+            "items": {
+              "$ref": "#/components/schemas/ValidationError"
+            },
+            "type": "array",
+            "title": "Detail"
+          }
+        },
+        "type": "object",
+        "title": "HTTPValidationError"
+      },
+      "HealthResponse": {
+        "properties": {
+          "status": {
+            "type": "string",
+            "const": "ok",
+            "title": "Status",
+            "default": "ok"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "title": "HealthResponse"
+      },
+      "LapTelemetry": {
+        "properties": {
+          "lap": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Lap"
+          },
+          "compound": {
+            "type": "string",
+            "enum": ["SOFT", "MEDIUM", "HARD"],
+            "title": "Compound"
+          },
+          "tyre_age": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Tyre Age"
+          },
+          "lap_time": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Lap Time"
+          },
+          "is_pit_lap": {
+            "type": "boolean",
+            "title": "Is Pit Lap"
+          },
+          "delta_vs_base": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Delta Vs Base"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["lap", "compound", "tyre_age", "lap_time", "is_pit_lap", "delta_vs_base"],
+        "title": "LapTelemetry"
+      },
+      "SimulationRequest": {
+        "properties": {
+          "circuit_id": {
+            "type": "string",
+            "maxLength": 100,
+            "minLength": 1,
+            "pattern": "^[a-z0-9][a-z0-9_-]*$",
+            "title": "Circuit Id"
+          },
+          "total_laps": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "Total Laps"
+          },
+          "driver_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Driver Id"
+          },
+          "team_id": {
+            "anyOf": [
+              {
+                "type": "string",
+                "maxLength": 100,
+                "minLength": 1
+              },
+              {
+                "type": "null"
+              }
+            ],
+            "title": "Team Id"
+          },
+          "stints": {
+            "items": {
+              "$ref": "#/components/schemas/Stint"
+            },
+            "type": "array",
+            "minItems": 1,
+            "title": "Stints"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["circuit_id", "total_laps", "stints"],
+        "title": "SimulationRequest"
+      },
+      "SimulationResponse": {
+        "properties": {
+          "total_time_seconds": {
+            "type": "number",
+            "minimum": 0.0,
+            "title": "Total Time Seconds"
+          },
+          "projected_time_formatted": {
+            "type": "string",
+            "pattern": "^\\d{2,}:\\d{2}:\\d{2}\\.\\d{3}$",
+            "title": "Projected Time Formatted"
+          },
+          "pit_stops_count": {
+            "type": "integer",
+            "minimum": 0.0,
+            "title": "Pit Stops Count"
+          },
+          "lap_telemetry": {
+            "items": {
+              "$ref": "#/components/schemas/LapTelemetry"
+            },
+            "type": "array",
+            "title": "Lap Telemetry"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": [
+          "total_time_seconds",
+          "projected_time_formatted",
+          "pit_stops_count",
+          "lap_telemetry"
+        ],
+        "title": "SimulationResponse"
+      },
+      "Stint": {
+        "properties": {
+          "compound": {
+            "type": "string",
+            "enum": ["SOFT", "MEDIUM", "HARD"],
+            "title": "Compound"
+          },
+          "end_lap": {
+            "type": "integer",
+            "minimum": 1.0,
+            "title": "End Lap"
+          }
+        },
+        "additionalProperties": false,
+        "type": "object",
+        "required": ["compound", "end_lap"],
+        "title": "Stint"
+      },
+      "ValidationError": {
+        "properties": {
+          "loc": {
+            "items": {
+              "anyOf": [
+                {
+                  "type": "string"
+                },
+                {
+                  "type": "integer"
+                }
+              ]
+            },
+            "type": "array",
+            "title": "Location"
+          },
+          "msg": {
+            "type": "string",
+            "title": "Message"
+          },
+          "type": {
+            "type": "string",
+            "title": "Error Type"
+          },
+          "input": {
+            "title": "Input"
+          },
+          "ctx": {
+            "type": "object",
+            "title": "Context"
+          }
+        },
+        "type": "object",
+        "required": ["loc", "msg", "type"],
+        "title": "ValidationError"
+      }
+    }
+  }
+}

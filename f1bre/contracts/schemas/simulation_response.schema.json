@@ -1,0 +1,74 @@
+{
+  "$defs": {
+    "LapTelemetry": {
+      "additionalProperties": false,
+      "properties": {
+        "lap": {
+          "minimum": 1,
+          "title": "Lap",
+          "type": "integer"
+        },
+        "compound": {
+          "enum": ["SOFT", "MEDIUM", "HARD"],
+          "title": "Compound",
+          "type": "string"
+        },
+        "tyre_age": {
+          "minimum": 1,
+          "title": "Tyre Age",
+          "type": "integer"
+        },
+        "lap_time": {
+          "minimum": 0,
+          "title": "Lap Time",
+          "type": "number"
+        },
+        "is_pit_lap": {
+          "title": "Is Pit Lap",
+          "type": "boolean"
+        },
+        "delta_vs_base": {
+          "minimum": 0,
+          "title": "Delta Vs Base",
+          "type": "number"
+        }
+      },
+      "required": ["lap", "compound", "tyre_age", "lap_time", "is_pit_lap", "delta_vs_base"],
+      "title": "LapTelemetry",
+      "type": "object"
+    }
+  },
+  "additionalProperties": false,
+  "properties": {
+    "total_time_seconds": {
+      "minimum": 0,
+      "title": "Total Time Seconds",
+      "type": "number"
+    },
+    "projected_time_formatted": {
+      "pattern": "^\\d{2,}:\\d{2}:\\d{2}\\.\\d{3}$",
+      "title": "Projected Time Formatted",
+      "type": "string"
+    },
+    "pit_stops_count": {
+      "minimum": 0,
+      "title": "Pit Stops Count",
+      "type": "integer"
+    },
+    "lap_telemetry": {
+      "items": {
+        "$ref": "#/$defs/LapTelemetry"
+      },
+      "title": "Lap Telemetry",
+      "type": "array"
+    }
+  },
+  "required": [
+    "total_time_seconds",
+    "projected_time_formatted",
+    "pit_stops_count",
+    "lap_telemetry"
+  ],
+  "title": "SimulationResponse",
+  "type": "object"
+}

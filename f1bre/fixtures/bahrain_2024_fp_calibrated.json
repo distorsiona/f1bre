@@ -1,0 +1,484 @@
+{
+  "schema_version": "1.0.0",
+  "parameters_version": "2024-bahrain-fp-373b4016d86a",
+  "synthetic": false,
+  "description": "OpenF1 practice-derived calibration; fuel and pit loss are assumptions, not measured loads.",
+  "circuits": {
+    "bahrain": {
+      "name": "bahrain",
+      "total_laps": 57,
+      "base_lap_time": 108.92575515873015,
+      "pit_loss": 23.0,
+      "fuel_effect": 0.035,
+      "compounds": {
+        "SOFT": {
+          "alpha": 0.10041853850198952,
+          "beta": 0.0,
+          "intercept": 95.44527629976233
+        },
+        "MEDIUM": {
+          "alpha": 0.11437160493827243,
+          "beta": 0.0,
+          "intercept": 108.92575515873015
+        },
+        "HARD": {
+          "alpha": 0.11437160493827243,
+          "beta": 0.0,
+          "intercept": 108.92575515873015
+        }
+      },
+      "teams": {
+        "alpine": {
+          "name": "Alpine",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.18141176470588272,
+              "beta": 0.0,
+              "intercept": 95.26902532679738
+            },
+            "MEDIUM": {
+              "alpha": 0.8869666667000005,
+              "beta": 0.0,
+              "intercept": 111.024933333
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "aston-martin": {
+          "name": "Aston Martin",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.10335915492605678,
+              "beta": 0.0,
+              "intercept": 96.00952887327641
+            },
+            "MEDIUM": {
+              "alpha": 0.16670000000000149,
+              "beta": 0.0,
+              "intercept": 117.9386
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "ferrari": {
+          "name": "Ferrari",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.0,
+              "beta": 0.05963727929235341,
+              "intercept": 95.23086739573615
+            },
+            "MEDIUM": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "grid_median:MEDIUM",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "haas-f1-team": {
+          "name": "Haas F1 Team",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.09747792207792226,
+              "beta": 0.0,
+              "intercept": 96.25375974025974
+            },
+            "MEDIUM": {
+              "alpha": 0.062043209876543375,
+              "beta": 0.0,
+              "intercept": 97.41660662177328
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "kick-sauber": {
+          "name": "Kick Sauber",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.0,
+              "beta": 0.00481512938369396,
+              "intercept": 96.70210415305243
+            },
+            "MEDIUM": {
+              "alpha": 0.25140000000000223,
+              "beta": 0.0,
+              "intercept": 107.10359999999999
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "mclaren": {
+          "name": "McLaren",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.09747272727272766,
+              "beta": 0.0,
+              "intercept": 95.62152727272726
+            },
+            "MEDIUM": {
+              "alpha": 0.0,
+              "beta": 0.0,
+              "intercept": 106.91560000000001
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "mercedes": {
+          "name": "Mercedes",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.42131485587583134,
+              "beta": 0.0,
+              "intercept": 93.90529872505545
+            },
+            "MEDIUM": {
+              "alpha": 0.0,
+              "beta": 0.0,
+              "intercept": 110.45167142857142
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "rb": {
+          "name": "RB",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.0,
+              "beta": 0.005041787769714939,
+              "intercept": 97.02770180740285
+            },
+            "MEDIUM": {
+              "alpha": 0.0,
+              "beta": 0.0,
+              "intercept": 117.68557142857142
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "red-bull-racing": {
+          "name": "Red Bull Racing",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.1381484375000015,
+              "beta": 0.006348830856643292,
+              "intercept": 94.74502802666083
+            },
+            "MEDIUM": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "grid_median:MEDIUM",
+            "HARD": "grid_median:MEDIUM"
+          }
+        },
+        "williams": {
+          "name": "Williams",
+          "compounds": {
+            "SOFT": {
+              "alpha": 0.22436363636363668,
+              "beta": 0.0,
+              "intercept": 95.2318455988456
+            },
+            "MEDIUM": {
+              "alpha": 0.735211111111111,
+              "beta": 0.0,
+              "intercept": 107.3998388888889
+            },
+            "HARD": {
+              "alpha": 0.11437160493827243,
+              "beta": 0.0,
+              "intercept": 108.92575515873015
+            }
+          },
+          "sources": {
+            "SOFT": "fitted",
+            "MEDIUM": "fitted",
+            "HARD": "grid_median:MEDIUM"
+          }
+        }
+      }
+    }
+  },
+  "provenance": {
+    "year": 2024,
+    "sessions": [
+      {
+        "source": "openf1",
+        "session": "FP1",
+        "session_key": 9465,
+        "meeting_key": 1229,
+        "event": "Bahrain Grand Prix",
+        "date": "2024-02-29T11:30:00+00:00",
+        "raw_laps": 449,
+        "payload_sha256": "07a6665b79f3a3c2f8529d7110ce66928bfafbce90fef1cad9393b65b90fdbc1"
+      },
+      {
+        "source": "openf1",
+        "session": "FP2",
+        "session_key": 9466,
+        "meeting_key": 1229,
+        "event": "Bahrain Grand Prix",
+        "date": "2024-02-29T15:00:00+00:00",
+        "raw_laps": 510,
+        "payload_sha256": "5e88e252884c30e5c388cab30ae366b0bfc1eb584aed0f4e853dde33a42f48a5"
+      }
+    ],
+    "generated_at": "2026-10-19T00:58:59.552142+00:00",
+    "clean_laps_sha256": "88ea13fc395e7043ca6849d20b1659e9f7ee7f659c642e3cdc4ceae2359ac275",
+    "raw_laps": 959,
+    "long_run_laps": 322,
+    "minimum_continuous_laps": 5,
+    "pit_loss_source": "user_estimate",
+    "fuel_effect_source": "user_estimate",
+    "initial_stint_fuel_equivalent_laps": 20.0,
+    "fuel_correction": "subtract gamma * max(reference_laps - stint_elapsed_laps, 0)",
+    "regression": "within-run centered quadratic NNLS; median run intercept; actual TyreLife",
+    "fallback": {
+      "SOFT": "grid_median:SOFT",
+      "MEDIUM": "grid_median:MEDIUM",
+      "HARD": "grid_median:MEDIUM"
+    },
+    "fits": {
+      "alpine/MEDIUM": {
+        "laps": 15,
+        "runs": 3,
+        "age_min": 2.0,
+        "age_max": 6.0,
+        "within_run_rmse_seconds": 24.455234480334813,
+        "constraint_active": true
+      },
+      "alpine/SOFT": {
+        "laps": 17,
+        "runs": 2,
+        "age_min": 8.0,
+        "age_max": 16.0,
+        "within_run_rmse_seconds": 0.24483693189924863,
+        "constraint_active": true
+      },
+      "aston-martin/MEDIUM": {
+        "laps": 5,
+        "runs": 1,
+        "age_min": 2.0,
+        "age_max": 6.0,
+        "within_run_rmse_seconds": 29.28249228566449,
+        "constraint_active": true
+      },
+      "aston-martin/SOFT": {
+        "laps": 24,
+        "runs": 3,
+        "age_min": 2.0,
+        "age_max": 15.0,
+        "within_run_rmse_seconds": 10.555288786063494,
+        "constraint_active": true
+      },
+      "ferrari/SOFT": {
+        "laps": 20,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 11.0,
+        "within_run_rmse_seconds": 4.560934459293244,
+        "constraint_active": true
+      },
+      "haas-f1-team/MEDIUM": {
+        "laps": 24,
+        "runs": 3,
+        "age_min": 2.0,
+        "age_max": 12.0,
+        "within_run_rmse_seconds": 0.375677909841095,
+        "constraint_active": true
+      },
+      "haas-f1-team/SOFT": {
+        "laps": 21,
+        "runs": 2,
+        "age_min": 5.0,
+        "age_max": 18.0,
+        "within_run_rmse_seconds": 0.3784979218026211,
+        "constraint_active": true
+      },
+      "kick-sauber/MEDIUM": {
+        "laps": 5,
+        "runs": 1,
+        "age_min": 3.0,
+        "age_max": 7.0,
+        "within_run_rmse_seconds": 16.755223087741918,
+        "constraint_active": true
+      },
+      "kick-sauber/SOFT": {
+        "laps": 20,
+        "runs": 2,
+        "age_min": 8.0,
+        "age_max": 18.0,
+        "within_run_rmse_seconds": 0.3597687752867356,
+        "constraint_active": true
+      },
+      "mclaren/MEDIUM": {
+        "laps": 10,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 17.0,
+        "within_run_rmse_seconds": 18.205960861212464,
+        "constraint_active": true
+      },
+      "mclaren/SOFT": {
+        "laps": 22,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 15.0,
+        "within_run_rmse_seconds": 0.2722075897193664,
+        "constraint_active": true
+      },
+      "mercedes/MEDIUM": {
+        "laps": 12,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 13.0,
+        "within_run_rmse_seconds": 16.964728590168935,
+        "constraint_active": true
+      },
+      "mercedes/SOFT": {
+        "laps": 22,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 14.0,
+        "within_run_rmse_seconds": 2.9909713988726523,
+        "constraint_active": true
+      },
+      "rb/MEDIUM": {
+        "laps": 21,
+        "runs": 3,
+        "age_min": 2.0,
+        "age_max": 9.0,
+        "within_run_rmse_seconds": 22.605766003305444,
+        "constraint_active": true
+      },
+      "rb/SOFT": {
+        "laps": 26,
+        "runs": 3,
+        "age_min": 6.0,
+        "age_max": 18.0,
+        "within_run_rmse_seconds": 0.6458756409606163,
+        "constraint_active": true
+      },
+      "red-bull-racing/SOFT": {
+        "laps": 25,
+        "runs": 2,
+        "age_min": 5.0,
+        "age_max": 17.0,
+        "within_run_rmse_seconds": 1.4369341923675343,
+        "constraint_active": false
+      },
+      "williams/MEDIUM": {
+        "laps": 17,
+        "runs": 3,
+        "age_min": 2.0,
+        "age_max": 8.0,
+        "within_run_rmse_seconds": 17.063496836345916,
+        "constraint_active": true
+      },
+      "williams/SOFT": {
+        "laps": 16,
+        "runs": 2,
+        "age_min": 2.0,
+        "age_max": 16.0,
+        "within_run_rmse_seconds": 0.48241724032109157,
+        "constraint_active": true
+      }
+    },
+    "limitations": [
+      "Unknown actual fuel loads and engine modes",
+      "Session and track evolution remain confounders",
+      "Monotone degradation constraint can flatten noisy fits",
+      "No validated race prediction accuracy"
+    ],
+    "timing_quality": "OpenF1 proxy: positive sectors sum within 0.1 s; not FastF1 IsAccurate",
+    "track_status": "Explicit green from race_control, conservative global/sector flag intervals; approximate lap timestamps",
+    "inlap_policy": "Exclude pit endpoint laps, final stint laps, and laps preceding outlaps",
+    "dependencies": {
+      "pandas": "2.3.3",
+      "numpy": "2.4.6",
+      "scikit-learn": "1.9.1"
+    }
+  }
+}

@@ -1,0 +1,4 @@
+[tool.mypy]
+python_version = "3.11"
+strict = true
+files = ["backend/main.py", "backend/calibration.py", "backend/simulator.py", "contracts/models.py"]
