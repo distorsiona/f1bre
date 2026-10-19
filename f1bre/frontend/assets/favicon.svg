@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <title>F1BRE Platform</title>
+  <!-- Marca compacta para pestañas: rojo y azul oscuro de la navbar. -->
+  <rect width="64" height="64" rx="12" fill="#0f172a" />
+  <path d="M12 0h52v37H0V12A12 12 0 0 1 12 0Z" fill="#e10600" />
+  <g fill="#fff" font-family="Arial, sans-serif" font-weight="900" text-anchor="middle">
+    <text x="30" y="32" font-size="34" font-style="italic">F1</text>
+    <text x="32" y="56" font-size="20" letter-spacing="1">BRE</text>
+  </g>
+</svg>

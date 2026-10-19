@@ -4,6 +4,8 @@ Las imágenes existentes se copiaron del frontend Flutter proporcionado por el u
 
 Puedes añadir o reemplazar archivos en estas carpetas y recargar el navegador. La aplicación usa únicamente imágenes locales.
 
+El icono de la pestaña es `favicon.svg`, una version compacta de F1BRE en rojo y azul oscuro. El logo horizontal original `fbre.png` se conserva. El favicon se declara en los dos archivos HTML de entrada; al cambiarlo, incrementar el parametro `v` de ambas referencias para renovar su cache.
+
 | Uso | Ruta y ejemplo |
 | --- | --- |
 | Retrato en listas e inicio | `drivers/<apellido>.png`, por ejemplo `drivers/norris.png` |
