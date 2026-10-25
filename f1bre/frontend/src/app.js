@@ -5,12 +5,14 @@ import { initializeLanguage } from './ui/language.js';
  */
 import { initializeControls, bindEvents } from './controllers/app-controller.js';
 import { renderRoute } from './router/router.js';
-import { loadYear } from './features/sessions.js';
+import { initializeHistorical } from './views/historical-view.js';
+import { activateRoute } from './features/navigation.js';
 import { mountNavbar } from './ui/components/navbar.js?v=navbar-tools';
 
 mountNavbar();
+initializeHistorical();
 initializeControls();
 bindEvents();
 renderRoute();
-loadYear();
+activateRoute();
 initializeLanguage();

@@ -2,9 +2,9 @@
 import { $ } from '../utils/dom.js';
 import { state } from '../state/store.js';
 import { OpenF1 } from '../api/openf1-client.js';
-import { readSelection, saveSelection } from '../api/response-cache.js';
+import { saveSelection } from '../api/response-cache.js';
 import { endpointsForRoute } from './session-plan.js';
-import { CORE_ENDPOINTS, HISTORICAL_DELAY_MS, OPENF1_BASE_URL } from '../config/openf1.js';
+import { CORE_ENDPOINTS, OPENF1_BASE_URL } from '../config/openf1.js';
 let clearViews = () => {};
 let refreshViews = () => {};
 let completed = new Set();
@@ -58,6 +58,7 @@ function publish() {
   refreshViews();
 }
 function report() {
+  if ((location.hash || '#home') === '#home') return;
   const plan = endpointsForRoute(location.hash);
   const unavailable = plan.filter((endpoint) => errors.has(endpoint));
   setLoadMessage(
@@ -69,7 +70,13 @@ function report() {
 }
 /** Reevalúa la ruta después de cada respuesta; no descarga pantallas que no se han abierto. */
 export function ensureRouteData() {
-  if (!state.session) return Promise.resolve();
+  if (
+    !state.session ||
+    !['overview', 'historical', 'drivers', 'teams', 'driver', 'team'].includes(
+      location.hash.slice(1).split('/')[0],
+    )
+  )
+    return Promise.resolve();
   if (runner?.token === state.generation) return runner.promise;
   const token = state.generation;
   const promise = Promise.resolve().then(async () => {
@@ -107,7 +114,7 @@ export function ensureRouteData() {
   runner = { token, promise };
   return promise;
 }
-/** Calendario en caché durante cinco minutos; si falla Internet puede conservar el guardado. */
+/** Actualiza el calendario sin restaurar una carrera seleccionada anteriormente. */
 export async function loadYear() {
   const token = ++state.generation;
   ++state.teleGeneration;
@@ -117,38 +124,32 @@ export async function loadYear() {
   state.data = {};
   state.sessions = [];
   state.calendar = [];
+  window.dispatchEvent(new window.Event('catalog-reset'));
   completed = new Set();
   errors = new Set();
   state.datasetStatus = {};
   runner = null;
   clearViews();
   setLoading(true);
-  $('race').replaceChildren();
+  $('race').replaceChildren(new Option('Choose a Grand Prix', ''));
   setLoadMessage('Loading historical race sessions…');
   const params = { year: $('year').value, session_name: 'Race' };
   try {
-    // El calendario guardado permite entrar sin esperar su actualización por red.
-    const saved = OpenF1.peek('sessions', params);
-    const rows = saved?.rows || (await OpenF1.query('sessions', params));
+    const rows = await OpenF1.query('sessions', params, { force: true });
     if (token !== state.generation) return;
     state.calendar = rows;
     state.sessions = rows
-      .filter(
-        (session) =>
-          !session.is_cancelled && Date.parse(session.date_end) + HISTORICAL_DELAY_MS < Date.now(),
-      )
+      .filter((session) => !session.is_cancelled && Date.parse(session.date_end) <= Date.now())
       .sort((a, b) => Date.parse(a.date_start) - Date.parse(b.date_start));
     if (!state.sessions.length) {
-      if (saved && !saved.fresh) {
-        await OpenF1.query('sessions', params);
-        if (token === state.generation) await loadYear();
-        return;
-      }
       setLoading(false);
       setLoadMessage('No completed races available. Choose another year.');
+      window.dispatchEvent(new window.Event('catalog-ready'));
+      refreshViews();
       return;
     }
     $('race').replaceChildren(
+      new Option('Choose a Grand Prix', ''),
       ...state.sessions.map(
         (session) =>
           new Option(
@@ -157,19 +158,11 @@ export async function loadYear() {
           ),
       ),
     );
-    const selection = readSelection();
-    const chosen =
-      state.sessions.find(
-        (session) =>
-          Number(selection?.year) === Number($('year').value) &&
-          String(session.session_key) === String(selection?.sessionKey),
-      ) || state.sessions.at(-1);
-    $('race').value = String(chosen.session_key);
-    await loadRace();
-    if (saved && !saved.fresh) {
-      // Actualiza el calendario para la próxima visita sin bloquear la carrera visible.
-      OpenF1.query('sessions', params).catch(() => {});
-    }
+    $('race').value = '';
+    setLoading(false);
+    setLoadMessage('Choose a Grand Prix to open its analysis.');
+    window.dispatchEvent(new window.Event('catalog-ready'));
+    refreshViews();
   } catch (error) {
     if (token === state.generation) {
       setLoading(false);
@@ -180,7 +173,20 @@ export async function loadYear() {
 /** Hidrata todos los datasets guardados antes de la primera solicitud de la vista. */
 export async function loadRace(options = {}) {
   const chosen = state.sessions.find((session) => String(session.session_key) === $('race').value);
-  if (!chosen) return;
+  if (!chosen) {
+    ++state.generation;
+    state.session = null;
+    ++state.teleGeneration;
+    ++state.rawGeneration;
+    runner = null;
+    state.data = {};
+    state.datasetStatus = {};
+    state.drivers = [];
+    clearViews();
+    setLoading(false);
+    refreshViews();
+    return;
+  }
   ++state.generation;
   ++state.teleGeneration;
   ++state.rawGeneration;

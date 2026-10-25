@@ -27,6 +27,34 @@
           <button id="retry" class="reset">Retry</button
           ><a id="source-link" target="_blank" rel="noopener">Source ↗</a>
         </div>
+        <section id="selection-panel" class="panel" hidden aria-label="Race selection">
+          <div class="filters">
+            <label id="season-field">Season<select id="year"></select></label>
+            <label
+              >Grand Prix<select id="race">
+                <option value="">Choose a Grand Prix</option>
+              </select></label
+            >
+          </div>
+          <p id="selection-hint">Choose a Grand Prix to open its analysis.</p>
+        </section>
+        <section id="historical" data-page="historical" hidden>
+          <h2>Historical</h2>
+          <div id="historical-home" hidden></div>
+          <p>Explore completed Grands Prix since 2023. Choose a race above to see its summary.</p>
+          <div id="historical-catalog" class="filters"></div>
+          <article class="panel">
+            <h3>Team performance across the season</h3>
+            <button id="load-history" class="reset">Load team performance</button>
+            <label
+              >Team<select id="historical-team">
+                <option value="all">All teams</option>
+              </select></label
+            >
+            <p id="history-status" role="status"></p>
+            <div id="historical-performance" class="table-wrap"></div>
+          </article>
+        </section>
         <!-- Inicio: resumen, podio y clasificaciones de la sesión. -->
         <section id="home" data-page="home">
           <!-- Bosquejo de Home: temporada/carreras a la izquierda y campeonato a la derecha. -->
@@ -203,142 +231,152 @@
             <h1>RACE ANALYSIS</h1>
             <p id="race-heading">Loading selected race…</p>
           </header>
-          <div class="filters">
-            <label
-              >Team<select id="team">
-                <option value="all">All teams</option>
-              </select></label
-            ><button id="reset" class="reset">Reset team</button>
-          </div>
-          <div id="metrics" class="metrics" aria-live="polite"></div>
-          <div class="charts">
-            <article class="panel pace">
+          <div id="analysis-details">
+            <article class="panel">
+              <h3>Results and latest intervals</h3>
+              <div id="analysis-results" class="table-wrap"></div>
+            </article>
+            <article class="panel">
+              <h3>Team radio</h3>
+              <div id="analysis-radio"></div>
+            </article>
+            <div class="filters">
+              <label
+                >Team<select id="team">
+                  <option value="all">All teams</option>
+                </select></label
+              ><button id="reset" class="reset">Reset team</button>
+            </div>
+            <div id="metrics" class="metrics" aria-live="polite"></div>
+            <div class="charts">
+              <article class="panel pace">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">01 / PERFORMANCE</span>
+                    <h3>Race pace evolution</h3>
+                  </div>
+                  <span class="unit">LAP TIME / SECONDS</span>
+                </div>
+                <p class="chart-help">
+                  Average driver pace in five-lap windows. Lower is faster; reported pit-entry and
+                  pit-out laps are excluded.
+                </p>
+                <div
+                  id="chart"
+                  tabindex="0"
+                  role="region"
+                  aria-label="Race pace chart, scroll horizontally on small screens"
+                ></div>
+                <div id="legend" class="legend"></div>
+              </article>
+              <article class="panel">
+                <div class="panel-heading">
+                  <div>
+                    <span class="eyebrow">02 / TYRE MANAGEMENT</span>
+                    <h3>Stint strategy</h3>
+                  </div>
+                </div>
+                <div class="tyre-key">
+                  <span><i class="soft"></i>Soft</span><span><i class="medium"></i>Medium</span
+                  ><span><i class="hard"></i>Hard</span
+                  ><span><i class="intermediate"></i>Inter</span><span><i class="wet"></i>Wet</span>
+                </div>
+                <div id="stints"></div>
+                <p class="chart-help">
+                  Width represents recorded laps on each compound, by driver. Hover for lap range
+                  and initial tyre age. Grey indicates missing or unrecorded stints.
+                </p>
+              </article>
+            </div>
+            <article class="panel table-panel">
               <div class="panel-heading">
                 <div>
-                  <span class="eyebrow">01 / PERFORMANCE</span>
-                  <h3>Race pace evolution</h3>
+                  <span class="eyebrow">03 / THE BIG PICTURE</span>
+                  <h3>Strategy comparison</h3>
                 </div>
-                <span class="unit">LAP TIME / SECONDS</span>
+                <button id="export" class="reset">Download CSV ↓</button>
               </div>
-              <p class="chart-help">
-                Average driver pace in five-lap windows. Lower is faster; reported pit-entry and
-                pit-out laps are excluded.
-              </p>
               <div
-                id="chart"
+                class="table-scroll"
                 tabindex="0"
                 role="region"
-                aria-label="Race pace chart, scroll horizontally on small screens"
+                aria-label="Strategy comparison table"
+              >
+                <table>
+                  <thead>
+                    <tr>
+                      <th>Driver</th>
+                      <th>Team</th>
+                      <th>Avg. pace</th>
+                      <th>Pit visits</th>
+                      <th>Avg. lane time</th>
+                      <th>Avg. stop time</th>
+                      <th>Tyre sequence</th>
+                      <th>Grid → finish</th>
+                    </tr>
+                  </thead>
+                  <tbody id="rows"></tbody>
+                </table>
+              </div>
+              <p id="insight" class="insight" aria-live="polite"></p>
+            </article>
+            <article class="panel table-panel">
+              <span class="eyebrow">04 / CAR TELEMETRY</span>
+              <h3>A closer look at every lap</h3>
+              <div class="filters">
+                <label>Driver<select id="driver"></select></label
+                ><label>Lap<select id="lap"></select></label
+                ><label
+                  >Channel<select id="channel">
+                    <option value="speed">Speed</option>
+                    <option value="throttle">Throttle</option>
+                    <option value="brake">Brake</option>
+                    <option value="rpm">RPM</option>
+                    <option value="n_gear">Gear</option>
+                    <option value="drs">DRS status</option>
+                  </select></label
+                ><button id="load-telemetry" class="reset">Load telemetry ↗</button>
+              </div>
+              <p id="telemetry-status" class="context" role="status"></p>
+              <div
+                id="telemetry-chart"
+                tabindex="0"
+                role="region"
+                aria-label="Telemetry chart, scroll horizontally on small screens"
               ></div>
-              <div id="legend" class="legend"></div>
+              <p id="telemetry-values" class="context"></p>
             </article>
-            <article class="panel">
-              <div class="panel-heading">
-                <div>
-                  <span class="eyebrow">02 / TYRE MANAGEMENT</span>
-                  <h3>Stint strategy</h3>
-                </div>
-              </div>
-              <div class="tyre-key">
-                <span><i class="soft"></i>Soft</span><span><i class="medium"></i>Medium</span
-                ><span><i class="hard"></i>Hard</span><span><i class="intermediate"></i>Inter</span
-                ><span><i class="wet"></i>Wet</span>
-              </div>
-              <div id="stints"></div>
-              <p class="chart-help">
-                Width represents recorded laps on each compound, by driver. Hover for lap range and
-                initial tyre age. Grey indicates missing or unrecorded stints.
+            <div class="charts context-panels">
+              <article class="panel">
+                <span class="eyebrow">05 / CONDITIONS</span>
+                <h3>Weather</h3>
+                <div id="weather" class="context"></div>
+              </article>
+              <article class="panel">
+                <span class="eyebrow">06 / RACE EVENTS</span>
+                <h3>Race control</h3>
+                <p class="context">Latest 30 messages. Full feed available below.</p>
+                <ul id="control" class="event-list"></ul>
+              </article>
+            </div>
+            <article class="panel table-panel">
+              <span class="eyebrow">07 / ALL OPENF1 ENDPOINTS</span>
+              <h3>Data explorer</h3>
+              <p class="context">
+                Inspect original API fields: sectors, speed traps, positions, intervals, location,
+                results, championship standings, overtakes, radio and more. Driver endpoints use the
+                selected driver above; high-volume endpoints use the selected lap's time window.
+                Some datasets may be unavailable for a race.
               </p>
-            </article>
-          </div>
-          <article class="panel table-panel">
-            <div class="panel-heading">
-              <div>
-                <span class="eyebrow">03 / THE BIG PICTURE</span>
-                <h3>Strategy comparison</h3>
+              <div class="filters">
+                <label>Dataset<select id="endpoint"></select></label
+                ><button id="load-raw" class="reset">Load dataset ↗</button
+                ><button id="raw-download" class="reset" disabled>Download dataset CSV ↓</button>
               </div>
-              <button id="export" class="reset">Download CSV ↓</button>
-            </div>
-            <div
-              class="table-scroll"
-              tabindex="0"
-              role="region"
-              aria-label="Strategy comparison table"
-            >
-              <table>
-                <thead>
-                  <tr>
-                    <th>Driver</th>
-                    <th>Team</th>
-                    <th>Avg. pace</th>
-                    <th>Pit visits</th>
-                    <th>Avg. lane time</th>
-                    <th>Avg. stop time</th>
-                    <th>Tyre sequence</th>
-                    <th>Grid → finish</th>
-                  </tr>
-                </thead>
-                <tbody id="rows"></tbody>
-              </table>
-            </div>
-            <p id="insight" class="insight" aria-live="polite"></p>
-          </article>
-          <article class="panel table-panel">
-            <span class="eyebrow">04 / CAR TELEMETRY</span>
-            <h3>A closer look at every lap</h3>
-            <div class="filters">
-              <label>Driver<select id="driver"></select></label
-              ><label>Lap<select id="lap"></select></label
-              ><label
-                >Channel<select id="channel">
-                  <option value="speed">Speed</option>
-                  <option value="throttle">Throttle</option>
-                  <option value="brake">Brake</option>
-                  <option value="rpm">RPM</option>
-                  <option value="n_gear">Gear</option>
-                  <option value="drs">DRS status</option>
-                </select></label
-              ><button id="load-telemetry" class="reset">Load telemetry ↗</button>
-            </div>
-            <p id="telemetry-status" class="context" role="status"></p>
-            <div
-              id="telemetry-chart"
-              tabindex="0"
-              role="region"
-              aria-label="Telemetry chart, scroll horizontally on small screens"
-            ></div>
-            <p id="telemetry-values" class="context"></p>
-          </article>
-          <div class="charts context-panels">
-            <article class="panel">
-              <span class="eyebrow">05 / CONDITIONS</span>
-              <h3>Weather</h3>
-              <div id="weather" class="context"></div>
-            </article>
-            <article class="panel">
-              <span class="eyebrow">06 / RACE EVENTS</span>
-              <h3>Race control</h3>
-              <p class="context">Latest 30 messages. Full feed available below.</p>
-              <ul id="control" class="event-list"></ul>
+              <p id="raw-status" class="context" role="status"></p>
+              <pre id="raw-preview" tabindex="0" aria-label="Original OpenF1 records"></pre>
             </article>
           </div>
-          <article class="panel table-panel">
-            <span class="eyebrow">07 / ALL OPENF1 ENDPOINTS</span>
-            <h3>Data explorer</h3>
-            <p class="context">
-              Inspect original API fields: sectors, speed traps, positions, intervals, location,
-              results, championship standings, overtakes, radio and more. Driver endpoints use the
-              selected driver above; high-volume endpoints use the selected lap's time window. Some
-              datasets may be unavailable for a race.
-            </p>
-            <div class="filters">
-              <label>Dataset<select id="endpoint"></select></label
-              ><button id="load-raw" class="reset">Load dataset ↗</button
-              ><button id="raw-download" class="reset" disabled>Download dataset CSV ↓</button>
-            </div>
-            <p id="raw-status" class="context" role="status"></p>
-            <pre id="raw-preview" tabindex="0" aria-label="Original OpenF1 records"></pre>
-          </article>
         </section>
       </main>
       <footer>

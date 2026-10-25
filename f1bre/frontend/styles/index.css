@@ -37,3 +37,4 @@
 @import url('./navbar.css');
 /* Correcciones finales de consistencia entre Home y las demas vistas. */
 @import url('./ui-consistency.css');
+@import url('./season-navigation.css');

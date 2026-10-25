@@ -2,7 +2,7 @@ import { SUPPORT_EMAIL } from '../../config/site.js';
 import { setLanguage } from '../language.js';
 /** Navbar compartido por todas las vistas.
  * Posee el HTML y el estado activo de navegacion; no consulta OpenF1.
- * Los selectores se crean una sola vez: app-controller conserva sus opciones y eventos.
+ * Los selectores de temporada y carrera pertenecen al contenido de cada vista.
  */
 const template = `<header class="sidebar navbar">
       <a class="brand" href="#home" aria-label="F1BRE home">F1BRE<span>platform</span></a>
@@ -15,14 +15,10 @@ const template = `<header class="sidebar navbar">
           ><span class="nav-icon" aria-hidden="true">▦</span>Teams</a
         >
         <a href="#overview" data-nav="overview"
-          ><span class="nav-icon" aria-hidden="true">⌁</span>Race analysis</a
+          ><span class="nav-icon" aria-hidden="true">⌁</span>Race Analysis</a
         >
+        <a href="#historical" data-nav="historical"><span class="nav-icon" aria-hidden="true">◷</span>Historical</a>
       </nav>
-<div class="session-toolbar navbar-session">
-          <label>Season<select id="year"></select></label
-          ><label><span class="navbar-field-label">Race</span><select id="race"></select></label
-          >
-        </div>
 <div class="navbar-tools">
 <button class="navbar-icon" id="language-toggle" type="button" aria-label="Choose language" title="Language" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><ellipse cx="12" cy="12" rx="4" ry="9"/><path d="M3 12h18M5 6h14M5 18h14"/></svg></button>
 <button class="navbar-icon" id="support-toggle" type="button" aria-label="Contact support" title="Support" aria-haspopup="dialog"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13v-2a8 8 0 0116 0v2M4 12H3v6h4v-6H4zm16 0h1v6h-4v-6h3zm0 6v2h-7"/><path d="M10 20h3"/></svg></button>
@@ -31,7 +27,7 @@ const template = `<header class="sidebar navbar">
 <dialog id="support-dialog" class="navbar-dialog" aria-labelledby="support-title"><div class="navbar-dialog-heading"><h2 id="support-title">Support</h2><button type="button" data-close-dialog aria-label="Close">×</button></div><p>For any suggestions or else, contact:</p><p id="support-email" data-no-translate></p></dialog>
 </header>`;
 
-/** Montaje idempotente: navegar nunca recrea selectores ni pierde su seleccion. */
+/** Montaje idempotente: conserva los diálogos de idioma y contacto al navegar. */
 export function mountNavbar() {
   const root = document.getElementById('navbar-root');
   if (!root || root.querySelector('.navbar')) return;

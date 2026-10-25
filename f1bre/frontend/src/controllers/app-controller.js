@@ -2,13 +2,13 @@
 import { OpenF1 } from '../api/openf1-client.js';
 import { $ } from '../utils/dom.js';
 import { state } from '../state/store.js';
+import { loadYear, loadRace, configureSessionViews } from '../features/sessions.js';
 import {
-  loadYear,
-  loadRace,
-  configureSessionViews,
-  ensureRouteData,
-} from '../features/sessions.js';
-import { readSelection } from '../api/response-cache.js';
+  activateRoute,
+  retryRoute,
+  openHistoricalRace,
+  bindNavigationEvents,
+} from '../features/navigation.js';
 import { loadTelemetry, updateLapOptions } from '../features/telemetry.js';
 import { loadDataset } from '../features/data-explorer.js';
 import { exportComparison } from '../features/comparison-export.js';
@@ -25,10 +25,7 @@ export function initializeControls() {
       (_, i) => new Option(2023 + i, 2023 + i),
     ),
   );
-  $('year').value = String(Math.min(2025, new Date().getFullYear()));
-  const savedYear = String(readSelection()?.year || '');
-  if ([...$('year').options].some((option) => option.value === savedYear))
-    $('year').value = savedYear;
+  $('year').value = String(new Date().getFullYear());
   $('endpoint').replaceChildren(
     ...OpenF1.endpoints.map((endpoint) => new Option(endpoint.replaceAll('_', ' '), endpoint)),
   );
@@ -46,9 +43,7 @@ function handleLapChange() {
 
 /** Conserva la carrera cuando se reintenta una carga; si no hay carreras, recarga temporada. */
 function retrySelection() {
-  if (state.busy) return;
-  if (state.sessions.length) loadRace({ force: true });
-  else loadYear();
+  retryRoute();
 }
 
 /** Une perfil deportivo y análisis sin que sus módulos se importen entre sí. */
@@ -64,17 +59,17 @@ function openProfileAnalysis({ teamName, driverNumber }) {
 
 /** Conecta eventos una sola vez. Las consultas solo ocurren en acciones que las requieren. */
 export function bindEvents() {
+  bindNavigationEvents();
   configureSessionViews({ clear: clearViews, refresh: refreshViews });
   window.addEventListener('resize', centerSelectedRace);
   configureHomeActions({
-    selectRace: (sessionKey) => {
-      $('race').value = String(sessionKey);
-      loadRace();
-    },
+    selectRace: openHistoricalRace,
   });
   configureProfileActions({ openAnalysis: openProfileAnalysis });
   $('year').addEventListener('change', loadYear);
-  $('race').addEventListener('change', loadRace);
+  $('race').addEventListener('change', () => {
+    loadRace();
+  });
   $('team').addEventListener('change', refreshAnalysis);
   $('driver').addEventListener('change', updateLapOptions);
   $('lap').addEventListener('change', handleLapChange);
@@ -92,7 +87,7 @@ export function bindEvents() {
   $('driver-search').addEventListener('input', renderDriverList);
   window.addEventListener('hashchange', () => {
     refreshViews();
-    ensureRouteData();
+    activateRoute();
     window.scrollTo(0, 0);
   });
 }

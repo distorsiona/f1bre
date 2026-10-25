@@ -28,7 +28,7 @@ body.sketch-theme .home-season-header {
   min-height: 50px;
   padding-right: 125px;
 }
-body.sketch-theme #home-season-title {
+body.sketch-theme :is(#home-season-title, #historical-home-season-title) {
   margin: 0;
   padding: 0;
   font-size: 46px;
@@ -36,13 +36,13 @@ body.sketch-theme #home-season-title {
   text-transform: uppercase;
   letter-spacing: -1.4px;
 }
-body.sketch-theme #home-season-title span {
+body.sketch-theme :is(#home-season-title, #historical-home-season-title) span {
   color: #e10600;
   font-style: normal;
   font-family: 'JetBrains Mono', monospace;
   font-size: 0.85em;
 }
-body.sketch-theme #home-season-badge {
+body.sketch-theme :is(#home-season-badge, #historical-home-season-badge) {
   padding: 6px 10px;
   background: #ecfdf5;
   border: 1px solid #a7f3d0;
@@ -102,13 +102,13 @@ body.sketch-theme .home-race-summary strong {
   font-style: italic;
   text-transform: uppercase;
 }
-body.sketch-theme #home-next-race {
+body.sketch-theme :is(#home-next-race, #historical-home-next-race) {
   min-height: 108px;
 }
-body.sketch-theme #home-next-race p {
+body.sketch-theme :is(#home-next-race, #historical-home-next-race) p {
   margin: 10px 0;
 }
-body.sketch-theme #home-next-race time {
+body.sketch-theme :is(#home-next-race, #historical-home-next-race) time {
   display: inline-block;
   padding: 8px 12px;
   background: #f1f5f9;
@@ -232,7 +232,7 @@ body.sketch-theme .home-championship-panel > h2 {
   font-size: 27px;
   text-transform: uppercase;
 }
-body.sketch-theme #home-standing-year {
+body.sketch-theme :is(#home-standing-year, #historical-home-standing-year) {
   font:
     600 12px 'JetBrains Mono',
     monospace;
@@ -259,7 +259,7 @@ body.sketch-theme .home-dashboard .home-segmented button[aria-pressed='true'] {
   background: white;
   color: #0f172a;
 }
-body.sketch-theme .home-dashboard #home-championship {
+body.sketch-theme .home-dashboard :is(#home-championship, #historical-home-championship) {
   max-height: 536px;
   gap: 12px;
 }
@@ -364,11 +364,11 @@ body.sketch-theme .home-insights a {
     gap: 12px;
     margin-bottom: 20px;
   }
-  body.sketch-theme #home-season-title {
+  body.sketch-theme :is(#home-season-title, #historical-home-season-title) {
     font-size: 32px;
     min-height: 0;
   }
-  body.sketch-theme #home-season-badge {
+  body.sketch-theme :is(#home-season-badge, #historical-home-season-badge) {
     font-size: 9px;
   }
   body.sketch-theme .home-header-action {
@@ -408,6 +408,6 @@ body.sketch-theme .home-report-footer {
   width: 100%;
   text-align: left;
 }
-body.sketch-theme #home-next-race p {
+body.sketch-theme :is(#home-next-race, #historical-home-next-race) p {
   text-align: left;
 }

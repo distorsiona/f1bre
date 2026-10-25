@@ -7,7 +7,11 @@ import { getVisibleDrivers } from '../state/selectors.js';
 import { renderLineChart } from '../ui/line-chart.js';
 /** Dibuja ritmo, stints, tabla, clima y eventos con los datos y filtros del estado actual. */
 export function renderRaceAnalysis() {
-  if (!state.session) return;
+  if (!state.session) {
+    $('race-heading').textContent = 'Choose a Grand Prix above to start.';
+    return;
+  }
+  renderRaceDetails();
   const list = getVisibleDrivers(),
     stats = list.map((d) => RaceData.stats(d, state.data)),
     clean = stats.flatMap((s) => s.clean),
@@ -144,6 +148,8 @@ export function renderRaceAnalysis() {
 /** Limpia únicamente los paneles propios de Race Analysis. */
 export function clearRaceAnalysis() {
   for (const id of [
+    'analysis-results',
+    'analysis-radio',
     'metrics',
     'chart',
     'legend',
@@ -154,4 +160,50 @@ export function clearRaceAnalysis() {
     'control',
   ])
     $(id).replaceChildren();
+}
+
+/** Resultados y última medición por piloto; radios nativos sin HTML externo. */
+function renderRaceDetails() {
+  const visible = getVisibleDrivers();
+  const drivers = new Map(visible.map((driver) => [driver.driver_number, driver]));
+  const intervals = new Map();
+  for (const row of state.data.intervals || []) {
+    const previous = intervals.get(row.driver_number);
+    if (!previous || Date.parse(row.date) > Date.parse(previous.date))
+      intervals.set(row.driver_number, row);
+  }
+  const results = [...(state.data.session_result || [])]
+    .filter((row) => drivers.has(row.driver_number))
+    .sort((a, b) => (a.position ?? 999) - (b.position ?? 999));
+  $('analysis-results').innerHTML = results.length
+    ? '<table><thead><tr><th>Position</th><th>Driver</th><th>Result gap</th><th>Latest interval</th><th>Observation</th></tr></thead><tbody>' +
+      results
+        .map((row) => {
+          const interval = intervals.get(row.driver_number);
+          return `<tr><td>${row.position ?? '—'}</td><td>${escapeHtml(drivers.get(row.driver_number).full_name)}</td><td>${escapeHtml(row.gap_to_leader ?? '—')}</td><td>${escapeHtml(interval?.interval ?? '—')}</td><td>${escapeHtml(interval?.date ?? '—')}</td></tr>`;
+        })
+        .join('') +
+      '</tbody></table>'
+    : '<p>Results pending or unavailable.</p>';
+  $('analysis-radio').replaceChildren();
+  for (const row of state.data.team_radio || []) {
+    if (!drivers.has(row.driver_number)) continue;
+    let url;
+    try {
+      url = new URL(row.recording_url);
+    } catch {
+      continue;
+    }
+    if (url.protocol !== 'https:') continue;
+    const item = document.createElement('p');
+    item.textContent = `${drivers.get(row.driver_number).full_name} · ${row.date} `;
+    const audio = document.createElement('audio');
+    audio.controls = true;
+    audio.preload = 'none';
+    audio.src = url.href;
+    item.append(audio);
+    $('analysis-radio').append(item);
+  }
+  if (!$('analysis-radio').children.length)
+    $('analysis-radio').textContent = 'Radio pending or unavailable for this selection.';
 }

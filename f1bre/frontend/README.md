@@ -36,7 +36,7 @@ tests/        Pruebas locales sin conexión a OpenF1
 scripts/      Verificación de código y prueba opcional contra la API real
 ```
 
-Las cuatro vistas principales viven en `src/views/`: `home-view.js`, `drivers-view.js`, `teams-view.js` y `race-analysis-view.js`. Los perfiles tienen su módulo aparte. Las rutas están en `src/router/router.js` y la coordinación en `src/controllers/view-controller.js`.
+Las cinco vistas principales viven en `src/views/`: `home-view.js`, `drivers-view.js`, `teams-view.js`, `race-analysis-view.js` e `historical-view.js`. Los perfiles tienen su módulo aparte. Las rutas están en `src/router/router.js` y la coordinación en `src/controllers/view-controller.js`.
 
 El punto de entrada es `src/app.js`. El catálogo central de endpoints está en `src/config/openf1.js`. Las llamadas HTTP se realizan únicamente en `src/api/openf1-client.js`.
 
@@ -75,7 +75,7 @@ Las imágenes se reutilizaron del proyecto Flutter anterior, sin generarlas ni m
 
 ## Datos y límites
 
-Fuente: https://openf1.org/docs/. Se listan carreras desde 2023 que terminaron hace más de 30 minutos. La temporada predeterminada es 2025, o el año actual si es anterior. No se habilitaron datos en vivo ni credenciales.
+Fuente: https://openf1.org/docs/. Se listan carreras finalizadas desde 2023. Home y Race Analysis detectan el año actual con el reloj del navegador; Historical permite elegir temporada. No se habilitaron datos en vivo ni credenciales.
 
 La cola del cliente separa peticiones al menos 2,2 segundos, deduplica solicitudes iguales y mantiene hasta 60 respuestas en memoria. Recargar borra esa caché. Varias pestañas no comparten esta cola.
 
@@ -97,4 +97,42 @@ Pulir la UX y ajustar las pantallas a las imágenes de referencia del usuario. D
 
 ## Carga rápida
 
-Las carreras ya descargadas se restauran desde caché local al recargar. La primera visita carga datos por vista y muestra cada respuesta conforme llega: Drivers necesita dos datasets, Teams tres. El resto se consulta al abrir su pantalla. `Retry` actualiza la vista activa; se conserva la selección de temporada y carrera. Sin base de datos.
+Las carreras ya descargadas se restauran desde caché local al recargar. La primera visita carga datos por vista y muestra cada respuesta conforme llega: Drivers necesita dos datasets, Teams tres. El resto se consulta al abrir su pantalla. `Retry` actualiza la vista activa; la carrera se elige explícitamente en Race Analysis e Historical. Sin base de datos.
+
+## Navegación y resúmenes por carrera
+
+La barra conserva Home, Drivers, Teams, Race Analysis e Historical, además de idioma
+y contacto. Los selectores de temporada y carrera están en el contenido.
+
+Home detecta el año con `new Date()` y consulta la última carrera finalizada de ese
+año. Sus clasificaciones se actualizan por red y muestran la fecha de corte publicada;
+no dependen de la carrera elegida en Historical. Sin carreras finalizadas o sin cobertura,
+se indica la ausencia de datos. La conexión pública de OpenF1 no garantiza datos en vivo
+durante una carrera, cambios posteriores ni puntos sprint aún no reflejados en una
+clasificación de carrera. El catálogo disponible comienza en 2023.
+
+Race Analysis (`#overview`) empieza sin selección. Historical (`#historical`) ofrece
+temporada y catálogo sin abrir una carrera. Al elegir un GP permanece en Historical y
+muestra un resumen con podio, resultados, clasificación tras esa carrera, neumáticos y
+condiciones. El enlace de análisis del resumen abre esa selección explícita en Race Analysis.
+La comparación de equipos por temporada se carga bajo demanda; una respuesta sin cobertura
+no se transforma en cero puntos.
+
+Para verificar desde la raíz `f1bre/`:
+
+```bash
+npm run check
+npm test
+npm run dev
+```
+
+En http://127.0.0.1:4173 comprueba:
+
+1. Los cinco enlaces del Navbar y los diálogos de idioma/contacto.
+2. Home con la temporada del reloj del navegador.
+3. Race Analysis sin carrera elegida; selecciona un GP para ver sus paneles.
+4. Historical sin carrera elegida; cambia de año y selecciona un GP para ver su resumen.
+5. Alterna Drivers/Teams en el resumen, carga el desempeño de equipos y aplica su filtro.
+6. Regresa a Home y confirma que conserva la temporada actual.
+7. Cambia rápidamente de carrera, temporada y ruta: las respuestas anteriores no deben
+   sustituir la selección vigente. Revisa también una temporada vacía y el comportamiento sin red.

@@ -1,4 +1,5 @@
 /** Enrutador por hash: visibilidad, navegación activa y resolución de perfiles. Sin consultas HTTP. */
+import { state } from '../state/store.js';
 import { $ } from '../utils/dom.js';
 import { centerSelectedRace } from '../views/home-view.js';
 import { showProfile } from '../views/profile-view.js';
@@ -10,7 +11,7 @@ export function renderRoute() {
     page =
       kind === 'driver' || kind === 'team'
         ? 'profile'
-        : ['home', 'teams', 'drivers', 'overview'].includes(kind)
+        : ['home', 'teams', 'drivers', 'overview', 'historical'].includes(kind)
           ? kind
           : 'home';
   document.body.classList.toggle('home-mode', page === 'home');
@@ -26,11 +27,19 @@ export function renderRoute() {
   );
   document.body.classList.toggle(
     'portal-mode',
-    ['home', 'drivers', 'teams', 'overview', 'profile'].includes(page),
+    ['home', 'drivers', 'teams', 'overview', 'historical', 'profile'].includes(page),
   );
   document.querySelectorAll('[data-page]').forEach((el) => {
     el.hidden = el.dataset.page !== page;
   });
+  $('selection-panel').hidden = !['overview', 'historical'].includes(page);
+  $('season-field').hidden = page !== 'historical';
+  $('selection-hint').textContent =
+    page === 'historical'
+      ? 'Choose a Grand Prix to see its race summary.'
+      : 'Choose a Grand Prix to open its analysis.';
+  $('analysis-details').hidden = !state.session;
+  $('source-link').hidden = page === 'home' || !state.session;
   if (page === 'home') centerSelectedRace();
   updateNavbar(kind === 'driver' || kind === 'team' ? kind : page);
   $('page-title').textContent = {
@@ -38,6 +47,7 @@ export function renderRoute() {
     teams: 'TEAMS',
     drivers: 'DRIVERS',
     overview: 'RACE ANALYSIS',
+    historical: 'HISTORICAL',
     profile: 'PROFILE',
   }[page];
   if (page === 'profile') {

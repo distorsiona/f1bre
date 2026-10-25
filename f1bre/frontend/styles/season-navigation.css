@@ -1,0 +1,45 @@
+#selection-panel {
+  margin-bottom: 24px;
+}
+#selection-panel .filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+#selection-panel label,
+#historical label {
+  display: grid;
+  gap: 8px;
+}
+#selection-panel select,
+#historical select {
+  max-width: 100%;
+  padding: 10px;
+}
+#historical-catalog {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin: 24px 0;
+}
+#historical-performance,
+#analysis-results {
+  overflow-x: auto;
+}
+#analysis-radio audio {
+  display: block;
+  max-width: 100%;
+  margin: 10px 0;
+}
+#selection-panel[hidden],
+#analysis-details[hidden],
+#season-field[hidden] {
+  display: none;
+}
+
+#historical-home[hidden] {
+  display: none;
+}
+#navbar-root .navbar nav {
+  flex-wrap: wrap;
+}

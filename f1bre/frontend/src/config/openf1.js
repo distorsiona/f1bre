@@ -91,6 +91,8 @@ export const CORE_ENDPOINTS = Object.freeze([
   'race_control',
   'session_result',
   'starting_grid',
+  'intervals',
+  'team_radio',
   'championship_drivers',
   'championship_teams',
 ]);

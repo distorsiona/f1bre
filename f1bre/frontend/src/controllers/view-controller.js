@@ -1,7 +1,8 @@
 /** Coordina el refresco de vistas tras cargar una carrera. Ninguna vista importa a otra. */
 import { $ } from '../utils/dom.js';
 import { getVisibleDrivers } from '../state/selectors.js';
-import { renderHome, clearHome } from '../views/home-view.js';
+import { renderHistorical } from '../views/historical-view.js';
+import { renderHome } from '../views/home-view.js';
 import { renderDriverList, clearDrivers } from '../views/drivers-view.js';
 import { renderTeams, clearTeams } from '../views/teams-view.js';
 import { clearProfile } from '../views/profile-view.js';
@@ -41,9 +42,10 @@ export function refreshViews() {
   if (route === 'drivers') renderDriverList();
   else if (route === 'teams') renderTeams();
   else if (route === 'overview') refreshAnalysis();
-  else if (!['driver', 'team'].includes(route)) renderHome();
+  else if (route === 'home') renderHome();
+  else if (route === 'historical') renderHistorical();
   renderRoute();
-  showPendingPanels();
+  if (state.session && route !== 'home') showPendingPanels();
 }
 
 /** Evita presentar un dataset todavía pendiente como cero o como una lista vacía definitiva. */
@@ -91,11 +93,12 @@ export function clearViews() {
   previousLaps = undefined;
   previousDrivers = undefined;
   previousTeam = undefined;
-  clearHome();
+  // Home mantiene su snapshot independiente al cambiar carreras históricas.
   clearDrivers();
   clearTeams();
   clearProfile();
   clearRaceAnalysis();
+  $('historical-home').hidden = true;
   for (const id of ['telemetry-chart', 'telemetry-values', 'raw-preview', 'driver', 'lap'])
     $(id).replaceChildren();
   $('raw-download').disabled = true;

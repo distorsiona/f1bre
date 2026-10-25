@@ -4,6 +4,8 @@ const spanish = {
   Home: 'Inicio',
   Drivers: 'Pilotos',
   Teams: 'Equipos',
+  Historical: 'Histórico',
+  'Race Analysis': 'Análisis de carrera',
   'Race analysis': 'Análisis de carrera',
   Season: 'Temporada',
   Race: 'Carrera',

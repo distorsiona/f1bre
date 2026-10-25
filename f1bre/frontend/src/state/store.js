@@ -1,5 +1,14 @@
 /** Estado temporal de la aplicación. No hay almacenamiento persistente ni base de datos.
  * Los contadores generation invalidan respuestas antiguas después de cambiar la selección. */
+export const homeState = {
+  sessions: [],
+  calendar: [],
+  session: null,
+  data: {},
+  drivers: [],
+  year: new Date().getFullYear(),
+  status: 'idle',
+};
 export const state = {
   sessions: [],
   // Calendario completo, incluidas las futuras carreras publicadas.

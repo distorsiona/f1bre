@@ -27,7 +27,8 @@
 body.sketch-theme.portal-mode {
   --page-title-size: clamp(36px, 4vw, 52px);
 }
-body.sketch-theme.portal-mode :is(#home-season-title, .drivers-heading h1) {
+body.sketch-theme.portal-mode
+  :is(:is(#home-season-title, #historical-home-season-title), .drivers-heading h1) {
   font-family: 'Barlow Semi Condensed', Arial, sans-serif;
   font-size: var(--page-title-size);
   font-weight: 900;
@@ -36,7 +37,7 @@ body.sketch-theme.portal-mode :is(#home-season-title, .drivers-heading h1) {
   letter-spacing: -1px;
   text-transform: uppercase;
 }
-body.sketch-theme.portal-mode #home-season-title span {
+body.sketch-theme.portal-mode :is(#home-season-title, #historical-home-season-title) span {
   font-size: 1em;
   line-height: inherit;
 }
